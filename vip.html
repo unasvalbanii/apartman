@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP průvodce pobytem | U nás v Albánii</title>
+  <link rel="icon" href="assets/logo/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ── TOKENY ── */
+    :root {
+      --navy:    #1e3a8b;
+      --navy-d:  #162d70;
+      --navy-l:  #2563eb;
+      --gold:    #ffb500;
+      --gold-d:  #e69500;
+      --sand:    #f3f4f6;
+      --white:   #ffffff;
+      --gray-1:  #f8fafc;
+      --gray-2:  #e5e7eb;
+      --gray-3:  #94a3b8;
+      --text:    #1e293b;
+      --text-s:  #4b5563;
+      --green:   #16a34a;
+      --red:     #b91c1c;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--sand);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    #vip-header {
+      background: var(--navy);
+      position: sticky; top: 0; z-index: 200;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+      transition: box-shadow .3s;
+    }
+    .header-inner {
+  max-width: 1100px; margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+    .header-brand {
+      display: flex; align-items: center; gap: .75rem; text-decoration: none;
+      flex-shrink: 0;
+    }
+    .header-brand img { height: 40px; width: auto; display: block; }
+    .header-brand .brand-name { color: #fff; font-weight: 700; font-size: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.65); }
+    .header-brand .badge {
+      background: var(--gold); color: #000;
+      font-size: .6rem; font-weight: 800;
+      padding: 2px 8px; border-radius: 999px;
+      text-transform: uppercase; letter-spacing: .08em;
+      flex-shrink: 0;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; cursor: pointer; padding: 4px;
+      background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 26px; height: 2.5px;
+      background: #fff; border-radius: 2px;
+      transition: transform .3s ease, opacity .2s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+    /* Mobile menu */
+    #mobile-menu-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,.45); z-index: 190;
+    }
+    #mobile-menu-overlay.open { display: block; }
+    #mobile-nav {
+      position: fixed; top: 0; left: 0; bottom: 0;
+      width: 80vw; max-width: 300px;
+      background: var(--navy); z-index: 195;
+      padding: 5rem 0 2rem;
+      transform: translateX(-100%);
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+      overflow-y: auto;
+    }
+    #mobile-nav.open { transform: translateX(0); }
+    #mobile-nav a {
+      display: block; padding: .9rem 2rem;
+      color: rgba(255,255,255,.88); text-decoration: none;
+      font-size: 1.05rem; font-weight: 600;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      transition: background .2s;
+    }
+    #mobile-nav a:hover { background: rgba(255,255,255,.07); color: #fff; }
+
+    /* ── HEADING underline (same as main site) ── */
+    .heading-underline {
+      position: relative; display: inline-block; padding-bottom: 26px;
+    }
+    .heading-underline::after {
+      content: '';
+      position: absolute; left: 50%; bottom: 0;
+      transform: translateX(-50%);
+      width: 90%; height: 18px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 20' preserveAspectRatio='none'%3E%3Cpath d='M0,10 Q100,0 200,10 T400,10' stroke='%23ffb500' stroke-width='6' fill='none' stroke-linecap='round' opacity='0.9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-size: contain; background-position: center;
+      pointer-events: none;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #0f2460 55%, #0c1f55 100%);
+      color: #fff; padding: 4rem 1.5rem 5rem; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 70% 30%, rgba(14,165,233,.18) 0%, transparent 65%),
+        radial-gradient(ellipse at 20% 80%, rgba(255,181,0,.1) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(255,181,0,.15); border: 1px solid rgba(255,181,0,.35);
+      border-radius: 999px; padding: 4px 18px;
+      font-size: .72rem; font-weight: 800; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 900; line-height: 1.15; margin-bottom: .75rem;
+    }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+    .hero p { font-size: 1.05rem; color: rgba(255,255,255,.75); max-width: 520px; margin: 0 auto 2rem; }
+    .hero-chips {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem;
+    }
+    .hero-chip {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+      border-radius: 999px; padding: 6px 16px;
+      font-size: .78rem; color: rgba(255,255,255,.85);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .hero-chip i { color: var(--gold); }
+
+    /* ── SECTION NAV (anchor links) ── */
+    .section-nav-bar {
+  background: #fff; border-bottom: 1px solid var(--gray-2);
+  overflow-x: auto; white-space: nowrap;
+  padding: .6rem 1.5rem;
+  scrollbar-width: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: .4rem;
+}
+    .section-nav-bar::-webkit-scrollbar { display: none; }
+    .section-nav-bar a {
+      display: inline-flex; align-items: center; gap: 5px;
+      text-decoration: none; color: var(--text-s);
+      font-size: .78rem; font-weight: 600;
+      padding: 5px 14px; border-radius: 999px;
+      border: 1px solid var(--gray-2);
+      transition: all .2s; white-space: nowrap;
+    }
+    .section-nav-bar a:hover,
+    .section-nav-bar a.active {
+      background: var(--navy); color: #fff; border-color: var(--navy);
+    }
+
+    /* ── MAIN WRAP ── */
+    main { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+
+    /* ── SECTION ── */
+    .section { margin-bottom: 3.5rem; scroll-margin-top: 160px; }
+    .section-header {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.5rem; padding-bottom: .75rem;
+      border-bottom: 2px solid var(--gray-2);
+    }
+    .section-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  background: var(--navy); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.15rem; flex-shrink: 0;
+    }
+    .section-header h2 { font-size: 1.3rem; font-weight: 800; color: var(--navy); }
+    .section-header .sub { font-size: .82rem; color: var(--gray-3); margin-top: 1px; }
+
+    /* ── CARD ── */
+    .card {
+      background: #fff; border-radius: 16px; border: 1px solid var(--gray-2);
+      padding: 1.25rem 1.5rem; margin-bottom: 1rem;
+    }
+    .card-title {
+      font-size: .95rem; font-weight: 700; color: var(--navy);
+      margin-bottom: .6rem; display: flex; align-items: center; gap: .5rem;
+    }
+    .card-title i { color: var(--gold); }
+    .card p, .card li { font-size: .9rem; color: var(--text-s); }
+    .card ul { padding-left: 1.2rem; }
+    .card ul li { margin-bottom: .3rem; }
+
+    /* ── GRID 2 ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    /* ── INFO ROW ── */
+    .info-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: .65rem 0; border-bottom: 1px solid var(--gray-2); gap: 1rem;
+      font-size: .9rem;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-row .lbl { color: var(--gray-3); font-weight: 600; white-space: nowrap; }
+    .info-row .val { font-weight: 700; color: var(--text); text-align: right; }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight {
+      border-radius: 14px; padding: 1.1rem 1.3rem; margin-bottom: 1rem;
+    }
+    .highlight.blue   { background: #eff6ff; border: 1.5px solid #bfdbfe; }
+    .highlight.green  { background: #f0fdf4; border: 1.5px solid #86efac; }
+    .highlight.yellow { background: #fffbeb; border: 1.5px solid #fde68a; }
+    .highlight.red    { background: #fef2f2; border: 1.5px solid #fecaca; }
+    .highlight-title {
+      font-size: .78rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .07em; margin-bottom: .5rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .highlight.blue   .highlight-title { color: #1e40af; }
+    .highlight.green  .highlight-title { color: #15803d; }
+    .highlight.yellow .highlight-title { color: #b45309; }
+    .highlight.red    .highlight-title { color: #b91c1c; }
+    .highlight p, .highlight li { font-size: .88rem; color: var(--text-s); }
+    .highlight ul { padding-left: 1.1rem; }
+    .highlight ul li { margin-bottom: .25rem; }
+
+    /* ── STEPS ── */
+    .steps { display: flex; flex-direction: column; gap: .75rem; }
+    .step  { display: flex; gap: 1rem; }
+    .step-num {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--navy); color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem; font-weight: 800; flex-shrink: 0; margin-top: 2px;
+    }
+    .step-body strong { display: block; font-size: .9rem; color: var(--text); margin-bottom: .15rem; }
+    .step-body span   { font-size: .86rem; color: var(--text-s); }
+    .step-check { background: #16a34a; }
+
+    /* ── CODE BOX ── */
+    .code-box {
+      background: var(--navy); color: var(--gold);
+      border-radius: 12px; padding: .8rem 1.4rem;
+      font-size: 1.5rem; font-weight: 900; letter-spacing: .15em;
+      text-align: center; margin: .5rem 0;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── TODO ── */
+    .todo {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: #fff7ed; border: 1.5px dashed #fb923c;
+      border-radius: 8px; padding: 4px 12px;
+      font-size: .85rem; font-weight: 700; color: #9a3412;
+    }
+
+    /* ── BEACH / DISTANCE LIST ── */
+    .distance-list { display: flex; flex-direction: column; gap: .5rem; }
+    .distance-item {
+      display: flex; align-items: center; gap: 1rem;
+      background: #fff; border-radius: 12px; border: 1px solid var(--gray-2);
+      padding: .75rem 1rem;
+    }
+    .distance-badge {
+      background: var(--navy-l); color: #fff;
+      border-radius: 8px; padding: 4px 10px;
+      font-size: .72rem; font-weight: 800;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .distance-item .di-label { font-size: .88rem; font-weight: 600; color: var(--text); }
+    .distance-item .di-sub   { font-size: .78rem; color: var(--gray-3); }
+
+    /* ── CONTACT CARD ── */
+    .contact-card {
+      background: #fff; border-radius: 14px; border: 1px solid var(--gray-2);
+      padding: 1rem 1.25rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .contact-icon {
+        width: 44px; height: 44px; border-radius: 11px;
+  background: var(--navy); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .contact-card .c-name  { font-weight: 700; font-size: .92rem; }
+    .contact-card .c-role  { font-size: .75rem; color: var(--gray-3); }
+    .contact-card .c-phone { font-size: .88rem; color: var(--navy); font-weight: 600; margin-top: 2px; }
+
+    /* ── RESTAURANT CARD ── */
+    .rest-card {
+      background: #fff; border-radius: 14px; border: 1px solid var(--gray-2);
+      padding: 1rem 1.25rem; display: flex; gap: .75rem; align-items: flex-start;
+      margin-bottom: .75rem;
+    }
+    .rest-emoji { font-size: 1.5rem; line-height: 1; flex-shrink: 0; }
+    .rest-name  { font-weight: 700; font-size: .92rem; color: var(--navy); }
+    .rest-note  { font-size: .82rem; color: var(--text-s); margin-top: .2rem; }
+    .rest-tag {
+      display: inline-block; font-size: .68rem; font-weight: 700;
+      background: #eff6ff; color: #1e40af;
+      border-radius: 999px; padding: 2px 10px; margin-top: .3rem;
+    }
+
+    /* ── FAQ ── */
+    details.faq-item {
+      background: #fff; border: 1px solid var(--gray-2);
+      border-radius: 12px; margin-bottom: .6rem; overflow: hidden;
+    }
+    details.faq-item summary {
+      padding: .95rem 1.1rem; font-size: .9rem; font-weight: 700;
+      cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+      color: var(--text);
+    }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary .fa-chevron-down { transition: transform .25s; color: var(--gray-3); font-size: .75rem; }
+    details.faq-item[open] summary .fa-chevron-down { transform: rotate(180deg); }
+    details.faq-item .faq-body { padding: 0 1.1rem 1rem; font-size: .88rem; color: var(--text-s); }
+
+    /* ── EMERGENCY NUMBERS ── */
+    .emergency-num {
+      font-size: 1.2rem; font-weight: 900; color: var(--red);
+    }
+
+    /* ── SCROLL TO TOP ── */
+    #scroll-to-top {
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--navy-l); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; cursor: pointer; border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,.2);
+      transition: all .3s; z-index: 150;
+      opacity: 0; visibility: hidden;
+    }
+    #scroll-to-top.visible { opacity: 1; visibility: visible; }
+    #scroll-to-top:hover { background: var(--navy); transform: scale(1.08); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111827; color: rgba(255,255,255,.55);
+      text-align: center; padding: 2rem 1rem;
+      font-size: .82rem;
+    }
+    footer strong { color: var(--gold); }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-thumb { background: var(--gray-2); border-radius: 999px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      main { padding: 1.5rem 1rem 4rem; }
+      .hero { padding: 3rem 1rem 3.5rem; }
+      .section-nav-bar { top: 0; padding: .5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════ HEADER ═══════════════════════ -->
+<header id="vip-header">
+  <div class="header-inner">
+    <a class="header-brand" href="/">
+      <img src="assets/logo/logo.png"
+     alt="U nás v Albánii"
+     loading="eager"
+     decoding="async"
+     draggable="false"
+     style="height:40px;width:auto;">
+<span class="brand-name">U nás v Albánii</span>
+      <span class="badge">VIP</span>
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- ═══════════════════════ SECTION NAV BAR ═══════════════════════ -->
+  <div class="section-nav-bar" id="section-nav-bar">
+    <a href="#prijezd">🚗 Příjezd</a>
+    <a href="#apartman">🏠 Apartmán</a>
+    <a href="#wifi">📶 WiFi</a>
+    <a href="#pool">🏊 Bazén</a>
+    <a href="#okoli">🗺️ Okolí</a>
+    <a href="#restaurace">🍽️ Jídlo</a>
+    <a href="#tipy">💡 Tipy</a>
+    <a href="#odjezd">🧳 Odjezd</a>
+    <a href="#kontakty">📞 Kontakty</a>
+  </div>
+</header>
+
+<!-- Mobile nav overlay -->
+<div id="mobile-menu-overlay"></div>
+<nav id="mobile-nav">
+  <a href="#prijezd"><i class="fas fa-car" style="width:20px;text-align:center;margin-right:8px;color:var(--gold)"></i>Příjezd</a>
+  <a href="#apartman"><i class="fas fa-home" style="width:20px;text-align:center;margin-right:8px;color:var(--gold)"></i>Apartmán</a>
+  <a href="#wifi"><i class="fas fa-wifi" style="width:20px;text-align:center;margin-right:8px;color:var(--gold)"></i>WiFi & internet</a>
+  <a href="#pool"><i class="fas fa-swimming-pool" style="width:20px;text-align:center;margin-right:8px;color:var(--gold)"></i>Bazén</a>
+  <a href="#okoli"><i class="fas fa-map-marker-alt" style="width:20px;text-align:center;margin-right:8px;color:var(--gold)"></i>Okolí</a>
+  <a href="#restaurace"><i class="fas fa-utensils" style="width:20px;text-align:center;margin-right:8px;color:var(--gold)"></i>Kde se najíst</a>
+  <a href="#tipy"><i class="fas fa-lightbulb" style="width:20px;text-align:center;margin-right:8px;color:var(--gold)"></i>Tipy majitelů</a>
+  <a href="#odjezd"><i class="fas fa-luggage-cart" style="width:20px;text-align:center;margin-right:8px;color:var(--gold)"></i>Odjezd</a>
+  <a href="#kontakty"><i class="fas fa-phone" style="width:20px;text-align:center;margin-right:8px;color:var(--gold)"></i>Kontakty</a>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow"><i class="fas fa-star"></i> Vítáme vás</div>
+  <h1>Váš osobní průvodce<br><em>pobytem v Albánii</em></h1>
+  <p>Vše, co potřebujete pro pohodovou dovolenou – od příjezdu až po odjezd. Najdete tu kódy, tipy i doporučení přímo od nás.</p>
+  <div class="hero-chips">
+    <div class="hero-chip"><i class="fas fa-wifi"></i> WiFi zdarma</div>
+    <div class="hero-chip"><i class="fas fa-swimming-pool"></i> Bazén & brouzdaliště</div>
+    <div class="hero-chip"><i class="fas fa-umbrella-beach"></i> Pláž 7 min pěšky</div>
+    <div class="hero-chip"><i class="fas fa-snowflake"></i> Klimatizace</div>
+    <div class="hero-chip"><i class="fas fa-car"></i> Parkování u domu</div>
+    <div class="hero-chip"><i class="fas fa-utensils"></i> Restaurace 5 min</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ MAIN ═══════════════════════ -->
+<main>
+
+  <!-- ── 1. PŘÍJEZD ── -->
+  <section class="section" id="prijezd">
+    <div class="section-header">
+      <div class="section-icon"><i class="fas fa-car"></i></div>
+      <div>
+        <h2>Příjezd &amp; předání klíčů</h2>
+        <div class="sub">Od letiště až po dveře apartmánu</div>
+      </div>
+    </div>
+
+    <div class="highlight yellow">
+      <div class="highlight-title"><i class="fas fa-clock"></i> Check-in / Check-out</div>
+      <div class="grid-2" style="margin-top:.5rem;">
+        <div>
+          <div style="font-size:.72rem;font-weight:700;color:#b45309;text-transform:uppercase;letter-spacing:.06em;">Příjezd od</div>
+          <div style="font-size:2rem;font-weight:900;color:var(--text);">15:00</div>
+        </div>
+        <div>
+          <div style="font-size:.72rem;font-weight:700;color:#b45309;text-transform:uppercase;letter-spacing:.06em;">Odjezd do</div>
+          <div style="font-size:2rem;font-weight:900;color:var(--text);">11:00</div>
+        </div>
+      </div>
+      <p style="margin-top:.5rem;">Dřívější příjezd nebo pozdější odjezd je možný po domluvě – napište nám předem.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-plane-arrival"></i> Z letiště Tirana (TIA)</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>Po přistání</strong>
+            <span>Projděte pasovou kontrolou a vyzvedněte zavazadla. Albánie není v EU – doporučujeme okamžitě vypnout mobilní data (roaming je velmi drahý).</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>Transfer (doporučujeme)</strong>
+            <span>Soukromý transfer s česky mluvícím řidičem – cca <strong>40 EUR / cesta</strong>, jízda cca 40 minut. WhatsApp: <a href="https://wa.me/420777138990" style="color:var(--navy);font-weight:700;">+420 777 138 990</a></span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>Adresa apartmánu</strong>
+            <span><strong>Adriatic Garden Residence, Golem, Albánie</strong><br>GPS: 41.2404° N, 19.5168° E</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <strong>Předání klíčů</strong>
+            <span>Zavolejte nám cca 30 minut před příjezdem – předáme vám klíče osobně nebo vás nasměrujeme ke správci budovy.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-key"></i> Kódy &amp; přístupy</div>
+      <div class="info-row">
+        <span class="lbl">Kód do vchodu budovy</span>
+        <span class="val"><span class="todo"><i class="fas fa-pen"></i> DOPLŇTE KÓD</span></span>
+      </div>
+      <div class="info-row">
+        <span class="lbl">Číslo apartmánu</span>
+        <span class="val"><span class="todo"><i class="fas fa-pen"></i> DOPLŇTE ČÍSLO</span></span>
+      </div>
+      <div class="info-row">
+        <span class="lbl">Počet sad klíčů</span>
+        <span class="val">2 sady – vraťte při odjezdu</span>
+      </div>
+      <div class="info-row">
+        <span class="lbl">Vstup na balkón</span>
+        <span class="val">Klíč je součástí sady</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-parking"></i> Parkování</div>
+      <p>Parkování je možné přímo u objektu nebo v bezprostředním okolí za nízký poplatek. Správce vám po příjezdu ukáže volná místa. Příjezd autem z ČR trvá přibližně 14–16 hodin přes Slovinsko, Chorvatsko a Černou Horu.</p>
+    </div>
+  </section>
+
+  <!-- ── 2. APARTMÁN ── -->
+  <section class="section" id="apartman">
+    <div class="section-header">
+      <div class="section-icon"><i class="fas fa-home"></i></div>
+      <div>
+        <h2>Váš apartmán</h2>
+        <div class="sub">Vybavení, provoz a důležité informace</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title"><i class="fas fa-bed"></i> Ložnice</div>
+        <ul>
+          <li>2 samostatné ložnice</li>
+          <li>Kapacita: až 5 osob</li>
+          <li>Ložní prádlo v ceně</li>
+          <li>Ručníky v ceně (2 sady / osoba)</li>
+          <li>Náhradní povlečení ve skříni</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="fas fa-couch"></i> Obývací pokoj</div>
+        <ul>
+          <li>Smart TV (Netflix, YouTube…)</li>
+          <li>Klimatizace + dálkový ovladač</li>
+          <li>Rozkládací pohovka</li>
+          <li>Výhled z balkónu</li>
+          <li>Venkovní posezení na balkóně</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="fas fa-utensils"></i> Kuchyň</div>
+        <ul>
+          <li>Varná deska (4 plotny)</li>
+          <li>Mikrovlnná trouba</li>
+          <li>Lednička s mrazákem</li>
+          <li>Myčka nádobí</li>
+          <li>Kávovar &amp; rychlovarná konvice</li>
+          <li>Nádobí, příbory, hrnce, pánve</li>
+          <li>Základní koření v kuchyni</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="fas fa-shower"></i> Koupelna &amp; toaleta</div>
+        <ul>
+          <li>Sprchový kout</li>
+          <li>Fén na vlasy</li>
+          <li>Zrcadlo s osvětlením</li>
+          <li>Zásuvka 230V u zrcadla</li>
+          <li>Toaletní papír (2 ks zásoby pod dřezem)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-snowflake"></i> Klimatizace – jak používat</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>Zapnutí</strong>
+            <span>Ovladač leží na stolku v ložnici / v obývacím pokoji. Stiskněte tlačítko <strong>ON/OFF</strong>.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>Doporučená teplota</strong>
+            <span>Nastavte <strong>22–24 °C</strong>. Extrémně nízké teploty jsou zbytečné a způsobují nachlazení – zvláště u dětí.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>Při odchodu z apartmánu</strong>
+            <span>Klimatizaci vždy vypněte – šetří energii i životnost zařízení.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-tv"></i> Smart TV – přihlášení</div>
+      <p>TV je připojena k internetu. Přihlaste se do vlastního účtu Netflix / YouTube a po odjezdu se nezapomeňte <strong>odhlásit</strong>. Základní albánská TV funguje bez přihlášení.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-plug"></i> Elektrické zásuvky</div>
+      <p>Albánie používá <strong>evropský standard 230 V / 50 Hz</strong> – české a slovenské spotřebiče fungují bez adaptéru. Zástrčky typu C a F.</p>
+      <p style="margin-top:.5rem;">Jistič se nachází v chodbičce vlevo od vstupních dveří (šedá krabice). Pokud přestane fungovat elektřina, zkuste přepnout jistič. Přetrvá-li problém, kontaktujte správce.</p>
+    </div>
+
+    <div class="highlight red">
+      <div class="highlight-title"><i class="fas fa-ban"></i> Prosíme dodržujte</div>
+      <ul>
+        <li>Apartmán je <strong>nekuřácký</strong> – kouření výhradně venku</li>
+        <li>Domácí mazlíčci nejsou povoleni</li>
+        <li>Večerní klid od <strong>22:00</strong></li>
+        <li>Ručníky jsou do koupelny – nevynášejte je na pláž ani k bazénu</li>
+        <li>Jídlo ani skleněné nádobí u bazénu není dovoleno</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── 3. WIFI ── -->
+  <section class="section" id="wifi">
+    <div class="section-header">
+      <div class="section-icon"><i class="fas fa-wifi"></i></div>
+      <div>
+        <h2>WiFi &amp; internet</h2>
+        <div class="sub">Přihlašovací údaje a tipy na mobilní data</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-wifi"></i> WiFi v apartmánu</div>
+      <div class="info-row">
+        <span class="lbl">Název sítě (SSID)</span>
+        <span class="val"><span class="todo"><i class="fas fa-pen"></i> DOPLŇTE NÁZEV SÍTĚ</span></span>
+      </div>
+      <div class="info-row">
+        <span class="lbl">Heslo</span>
+        <span class="val"><span class="todo"><i class="fas fa-pen"></i> DOPLŇTE HESLO</span></span>
+      </div>
+      <div class="info-row">
+        <span class="lbl">Rychlost</span>
+        <span class="val">Dostatečná pro streaming a videohovory</span>
+      </div>
+      <div class="info-row">
+        <span class="lbl">Router umístění</span>
+        <span class="val">Obývací pokoj, na poličce u TV</span>
+      </div>
+    </div>
+
+    <div class="highlight yellow">
+      <div class="highlight-title"><i class="fas fa-mobile-alt"></i> Mobilní data v Albánii – pozor!</div>
+      <p>Albánie <strong>není členem EU</strong> – roaming může být velmi drahý. Ihned po přistání doporučujeme <strong>vypnout mobilní data</strong> a používat WiFi v apartmánu i restauracích.</p>
+      <p style="margin-top:.5rem;">Pro delší pobyt nebo na výlety si kupte místní SIM kartu – dostanete ji na letišti i v prodejnách operátorů za <strong>cca 5–10 EUR</strong> s datovým balíčkem 5–15 GB.</p>
+    </div>
+  </section>
+
+  <!-- ── 4. BAZÉN ── -->
+  <section class="section" id="pool">
+    <div class="section-header">
+      <div class="section-icon"><i class="fas fa-swimming-pool"></i></div>
+      <div>
+        <h2>Bazén &amp; brouzdaliště</h2>
+        <div class="sub">Vše o využití bazénu u apartmánu</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title"><i class="fas fa-clock"></i> Provozní doba</div>
+        <div class="info-row"><span class="lbl">Otevřeno</span><span class="val">8:00 – 21:00</span></div>
+        <div class="info-row"><span class="lbl">Vstup</span><span class="val">Zdarma pro hosty</span></div>
+        <div class="info-row"><span class="lbl">Lehátka & slunečníky</span><span class="val">K dispozici u bazénu</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="fas fa-child"></i> Brouzdaliště pro děti</div>
+        <p>Dětské brouzdaliště je součástí bazénové plochy. Mělká část s bezpečným vstupem – ideální pro nejmenší hosty.</p>
+      </div>
+    </div>
+
+    <div class="highlight blue">
+      <div class="highlight-title"><i class="fas fa-circle-info"></i> Pravidla bazénu</div>
+      <ul>
+        <li>Sprcha před vstupem do bazénu je povinná</li>
+        <li>Děti do 12 let pouze v doprovodu dospělého</li>
+        <li>Skákání do bazénu není povoleno</li>
+        <li>Jídlo ani skleněné nádobí u bazénu nejsou dovoleny</li>
+        <li>Po 21:00 je bazén uzavřen – respektujte noční klid ostatních hostů</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── 5. OKOLÍ ── -->
+  <section class="section" id="okoli">
+    <div class="section-header">
+      <div class="section-icon"><i class="fas fa-map-marker-alt"></i></div>
+      <div>
+        <h2>Okolí &amp; orientace</h2>
+        <div class="sub">Co najdete v docházkové vzdálenosti</div>
+      </div>
+    </div>
+
+    <div class="distance-list">
+      <div class="distance-item">
+        <div class="distance-badge">2 min</div>
+        <div>
+          <div class="di-label">🛒 Potraviny CONAD</div>
+          <div class="di-sub">Supermarket s širokým sortimentem za příznivé ceny – čerstvé pečivo, ovoce, maso, nápoje</div>
+        </div>
+      </div>
+      <div class="distance-item">
+        <div class="distance-badge">5 min</div>
+        <div>
+          <div class="di-label">🍽️ Restaurace &amp; kavárny</div>
+          <div class="di-sub">Promenáda s desítkami podniků – ryby, gril, pizza, zmrzlina</div>
+        </div>
+      </div>
+      <div class="distance-item">
+        <div class="distance-badge">5 min</div>
+        <div>
+          <div class="di-label">🎡 Dětské atrakce</div>
+          <div class="di-sub">Kolotoče, zmrzlinárenské stánky, hřiště a vodní atrakce podél promenády</div>
+        </div>
+      </div>
+      <div class="distance-item">
+        <div class="distance-badge">7 min</div>
+        <div>
+          <div class="di-label">🏖️ Pláž Golem Beach</div>
+          <div class="di-sub">Písečná pláž s pozvolným vstupem, ideální pro rodiny s dětmi. Lehátka za ~100–200 Kč/den/kus</div>
+        </div>
+      </div>
+      <div class="distance-item">
+        <div class="distance-badge">10 min</div>
+        <div>
+          <div class="di-label">🏧 Bankomat</div>
+          <div class="di-sub">Raiffeisen nebo Alpha Bank – výběr z bankomatu výhodnější než směnárna</div>
+        </div>
+      </div>
+      <div class="distance-item">
+        <div class="distance-badge">10 min</div>
+        <div>
+          <div class="di-label">💊 Lékárna</div>
+          <div class="di-sub">Centrum Golemu – základní léky, náplasti, opalovací krémy</div>
+        </div>
+      </div>
+      <div class="distance-item">
+        <div class="distance-badge">40 min</div>
+        <div>
+          <div class="di-label">✈️ Letiště Tirana (TIA)</div>
+          <div class="di-sub">Autem po rychlostní komunikaci</div>
+        </div>
+      </div>
+    </div>
+<div class="card" style="margin-top:1rem;padding:0;overflow:hidden;border-radius:16px;">
+      <iframe
+        src="https://www.google.com/maps?q=Adriatic+Garden+Residence,+Golem,+Albania&output=embed"
+        width="100%" height="420" style="border:0;display:block;" allowfullscreen loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <div class="grid-2" style="margin-top:1rem;">
+      <div class="card">
+        <div class="card-title"><i class="fas fa-droplet"></i> Pitná voda</div>
+        <p>Kohoutková voda <strong>není pitná</strong>. Kupujte balenou vodu v supermarketu – ceny jsou velmi nízké (cca 30–50 Kč za 5 litrů). Voda z kohoutku je vhodná pro vaření a hygienu.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="fas fa-money-bill-wave"></i> Platby &amp; měna</div>
+        <div class="info-row"><span class="lbl">Měna</span><span class="val">ALL (albánský lek)</span></div>
+        <div class="info-row"><span class="lbl">Kurz</span><span class="val">1 EUR ≈ 100 ALL</span></div>
+        <div class="info-row"><span class="lbl">Karty</span><span class="val">Větší podniky – ano</span></div>
+        <div class="info-row"><span class="lbl">Hotovost</span><span class="val">Vždy mějte u sebe</span></div>
+      </div>
+    </div>
+  </section>
+<!-- ── 6. RESTAURACE ── -->
+  <section class="section" id="restaurace">
+    <div class="section-header">
+      <div class="section-icon"><i class="fas fa-utensils"></i></div>
+      <div>
+        <h2>Kde se najíst</h2>
+        <div class="sub">Osobní doporučení z vlastní zkušenosti</div>
+      </div>
+    </div>
+
+    <div class="highlight green">
+      <div class="highlight-title"><i class="fas fa-circle-info"></i> Dobré vědět</div>
+      <p>Ceny v albánských restauracích jsou <strong>nižší nebo srovnatelné s Českem</strong>. Za hlavní chod zaplatíte 300–600 Kč. Ryby a mořské plody jsou výjimečné kvality za velmi příznivé ceny – rozhodně je ochutnajte!</p>
+    </div>
+
+    <div class="rest-card">
+      <div class="rest-emoji">🐟</div>
+      <div>
+        <div class="rest-name">Restaurace Arjan</div>
+        <div class="rest-note">Naše oblíbená! Vynikající ryby a mořské plody, přátelský personál, velmi rozumné ceny. Pár kroků od pláže – večer si rezervujte místo.</div>
+        <span class="rest-tag">Ryby &amp; plody moře</span>
+      </div>
+    </div>
+    <div class="rest-card">
+      <div class="rest-emoji">🦞</div>
+      <div>
+        <div class="rest-name">Fish &amp; Sea</div>
+        <div class="rest-note">Skvělá alternativa s výhledem na moře. Čerstvé ryby, moderní příprava, výborné dezerty. O něco dražší, ale stojí to za to.</div>
+        <span class="rest-tag">Ryby &amp; mořské speciality</span>
+      </div>
+    </div>
+    <div class="rest-card">
+      <div class="rest-emoji">🍕</div>
+      <div>
+        <div class="rest-name">Promenáda – pizzerie &amp; gril</div>
+        <div class="rest-note">Podél promenády najdete řadu podniků s grilovaným masem, pizzami, gyrosem a albánskými specialitami. Nebojte se experimentovat – skoro nikde nenarazíte na špatné jídlo.</div>
+        <span class="rest-tag">Různé kuchyně</span>
+      </div>
+    </div>
+    <div class="rest-card">
+      <div class="rest-emoji">🍦</div>
+      <div>
+        <div class="rest-name">Gelato &amp; dezerty</div>
+        <div class="rest-note">Italské zmrzlinárny podél celé promenády – výborná gelato za cca 20–40 Kč/kopeček. Večerní procházka s kopečkem je povinnost!</div>
+        <span class="rest-tag">Dezerty &amp; sladkosti</span>
+      </div>
+    </div>
+    <div class="rest-card">
+      <div class="rest-emoji">☕</div>
+      <div>
+        <div class="rest-name">Kavárny na promenádě</div>
+        <div class="rest-note">Espresso je v Albánii skvělé a levné (cca 30–50 Kč). Místní podávají i tradiční tureckou kávu – stojí za ochutnání. Snídaně s vejci a čerstvým pečivem ~100–150 Kč/osoba.</div>
+        <span class="rest-tag">Kavárna &amp; snídaně</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 7. TIPY MAJITELŮ ── -->
+  <section class="section" id="tipy">
+    <div class="section-header">
+      <div class="section-icon"><i class="fas fa-lightbulb"></i></div>
+      <div>
+        <h2>Tipy přímo od nás</h2>
+        <div class="sub">Co jsme se naučili za léta v Albánii</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title"><i class="fas fa-sun"></i> Na pláži</div>
+        <ul>
+          <li>Ranní hodiny (7–10) jsou nejpříjemnější – méně lidí, příjemná teplota</li>
+          <li>Lehátka na pláži za poplatek cca 100–200 Kč / den / kus</li>
+          <li>Sluneční krém je nutností – slunce je zde velmi intenzivní</li>
+          <li>Moře je čisté, ale pozor na vlny u malých dětí</li>
+          <li>Na pláži nenechávejte věci bez dozoru</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="fas fa-car"></i> Doprava &amp; přesuny</div>
+        <ul>
+          <li>Taxíky jsou levné – vždy se <strong>předem dohodněte na ceně</strong></li>
+          <li>Aplikace <strong>Bolt</strong> funguje spolehlivě v celém okolí</li>
+          <li>Půjčení auta: kontaktujte nás přes WhatsApp</li>
+          <li>V Albánii se řídí vpravo, pozor na agresivnější styl jízdy</li>
+          <li>Na výlety doporučujeme plné auto benzinu</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="fas fa-map"></i> Doporučené výlety</div>
+        <ul>
+          <li><strong>Krujë</strong> – historický hrad, tržnice, 45 min autem</li>
+          <li><strong>Bovilla Lake</strong> – průzračné jezero v horách, 50 min</li>
+          <li><strong>Národní park Divjakë</strong> – příroda a plameňáci, 60 min</li>
+          <li><strong>Gjeneralit Beach</strong> – klidnější pláž v zátoce, 15 min</li>
+          <li><strong>Durrës</strong> – přístav, amfiteátr, nákupy, 20 min</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="fas fa-shield-alt"></i> Bezpečnost</div>
+        <ul>
+          <li>Golem je bezpečné letovisko – kriminalita je minimální</li>
+          <li>Doklady doporučujeme nechávat v <strong>trezoru v apartmánu</strong></li>
+          <li>Pitná voda pouze balená – nikdy z kohoutku</li>
+          <li>Zdravotní pojištění do zahraničí nezapomeňte!</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-kit-medical"></i> Lékárnička &amp; zdraví</div>
+      <p>V apartmánu je k dispozici základní lékárnička s náplastmi, dezinfekcí a léky proti bolesti. Nejbližší lékárna je vzdálená cca 10 minut chůze.</p>
+      <p style="margin-top:.5rem;">V případě vážnějšího problému volejte <strong>záchrannou službu 127</strong> nebo nás kontaktujte – pomůžeme s překladem a nasměrováním na nejbližší zdravotní středisko.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-thermometer-half"></i> Počasí &amp; oblečení</div>
+      <p>V červenci a srpnu se teploty pohybují kolem <strong>30–35 °C</strong>. Doporučujeme lehké oblečení z přírodních materiálů, klobouk a sluneční brýle. Večer může být příjemně chladněji – vezměte si lehkou mikinu.</p>
+      <p style="margin-top:.5rem;">Déšť je v létě výjimečný. Na výlety do hor (Bovilla, Krujë) se může hodit tenká bunda.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-language"></i> Jazyky &amp; komunikace</div>
+      <p>Místní obyvatelé mluví albánsky. V turistické zóně se domluvíte anglicky nebo italsky (Albánie má silné italské vlivy). Základní fráze v albánštině:</p>
+      <div style="margin-top:.75rem;display:flex;flex-direction:column;gap:.3rem;">
+        <div class="info-row"><span class="lbl">Dobrý den</span><span class="val" style="font-style:italic">Mirëdita</span></div>
+        <div class="info-row"><span class="lbl">Děkuji</span><span class="val" style="font-style:italic">Faleminderit</span></div>
+        <div class="info-row"><span class="lbl">Prosím</span><span class="val" style="font-style:italic">Ju lutem</span></div>
+        <div class="info-row"><span class="lbl">Kolik to stojí?</span><span class="val" style="font-style:italic">Sa kushton?</span></div>
+        <div class="info-row"><span class="lbl">Na zdraví!</span><span class="val" style="font-style:italic">Gëzuar!</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 8. ODJEZD ── -->
+  <section class="section" id="odjezd">
+    <div class="section-header">
+      <div class="section-icon"><i class="fas fa-luggage-cart"></i></div>
+      <div>
+        <h2>Odjezd</h2>
+        <div class="sub">Checklist před opuštěním apartmánu</div>
+      </div>
+    </div>
+
+    <div class="highlight blue">
+      <div class="highlight-title"><i class="fas fa-clock"></i> Check-out do 11:00</div>
+      <p>Pokud potřebujete pozdější odjezd, kontaktujte nás s předstihem alespoň 2 dny dopředu – rádi se domluvíme (závisí na obsazenosti).</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-list-check"></i> Co udělat před odjezdem</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num step-check">✓</div>
+          <div class="step-body"><strong>Smart TV</strong><span>Odhlaste se z Netflixu a dalších vlastních účtů</span></div>
+        </div>
+        <div class="step">
+          <div class="step-num step-check">✓</div>
+          <div class="step-body"><strong>Klimatizace</strong><span>Vypněte všechny klimatizační jednotky</span></div>
+        </div>
+        <div class="step">
+          <div class="step-num step-check">✓</div>
+          <div class="step-body"><strong>Světla a spotřebiče</strong><span>Zkontrolujte, že je vše vypnuté (varná deska, trouba, kávovar)</span></div>
+        </div>
+        <div class="step">
+          <div class="step-num step-check">✓</div>
+          <div class="step-body"><strong>Okna &amp; balkón</strong><span>Zavřete všechna okna a balkónové dveře</span></div>
+        </div>
+        <div class="step">
+          <div class="step-num step-check">✓</div>
+          <div class="step-body"><strong>Odpadky</strong><span>Vyhoďte veškerý odpad do kontejnerů u vchodu budovy</span></div>
+        </div>
+        <div class="step">
+          <div class="step-num step-check">✓</div>
+          <div class="step-body"><strong>Nádobí</strong><span>Umyjte nebo vložte do myčky a spusťte ji</span></div>
+        </div>
+        <div class="step">
+          <div class="step-num step-check">✓</div>
+          <div class="step-body"><strong>Ručníky a ložní prádlo</strong><span>Zanechejte volně v koupelně / na posteli – nevkládejte do kufru</span></div>
+        </div>
+        <div class="step">
+          <div class="step-num step-check">✓</div>
+          <div class="step-body"><strong>Klíče</strong><span>Odevzdejte <strong>obě sady klíčů</strong> správci nebo nám osobně</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 9. KONTAKTY ── -->
+  <section class="section" id="kontakty">
+    <div class="section-header">
+      <div class="section-icon"><i class="fas fa-phone"></i></div>
+      <div>
+        <h2>Důležité kontakty</h2>
+        <div class="sub">Jsme tu pro vás kdykoliv</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin-bottom:1rem;">
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fas fa-home"></i></div>
+        <div>
+          <div class="c-name">Majitelé apartmánu</div>
+          <div class="c-role">Dotazy k ubytování, vybavení, klíče</div>
+          <div class="c-phone"><span class="todo"><i class="fas fa-pen"></i> DOPLŇTE TELEFON / WHATSAPP</span></div>
+          <div class="c-phone">✉️ <a href="mailto:info@unasvalbanii.cz" style="color:var(--navy);">info@unasvalbanii.cz</a></div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fas fa-building"></i></div>
+        <div>
+          <div class="c-name">Správce budovy</div>
+          <div class="c-role">Technické problémy v objektu, výpadek elektřiny, voda</div>
+          <div class="c-phone"><span class="todo"><i class="fas fa-pen"></i> DOPLŇTE KONTAKT NA SPRÁVCE</span></div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fas fa-car"></i></div>
+        <div>
+          <div class="c-name">Transfer &amp; průvodce</div>
+          <div class="c-role">Český řidič – letiště, výlety, půjčení auta</div>
+          <div class="c-phone">📱 <a href="https://wa.me/420777138990" style="color:var(--navy);font-weight:700;">+420 777 138 990</a> (WhatsApp)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-ambulance"></i> Tísňová čísla Albánie</div>
+      <div class="info-row"><span class="lbl">Záchranná služba</span><span class="val emergency-num">127</span></div>
+      <div class="info-row"><span class="lbl">Policie</span><span class="val emergency-num">129</span></div>
+      <div class="info-row"><span class="lbl">Hasiči</span><span class="val emergency-num">128</span></div>
+      <div class="info-row"><span class="lbl">Jednotné tísňové volání</span><span class="val emergency-num">112</span></div>
+      <div class="info-row"><span class="lbl">Czech Embassy Tirana</span><span class="val">+355 4 227 2183</span></div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-icon"><i class="fas fa-circle-question"></i></div>
+      <div>
+        <h2>Rychlé odpovědi</h2>
+        <div class="sub">Nejčastější otázky hostů</div>
+      </div>
+    </div>
+
+    <details class="faq-item">
+      <summary>Kde jsou náhradní ložní prádlo a ručníky? <i class="fas fa-chevron-down"></i></summary>
+      <div class="faq-body"><span class="todo"><i class="fas fa-pen"></i> DOPLŇTE – např. „Ve skříni v ložnici, na dolní polici"</span></div>
+    </details>
+    <details class="faq-item">
+      <summary>Kde jsou pytle na odpadky? <i class="fas fa-chevron-down"></i></summary>
+      <div class="faq-body"><span class="todo"><i class="fas fa-pen"></i> DOPLŇTE – např. „V kuchyňské skříňce pod dřezem"</span></div>
+    </details>
+    <details class="faq-item">
+      <summary>Jak funguje myčka nádobí? <i class="fas fa-chevron-down"></i></summary>
+      <div class="faq-body"><p>Tablety do myčky najdete pod dřezem. Vložte tablet do přihrádky, nastavte program ECO nebo 50 °C a spusťte. Myčka je tichá – lze ji pustit přes noc.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Co dělat, když přestane fungovat elektřina? <i class="fas fa-chevron-down"></i></summary>
+      <div class="faq-body"><p>Jistič se nachází v chodbičce vlevo od vstupních dveří (šedá krabice). Zkuste přepnout. Pokud problém přetrvává, kontaktujte správce budovy.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Jak se dostanu k nejbližšímu bankomatu? <i class="fas fa-chevron-down"></i></summary>
+      <div class="faq-body"><p>Nejbližší bankomat je v centru Golemu, cca 10 minut chůze směrem k promenádě. Hledejte značení Raiffeisen nebo Alpha Bank.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Kde koupím místní SIM kartu? <i class="fas fa-chevron-down"></i></summary>
+      <div class="faq-body"><p>SIM kartu koupíte přímo na letišti (v hale příletů) nebo v prodejnách operátorů ALBtelecom a Vodafone v centru Durrësu či Golemu. Doporučujeme ALBtelecom – dobrý signál v celém regionu, datový balíček 10 GB za cca 7 EUR.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Mohu si objednat jídlo s donáškou? <i class="fas fa-chevron-down"></i></summary>
+      <div class="faq-body"><p>Aplikace donášky v Albánii fungují omezeně. Většina restaurací v okolí nabízí osobní vyzvednutí. Personál v restauraci vám rád pomůže s objednávkou.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Je v okolí lékárna? Co s sebou vzít z ČR? <i class="fas fa-chevron-down"></i></summary>
+      <div class="faq-body"><p>Lékárna je cca 10 minut chůze v centru Golemu. Základní léky jsou dostupné. Z ČR doporučujeme vzít: oblíbené léky na bolest, průjmová léčiva, repelent, opalovací krém (v Albánii dražší), náplasti a dezinfekci. V apartmánu je základní lékárnička.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Jak se v létě nejlépe vyhnout přílišnému horku? <i class="fas fa-chevron-down"></i></summary>
+      <div class="faq-body"><p>Doporučujeme na pláž chodit ráno do 11:00 a po 17:00. Největší horko bývá mezi 12–16 hod – ideální čas na oběd, odpočinek v klimatizovaném apartmánu nebo odpolední šlofíka. Nezapomínejte na dostatečný pitný režim (min. 2–3 litry vody denně).</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Kde poblíž zaměnit eura za albánské leky? <i class="fas fa-chevron-down"></i></summary>
+      <div class="faq-body"><p>Doporučujeme bankomat – výběr v albánských lecích bývá výhodnější než směnárna. Eura přijímají i mnohé restaurace a obchody přímo. V menších stáncích a na tržišti plaťte raději v hotovosti v lekách.</p></div>
+    </details>
+  </section>
+
+</main>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer>
+  <p style="margin-bottom:.5rem;">🏖️ <strong>U nás v Albánii</strong> &mdash; Adriatic Garden Residence, Golem</p>
+  <p>Přejeme vám krásnou a odpočinkovou dovolenou! Budeme rádi za vaši zpětnou vazbu.</p>
+  <p style="margin-top:.75rem;">
+    <a href="/">← Zpět na hlavní web</a> &nbsp;&middot;&nbsp;
+    <a href="mailto:info@unasvalbanii.cz">info@unasvalbanii.cz</a>
+  </p>
+  <p style="margin-top:1rem;font-size:.72rem;opacity:.5;">© 2026 U nás v Albánii &middot; Stránka určena výhradně pro hosty apartmánu</p>
+</footer>
+
+<!-- Scroll to top -->
+<button id="scroll-to-top" aria-label="Zpět nahoru">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  /* ── Hamburger ── */
+  const hamburger    = document.getElementById('hamburger');
+  const mobileNav    = document.getElementById('mobile-nav');
+  const mobileOverlay = document.getElementById('mobile-menu-overlay');
+
+  const openMobileMenu = () => {
+    hamburger.classList.add('open');
+    mobileNav.classList.add('open');
+    mobileOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeMobileMenu = () => {
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    mobileOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  hamburger.addEventListener('click', () => mobileNav.classList.contains('open') ? closeMobileMenu() : openMobileMenu());
+  mobileOverlay.addEventListener('click', closeMobileMenu);
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+
+  /* ── Scroll to top ── */
+  const sttBtn = document.getElementById('scroll-to-top');
+  window.addEventListener('scroll', () => {
+    sttBtn.classList.toggle('visible', window.scrollY > 300);
+  });
+  sttBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ── Smooth scroll + active nav link ── */
+  const headerH = () => {
+    const header = document.getElementById('vip-header');
+    const navBar = document.getElementById('section-nav-bar');
+    return (header ? header.offsetHeight : 58) + (navBar ? navBar.offsetHeight : 38);
+  };
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.getElementById(a.getAttribute('href').slice(1));
+      if (!target) return;
+      e.preventDefault();
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - headerH(), behavior: 'smooth' });
+    });
+  });
+
+  /* Active section highlight in nav bars */
+  const sections = document.querySelectorAll('.section[id]');
+  const navLinks = document.querySelectorAll('#section-nav-bar a');
+
+  function setActive() {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY + headerH() + 20 >= s.offsetTop) current = s.id;
+    });
+    navLinks.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+
+  /* ── FAQ chevron animation ── */
+  document.querySelectorAll('details.faq-item').forEach(d => {
+    d.querySelector('summary').addEventListener('click', e => {
+      if (d.open) { e.preventDefault(); d.open = false; }
+    });
+  });
+</script>
+</body>
+</html>
