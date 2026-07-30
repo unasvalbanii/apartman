@@ -859,7 +859,6 @@
         <div class="info-row"><span class="lbl">Měna</span><span class="val">ALL (albánský lek)</span></div>
         <div class="info-row"><span class="lbl">Kurz</span><span class="val">1 CZK ≈ <span id="rate-czk-all">…</span> ALL</span></div>
         <div class="info-row"><span class="lbl">Kurz</span><span class="val">1 EUR ≈ <span id="rate-eur-all">…</span> ALL</span></div>
-        <div class="info-row"><span class="lbl" style="font-size:.7rem;">Zdroj kurzu</span><span class="val" id="rate-updated" style="font-size:.7rem;font-weight:600;color:var(--gray-3);">načítám…</span></div>
         <div class="info-row"><span class="lbl">Karty</span><span class="val">Větší podniky – ano</span></div>
         <div class="info-row"><span class="lbl">Hotovost</span><span class="val">Vždy mějte u sebe</span></div>
       </div>
@@ -1273,7 +1272,6 @@
   (function () {
     const elCzk = document.getElementById('rate-czk-all');
     const elEur = document.getElementById('rate-eur-all');
-    const elUpd = document.getElementById('rate-updated');
     if (!elCzk || !elEur) return;
 
     fetch('https://open.er-api.com/v6/latest/EUR')
@@ -1284,17 +1282,12 @@
         }
         const eurToAll = data.rates.ALL;
         const czkToAll = data.rates.ALL / data.rates.CZK;
-        elEur.textContent = eurToAll.toFixed(1);
+        elEur.textContent = Math.round(eurToAll);
         elCzk.textContent = czkToAll.toFixed(2);
-        if (elUpd) {
-          const d = new Date(data.time_last_update_utc || Date.now());
-          elUpd.textContent = 'Kurz ke dni ' + d.toLocaleDateString('cs-CZ');
-        }
       })
       .catch(() => {
         elEur.textContent = '100';
         elCzk.textContent = '4';
-        if (elUpd) elUpd.textContent = 'Orientační kurz (živá data momentálně nedostupná)';
       });
   })();
 </script>
