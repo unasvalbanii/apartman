@@ -408,7 +408,7 @@
     @media (max-width: 768px) {
       main { padding: 1.5rem 1rem 4rem; }
       .hero { padding: 3rem 1rem 3.5rem; }
-      .section-nav-bar { top: 0; padding: .5rem 1rem; }
+      .section-nav-bar { top: 0; padding: .5rem 1rem; justify-content: flex-start; }
     }
   </style>
 </head>
@@ -1192,6 +1192,8 @@
   }
 
   if (navBarEl && swipeHint) {
+    navBarEl.scrollLeft = 0; // vždy začínat zarovnáno na první položku ("Příjezd")
+
     if (localStorage.getItem('vip_swipe_hint_seen') === '1' || navBarEl.scrollWidth <= navBarEl.clientWidth) {
       swipeHint.classList.add('hide');
     }
@@ -1202,7 +1204,6 @@
     }, { passive: true });
     window.addEventListener('resize', updateNavFade);
     updateNavFade();
-    setTimeout(() => swipeHint.classList.add('hide'), 5000);
   }
 
   /* Active section highlight in nav bars */
