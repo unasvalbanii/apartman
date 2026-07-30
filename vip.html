@@ -430,6 +430,22 @@
       .hero { padding: 3rem 1rem 3.5rem; }
       .section-nav-bar { top: 0; padding: .5rem 1rem; justify-content: flex-start; }
     }
+    /* ── REMOTE PHOTO ── */
+    .remote-photo {
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--gray-2);
+      margin-bottom: 1rem;
+    }
+    .remote-photo img {
+      width: 100%; aspect-ratio: 4 / 3;
+      object-fit: contain; background: #fff;
+      display: block;
+    }
+    .remote-photo figcaption {
+      font-size: .78rem; color: var(--gray-3);
+      text-align: center; padding: .5rem .75rem;
+      background: var(--gray-1); border-top: 1px solid var(--gray-2);
+    }
   </style>
 </head>
 <body>
@@ -645,6 +661,11 @@
 
     <div class="card">
       <div class="card-title"><i class="fas fa-snowflake"></i> Klimatizace – jak používat</div>
+      <figure class="remote-photo">
+        <img src="http://unasvalbanii.cz/assets/images/vip/dalkove_ovladani_klimatizace.jpg"
+             alt="Dálkové ovládání klimatizace s popisem tlačítek" loading="lazy">
+        <figcaption>Přehled tlačítek na dálkovém ovladači klimatizace</figcaption>
+      </figure>
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
