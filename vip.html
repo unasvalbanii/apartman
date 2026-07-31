@@ -441,6 +441,26 @@
       .hero { padding: 3rem 1rem 3.5rem; }
       .section-nav-bar { top: 0; padding: .5rem 1rem; justify-content: flex-start; }
     }
+    /* ── DOWNLOAD LIST ── */
+    .download-list { display: flex; flex-direction: column; gap: .6rem; }
+    .download-item {
+      display: flex; align-items: center; gap: 1rem;
+      background: #fff; border: 1px solid var(--gray-2); border-radius: 12px;
+      padding: .75rem 1rem; text-decoration: none;
+      transition: background .2s, border-color .2s;
+    }
+    .download-item:hover { background: var(--gray-1); border-color: var(--navy-l); }
+    .download-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--navy); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .download-info { flex: 1; min-width: 0; }
+    .download-name { font-weight: 700; font-size: .9rem; color: var(--text); }
+    .download-sub { font-size: .78rem; color: var(--gray-3); margin-top: 1px; }
+    .download-arrow { color: var(--navy-l); font-size: .9rem; flex-shrink: 0; }
+
     /* ── REMOTE PHOTO ── */
     .remote-photo {
       border-radius: 14px; overflow: hidden;
@@ -641,7 +661,7 @@
       <div class="card">
         <div class="card-title"><i class="fas fa-bed"></i> Ložnice</div>
         <ul>
-          <li>Ložnice s manželskou postelí v rozměru 180x200cm</li>
+          <li>Ložnice s manželskou postelí a TV</li>
           <li>Dětský pokoj 1x palanda + 1x jednolůžková postel</li>
           <li>Kapacita: až 5 osob</li>
           <li>Ložní prádlo v ceně</li>
@@ -724,6 +744,36 @@
       <div class="card-title"><i class="fas fa-plug"></i> Elektrické zásuvky</div>
       <p>Albánie používá <strong>evropský standard 230 V / 50 Hz</strong> – české a slovenské spotřebiče fungují bez adaptéru. Zástrčky typu C a F.</p>
       <p style="margin-top:.5rem;">Jistič se nachází v chodbičce vlevo od vstupních dveří (šedá krabice). Pokud přestane fungovat elektřina, zkuste přepnout jistič. Přetrvá-li problém, kontaktujte správce.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-file-pdf"></i> Návody ke spotřebičům ke stažení</div>
+      <div class="download-list">
+        <a class="download-item" href="assets/manuals/navod-tv-obyvak.pdf" target="_blank" rel="noopener">
+          <div class="download-icon"><i class="fas fa-tv"></i></div>
+          <div class="download-info">
+            <div class="download-name">TV v obývacím pokoji</div>
+            <div class="download-sub">PDF návod ke stažení</div>
+          </div>
+          <i class="fas fa-arrow-down-to-line download-arrow"></i>
+        </a>
+        <a class="download-item" href="assets/manuals/navod-tv-loznice.pdf" target="_blank" rel="noopener">
+          <div class="download-icon"><i class="fas fa-tv"></i></div>
+          <div class="download-info">
+            <div class="download-name">TV v ložnici</div>
+            <div class="download-sub">PDF návod ke stažení</div>
+          </div>
+          <i class="fas fa-arrow-down-to-line download-arrow"></i>
+        </a>
+        <a class="download-item" href="assets/manuals/navod-mikrovlnka.pdf" target="_blank" rel="noopener">
+          <div class="download-icon"><i class="fas fa-utensils"></i></div>
+          <div class="download-info">
+            <div class="download-name">Mikrovlnná trouba</div>
+            <div class="download-sub">PDF návod ke stažení</div>
+          </div>
+          <i class="fas fa-arrow-down-to-line download-arrow"></i>
+        </a>
+      </div>
     </div>
 
     <div class="highlight red">
