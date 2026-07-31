@@ -295,6 +295,17 @@
     .step-body span   { font-size: .88rem; color: var(--text-s); }
     .step-check { background: #16a34a; }
 
+    /* ── TRANSFER PILLS ── */
+    .transfer-pills {
+      display: inline-flex; align-items: center; gap: .75rem;
+      background: #fff; border: 1px solid var(--gray-2); border-radius: 999px;
+      padding: .45rem 1.1rem; margin: .5rem 0 .75rem; font-size: .85rem;
+      font-weight: 700; color: var(--text);
+    }
+    .transfer-pill { display: flex; align-items: center; gap: .4rem; }
+    .transfer-pill i { color: var(--navy-l); }
+    .pill-divider { width: 1px; height: 16px; background: var(--gray-2); }
+
     /* ── CODE BOX ── */
     .code-box {
       background: var(--navy); color: var(--gold);
@@ -558,7 +569,12 @@
           <div class="step-num">2</div>
           <div class="step-body">
             <strong>Transfer</strong>
-            <span style="line-height:1.45;">K přesunu z letiště do apartmánu doporučujeme <strong>Green Taxi</strong> – cena cca <strong>40 EUR / cesta</strong>. Výhodou je, že pokud si zřídíte SIM rovnou na letišti, stačí je kontaktovat přes WhatsApp: <span class="todo"><i class="fas fa-pen"></i> DOPLŇTE KONTAKT GREEN TAXI</span> – napište, že jste před halou příletů a chcete taxi do Adriatic Garden Residence (klidně rovnou pošlete odkaz na mapě). Zeptejte se i na cenu, ať si ji předem odsouhlasíte a nečeká vás nemilé překvapení. Odpovídají obratem, auta pendlují kolem letiště a přes WhatsApp vám pošlou odkaz, kde přímo vidíte, kde se řidič nachází – zpravidla jsme nečekali déle než 10 minut. Jezdí v moderních, plně klimatizovaných vozech VW ID.4.</span>
+            <div class="transfer-pills">
+              <div class="transfer-pill"><i class="fas fa-clock"></i> cca 40 minut</div>
+              <div class="pill-divider"></div>
+              <div class="transfer-pill"><i class="fas fa-car"></i> cca 40 EUR</div>
+            </div>
+            <span style="line-height:1.45;">K přesunu z letiště do apartmánu doporučujeme <strong>Green Taxi</strong> – cena cca <strong>40 EUR / cesta</strong>. Výhodou je, že pokud si zřídíte SIM rovnou na letišti, stačí je kontaktovat přes WhatsApp na čísle <a href="https://wa.me/355698002000" target="_blank" rel="noopener" style="color:var(--navy);font-weight:700;">+355 698 002 000</a> – napište, že jste před halou příletů a chcete taxi do Adriatic Garden Residence (klidně rovnou pošlete odkaz na mapě). Zeptejte se i na cenu, ať si ji předem odsouhlasíte a nečeká vás nemilé překvapení. Odpovídají obratem, auta pendlují kolem letiště a přes WhatsApp vám pošlou odkaz, kde přímo vidíte, kde se řidič nachází – zpravidla jsme nečekali déle než 10 minut. Jezdí v moderních, plně klimatizovaných vozech VW ID.4.</span>
             <span style="display:block;margin-top:.6rem;padding-left:.75rem;border-left:3px solid var(--gold);font-size:.85rem;font-style:italic;color:var(--gray-3);">★ Cestujete s dětmi? Autosedačky Green Taxi bohužel běžně nezajišťuje (jen výjimečně). My si sedačky vozíme z domu – v letadle je děti mají zdarma. Pokud sedačku v autě potřebujete zajistit, doporučujeme s předstihem oslovit některého ze soukromých řidičů v Tiraně a domluvit konkrétní čas.</span>
           </div>
         </div>
@@ -664,7 +680,7 @@
       <figure class="remote-photo">
         <img src="http://unasvalbanii.cz/assets/images/vip/dalkove_ovladani_klimatizace.jpg"
              alt="Dálkové ovládání klimatizace s popisem tlačítek" loading="lazy">
-        <figcaption>Přehled tlačítek na dálkovém ovladači klimatizace</figcaption>
+        <figcaption>Přehled nejdůležitějších tlačítek na dálkovém ovladači klimatizace</figcaption>
       </figure>
       <div class="steps">
         <div class="step">
