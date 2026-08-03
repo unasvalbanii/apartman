@@ -3023,7 +3023,7 @@ a.vip-link.active {
 
     <div class="container mx-auto px-4 py-12">
       <div class="bg-white rounded-lg overflow-hidden">
-        <img src="assets/images/apartman/pudorys.webp" alt="Půdorys apartmánu" class="w-full sm:w-4/5 md:w-3/5 h-auto mx-auto block" loading="lazy" decoding="async">
+        <img src="assets/images/apartman/pudorys.webp" alt="Půdorys apartmánu" class="w-full sm:w-4/5 md:w-3/5 h-auto mx-auto block" loading="eager" decoding="async">
       </div>
 
       <!-- 3 boxy uvnitř containeru -->
@@ -4861,7 +4861,26 @@ a.vip-link.active {
 
     const scrollToTarget = () => {
       const headerHeight = header ? header.offsetHeight : 0;
-      window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - headerHeight, behavior: 'smooth' });
+      let cancelled = false;
+      const cancelAuto = () => { cancelled = true; };
+      const cancelEvents = ['wheel', 'touchstart', 'pointerdown'];
+      cancelEvents.forEach(evt => window.addEventListener(evt, cancelAuto, { once: true, passive: true }));
+
+      const doScroll = () => {
+        if (cancelled) return;
+        const y = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      };
+
+      doScroll();
+      // Korekce pro případ, že se mezitím (např. dokončením lazy-load obrázku) změnila výška stránky.
+      // Pokud uživatel mezitím sám scrolluje, korekce se automaticky zruší.
+      setTimeout(doScroll, 350);
+      setTimeout(doScroll, 700);
+      setTimeout(() => {
+        doScroll();
+        cancelEvents.forEach(evt => window.removeEventListener(evt, cancelAuto));
+      }, 1100);
     };
 
     if (this.closest('#mobile-menu')) {
