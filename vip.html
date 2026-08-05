@@ -487,10 +487,23 @@
       object-fit: contain; background: #fff;
       display: block;
     }
-    .remote-photo figcaption {
+        .remote-photo figcaption {
       font-size: .78rem; color: var(--gray-3);
       text-align: center; padding: .5rem .75rem;
       background: var(--gray-1); border-top: 1px solid var(--gray-2);
+    }
+
+    /* ── DOČASNĚ SKRYTÉ SEKCE A TLAČÍTKA MENU ── */
+    #wifi,
+    #pool,
+    #kontakty,
+    #section-nav-bar a[href="#wifi"],
+    #section-nav-bar a[href="#pool"],
+    #section-nav-bar a[href="#kontakty"],
+    #mobile-nav a[href="#wifi"],
+    #mobile-nav a[href="#pool"],
+    #mobile-nav a[href="#kontakty"] {
+      display: none !important;
     }
   </style>
 </head>
