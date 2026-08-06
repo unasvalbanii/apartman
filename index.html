@@ -4757,7 +4757,7 @@ a.vip-link.active {
       const updateTransform = () => { lightboxImg.style.transform = `translate(${posX}px, ${posY}px) scale(${currentScale})`; };
       const resetZoom = () => {
         currentScale = 1; lastScale = 1; posX = 0; posY = 0; lastPosX = 0; lastPosY = 0;
-        lightboxImg.style.transition = 'transform 0.2s ease, opacity 0.35s ease';
+        lightboxImg.style.transition = 'opacity 0.35s ease, transform 0.2s ease';
         updateTransform();
       };
 
@@ -4774,13 +4774,13 @@ a.vip-link.active {
         hammer.on('swipeleft', () => { if (currentScale > 1 || !lightbox.classList.contains('active')) return; showNext(); });
         hammer.on('swiperight', () => { if (currentScale > 1 || !lightbox.classList.contains('active')) return; showPrev(); });
 
-        hammer.on('pinchstart', () => { lastScale = currentScale; lightboxImg.style.transition = 'opacity 0.35s ease'; });
+        hammer.on('pinchstart', () => { lastScale = currentScale; lightboxImg.style.transition = 'none'; });
         hammer.on('pinchmove', (e) => { currentScale = Math.min(Math.max(lastScale * e.scale, 1), 4); updateTransform(); });
         hammer.on('pinchend', () => {
-          lightboxImg.style.transition = 'transform 0.2s ease, opacity 0.35s ease';
+          lightboxImg.style.transition = 'opacity 0.35s ease, transform 0.2s ease';
           if (currentScale < 1.1) resetZoom(); else { lastPosX = posX; lastPosY = posY; }
         });
-        hammer.on('panstart', () => { if (currentScale === 1) return; lightboxImg.style.transition = 'opacity 0.35s ease'; lastPosX = posX; lastPosY = posY; });
+        hammer.on('panstart', () => { if (currentScale === 1) return; lightboxImg.style.transition = 'none'; lastPosX = posX; lastPosY = posY; });
         hammer.on('panmove', (e) => { if (currentScale === 1) return; posX = lastPosX + e.deltaX; posY = lastPosY + e.deltaY; updateTransform(); });
         hammer.on('panend', (e) => {
           if (currentScale === 1) {
@@ -4790,7 +4790,7 @@ a.vip-link.active {
             }
             return;
           }
-          lightboxImg.style.transition = 'transform 0.2s ease, opacity 0.35s ease';
+          lightboxImg.style.transition = 'opacity 0.35s ease, transform 0.2s ease';
           lastPosX = posX; lastPosY = posY;
         });
         const doubleTap = new Hammer.Tap({ event: 'doubletap', taps: 2 });
@@ -4812,7 +4812,7 @@ a.vip-link.active {
           lastPosX = posX;
           lastPosY = posY;
 
-          lightboxImg.style.transition = 'transform 0.25s ease, opacity 0.35s ease';
+          lightboxImg.style.transition = 'opacity 0.35s ease, transform 0.25s ease';
           updateTransform();
         });
       };
@@ -6875,4 +6875,3 @@ document.querySelectorAll('.price-legend-toggle').forEach(btn => {
 </script>
 </body>
 </html>
-
