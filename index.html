@@ -137,8 +137,8 @@
       border-radius: 10px;
       object-fit: contain;
       opacity: 1;
-      transition: opacity 0.35s ease;
-      will-change: opacity;
+      transition: opacity 0.35s ease, transform 0.2s ease;
+      will-change: opacity, transform;
       -webkit-user-select: none;
       user-select: none;
       -webkit-user-drag: none;
@@ -4812,7 +4812,7 @@ a.vip-link.active {
           lastPosX = posX;
           lastPosY = posY;
 
-          lightboxImg.style.transition = 'opacity 0.35s ease, transform 0.25s ease';
+          lightboxImg.style.transition = 'opacity 0.35s ease, transform 0.2s ease';
           updateTransform();
         });
       };
@@ -6875,3 +6875,4 @@ document.querySelectorAll('.price-legend-toggle').forEach(btn => {
 </script>
 </body>
 </html>
+
