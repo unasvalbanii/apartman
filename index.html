@@ -5672,7 +5672,10 @@ if (navRezervaceMobile) {
   if (!lightbox || !lightboxImg) return;
   lightboxMode = 'apartment';
   currentIndex = index;
+  lightboxImg.style.transition = 'none';
   lightboxImg.classList.add('fading');
+  void lightboxImg.offsetWidth;
+  lightboxImg.style.transition = '';
   if (paginationEl) {
     buildPagination(galleryImages.length);
     setPaginationActive();
@@ -5700,7 +5703,10 @@ if (navRezervaceMobile) {
   if (!faqImages.length) return;
   const startIndex = faqImages.findIndex(f => f.full === targetFull);
   currentIndex = startIndex >= 0 ? startIndex : 0;
+  lightboxImg.style.transition = 'none';
   lightboxImg.classList.add('fading');
+  void lightboxImg.offsetWidth;
+  lightboxImg.style.transition = '';
   if (paginationEl) {
     buildPagination(faqImages.length);
     setPaginationActive();
