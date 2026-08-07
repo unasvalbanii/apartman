@@ -4941,6 +4941,9 @@ a.vip-link.active {
   menuOverlay.style.pointerEvents = 'none';
   setMobileMenuA11y(false);
   document.body.style.overflow = '';
+  if (window.innerWidth < 1024) {
+    navLinks.forEach((l) => l.classList.remove('active'));
+  }
 };
 
       if (menuToggle && mobileMenu) {
