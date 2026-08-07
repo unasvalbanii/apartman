@@ -6110,6 +6110,7 @@ function showMinNightsTooltip() {
       const navLinks = document.querySelectorAll("nav ul li a[href^='#']");
 
       function setActiveLink() {
+        if (window.innerWidth < 1024) return; // mobil: podsvícení jen po kliknutí, ne podle scrollu
         let current = "";
         const offset = (header ? header.offsetHeight : 72) + 20;
         const scrollPosition = window.scrollY + offset;
@@ -6126,6 +6127,16 @@ function showMinNightsTooltip() {
 
       setActiveLink();
       window.addEventListener("scroll", throttle(setActiveLink, 100));
+
+      // Mobil: podsvícení odkazu v menu okamžitě po kliknutí
+      mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth < 1024) {
+            navLinks.forEach((l) => l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        });
+      });
 
       /* ========================= EmailJS odeslání ========================= */
 
