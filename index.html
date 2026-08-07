@@ -6601,13 +6601,9 @@ document.querySelectorAll('.price-legend-toggle').forEach(btn => {
         const empty = !input.value.trim();
         const invalidFormat = input.type === 'email' && !empty && !input.checkValidity();
         if (empty || invalidFormat) {
-          input.classList.remove('border-gray-200');
-          input.classList.add('border-red-400');
           error.classList.remove('hidden');
           isValid = false;
         } else {
-          input.classList.remove('border-red-400');
-          input.classList.add('border-gray-200');
           error.classList.add('hidden');
         }
       });
