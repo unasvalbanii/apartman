@@ -6129,12 +6129,13 @@ function showMinNightsTooltip() {
       setActiveLink();
       window.addEventListener("scroll", throttle(setActiveLink, 100));
 
-      // Mobil: podsvícení odkazu v menu okamžitě po kliknutí
+      // Mobil: podsvícení odkazu v menu okamžitě po kliknutí, poté se samo schová (mimo viditelnou plochu)
       mobileMenu.querySelectorAll('a').forEach((link) => {
         link.addEventListener('click', () => {
           if (window.innerWidth < 1024) {
             navLinks.forEach((l) => l.classList.remove('active'));
             link.classList.add('active');
+            setTimeout(() => { link.classList.remove('active'); }, 400);
           }
         });
       });
