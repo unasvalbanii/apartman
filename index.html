@@ -5434,6 +5434,7 @@ a.vip-link.active {
                   const hn = addr.house_number || '';
                   const pc = addr.postcode || '';
                   const city = addr.city || addr.town || addr.village || '';
+                  const countryCode = (addr.country_code || '').toLowerCase();
                   const street = hn ? `${road} ${hn}` : road;
                   const li = document.createElement('li');
                   li.textContent = [street, pc, city].filter(Boolean).join(', ');
@@ -5442,6 +5443,13 @@ a.vip-link.active {
                     dUliceInput.value = street;
                     if (pc) document.getElementById('d-psc').value = pc;
                     if (city) document.getElementById('d-mesto').value = city;
+                    if (countryCode === 'sk') {
+                      document.getElementById('d-stat').value = 'Slovensko';
+                      document.getElementById('d-predvolba').value = '+421';
+                    } else if (countryCode === 'cz') {
+                      document.getElementById('d-stat').value = 'Česká republika';
+                      document.getElementById('d-predvolba').value = '+420';
+                    }
                     dUliceSugg.classList.add('hidden');
                   });
                   dUliceSugg.appendChild(li);
