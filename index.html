@@ -1177,6 +1177,18 @@ a.vip-link.active {
       .trips-track .trip-card { flex: 0 0 calc(25% - 18px); }
     }
 
+    /* Desktop: schovat posuvnou lištu napříč prohlížeči – navigace řeší šipky */
+    @media (min-width: 768px) {
+      .trips-track {
+        scrollbar-width: none;      /* Firefox */
+        -ms-overflow-style: none;   /* starší Edge/IE */
+        padding-bottom: 4px;
+      }
+      .trips-track::-webkit-scrollbar {
+        display: none;              /* Chrome, Safari, nový Edge */
+      }
+    }
+
     .trips-arrow {
       flex-shrink: 0;
       width: 44px;
