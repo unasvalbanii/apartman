@@ -4383,20 +4383,23 @@ a.vip-link.active {
           <div class="grid grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-semibold uppercase tracking-widest text-blue-300 mb-1.5">Jméno</label>
-              <input type="text" name="contact_jmeno" placeholder="Jan" required
+              <input type="text" name="contact_jmeno" id="contact-jmeno" placeholder="Jan" required
                 class="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:border-yellow-400 transition">
+              <span id="contact-error-jmeno" class="hidden text-red-400 text-xs mt-1 block">Vyplňte jméno.</span>
             </div>
             <div>
               <label class="block text-xs font-semibold uppercase tracking-widest text-blue-300 mb-1.5">Příjmení</label>
-              <input type="text" name="contact_prijmeni" placeholder="Novák" required
+              <input type="text" name="contact_prijmeni" id="contact-prijmeni" placeholder="Novák" required
                 class="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:border-yellow-400 transition">
+              <span id="contact-error-prijmeni" class="hidden text-red-400 text-xs mt-1 block">Vyplňte příjmení.</span>
             </div>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-semibold uppercase tracking-widest text-blue-300 mb-1.5">E-mail</label>
-              <input type="email" name="contact_email" placeholder="jan@email.cz" required
+              <input type="email" name="contact_email" id="contact-email" placeholder="jan@email.cz" required
                 class="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:border-yellow-400 transition">
+              <span id="contact-error-email" class="hidden text-red-400 text-xs mt-1 block">Vyplňte platný e-mail.</span>
             </div>
             <div>
               <label class="block text-xs font-semibold uppercase tracking-widest text-blue-300 mb-1.5">Telefon <span class="normal-case font-normal tracking-normal text-blue-300 opacity-60">(nepovinné)</span></label>
@@ -4409,6 +4412,7 @@ a.vip-link.active {
             <textarea name="contact_zprava" id="contact-zprava" rows="4" placeholder="Dobrý den, rádi bychom se zeptali na..." required
               class="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-gray-800 placeholder-gray-400 text-sm focus:outline-none focus:border-yellow-400 transition resize-none overflow-hidden"
               style="min-height: 100px; max-height: 420px;"></textarea>
+            <span id="contact-error-zprava" class="hidden text-red-400 text-xs mt-1 block">Napište prosím zprávu.</span>
           </div>
           <button type="submit"
             class="w-full flex items-center justify-center gap-2 font-bold text-sm rounded-xl py-3 transition"
@@ -6584,7 +6588,32 @@ document.querySelectorAll('.price-legend-toggle').forEach(btn => {
 
     document.getElementById('contact-form').addEventListener('submit', async function(e) {
       e.preventDefault();
-      if (!this.reportValidity()) return;
+
+      const fieldsToValidate = [
+        { input: document.getElementById('contact-jmeno'), error: document.getElementById('contact-error-jmeno') },
+        { input: document.getElementById('contact-prijmeni'), error: document.getElementById('contact-error-prijmeni') },
+        { input: document.getElementById('contact-email'), error: document.getElementById('contact-error-email') },
+        { input: document.getElementById('contact-zprava'), error: document.getElementById('contact-error-zprava') },
+      ];
+
+      let isValid = true;
+      fieldsToValidate.forEach(({ input, error }) => {
+        const empty = !input.value.trim();
+        const invalidFormat = input.type === 'email' && !empty && !input.checkValidity();
+        if (empty || invalidFormat) {
+          input.classList.remove('border-gray-200');
+          input.classList.add('border-red-400');
+          error.classList.remove('hidden');
+          isValid = false;
+        } else {
+          input.classList.remove('border-red-400');
+          input.classList.add('border-gray-200');
+          error.classList.add('hidden');
+        }
+      });
+
+      if (!isValid) return;
+
       const btn = this.querySelector('button[type="submit"]');
       const successBox = document.getElementById('contact-form-success');
       btn.disabled = true;
