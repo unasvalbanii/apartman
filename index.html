@@ -6584,6 +6584,7 @@ document.querySelectorAll('.price-legend-toggle').forEach(btn => {
 
     document.getElementById('contact-form').addEventListener('submit', async function(e) {
       e.preventDefault();
+      if (!this.reportValidity()) return;
       const btn = this.querySelector('button[type="submit"]');
       const successBox = document.getElementById('contact-form-success');
       btn.disabled = true;
