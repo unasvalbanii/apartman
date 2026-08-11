@@ -1142,6 +1142,26 @@ a.vip-link.active {
       }
     }
 
+    @media (max-width: 640px) {
+      #apartment .apartment-benefits-swipe {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 6px 2px 10px;
+      }
+      #apartment .apartment-benefits-swipe::-webkit-scrollbar { height: 6px; }
+      #apartment .apartment-benefits-swipe::-webkit-scrollbar-thumb {
+        background: #e5e7eb;
+        border-radius: 9999px;
+      }
+      #apartment .apartment-benefits-swipe .apartment-benefit-card {
+        flex: 0 0 92%;
+        scroll-snap-align: start;
+      }
+    }
+
     .trips-carousel-wrapper {
       position: relative;
     }
@@ -3066,23 +3086,24 @@ a.vip-link.active {
       </div>
 
       <!-- 3 boxy uvnitř containeru -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-        <div class="text-center">
+      <div class="apartment-benefits-swipe md:grid md:grid-cols-3 md:gap-8 mt-8">
+        <div class="apartment-benefit-card text-center">
           <img src="assets/images/apartman/kapacita-rodina.webp" alt="Rodinný apartmán – kapacita" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy" decoding="async">
           <h3 class="text-xl font-semibold">Až pro 5 osob</h3>
           <p>Apartmán se dvěma samostatnými ložnicemi je ideální až pro 5 osob a nabízí dostatek prostoru pro celou rodinu. Užijte si společné chvíle v pohodlí moderně vybaveného interiéru.</p>
         </div>
-        <div class="text-center">
+        <div class="apartment-benefit-card text-center">
           <img src="assets/images/apartman/bazen.webp" alt="Bazén u apartmánu" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy" decoding="async">
           <h3 class="text-xl font-semibold">Bazén k dispozici</h3>
           <p>Velký benefit tohoto apartmánu – neomezený vstup do bazénu včetně dětského brouzdaliště není v této oblasti samozřejmostí. Užijte si s dětmi klidné chvíle u bazénu, s veškerým zázemím pohodlně na dosah.</p>
         </div>
-        <div class="text-center">
+        <div class="apartment-benefit-card text-center">
           <img src="assets/images/apartman/novostavba.webp" alt="Novostavba apartmánu" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy" decoding="async">
           <h3 class="text-xl font-semibold">Novostavba</h3>
           <p>Apartmán byl dokončen v roce 2026 a nabízí moderní, nové a pečlivě řešené zázemí pro pohodlný pobyt.</p>
         </div>
       </div> <!-- ✅ konec gridu -->
+      <div class="swipe-hint-pill md:hidden"><i class="fas fa-arrows-left-right"></i> Posuňte prstem do strany</div>
     </div> <!-- konec containeru py-12 -->
   </section>
 
