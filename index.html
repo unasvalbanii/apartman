@@ -884,6 +884,13 @@ a.vip-link.active {
       50% { transform: translateX(4px); opacity: 1; }
     }
 
+    @media (max-width: 640px) {
+      #apartment-boxes-wrap,
+      #location-swipe-wrap {
+        padding-bottom: 1rem;
+      }
+    }
+
     /* ================= APARTMÁN – decentní karta s gold akcentem u fotek (DESKTOP) ================= */
     #apartment .apartment-grid.grid .gallery-item {
   background-color: #ffffff !important;
@@ -1146,6 +1153,7 @@ a.vip-link.active {
     @media (max-width: 640px) {
       #apartment .apartment-benefits-swipe {
         display: flex;
+        align-items: flex-start;
         gap: 12px;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
@@ -3081,7 +3089,7 @@ a.vip-link.active {
   </div>
 </div>
 
-    <div class="container mx-auto px-4 py-12">
+    <div class="container mx-auto px-4 py-12" id="apartment-boxes-wrap">
       <div class="bg-white rounded-lg overflow-hidden">
         <img src="assets/images/apartman/pudorys.webp" alt="Půdorys apartmánu" class="w-full h-auto mx-auto block max-w-3xl" loading="eager" decoding="async">
       </div>
@@ -3152,7 +3160,7 @@ a.vip-link.active {
         referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
-    <div class="container mx-auto px-4 py-12">
+    <div class="container mx-auto px-4 py-12" id="location-swipe-wrap">
       <!-- ✅ Mobil: swipe (scroll-snap). Od md: klasický grid -->
       <div class="location-mobile-swipe md:grid md:grid-cols-3 md:gap-8">
         
