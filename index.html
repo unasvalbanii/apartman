@@ -752,20 +752,6 @@ a.vip-link.active {
       letter-spacing: 0.5px;
     }
 
-    .icon-fa {
-      display: inline-block;
-      width: 1em;
-      height: 1em;
-      background-color: currentColor;
-      -webkit-mask-repeat: no-repeat;
-      -webkit-mask-position: center;
-      -webkit-mask-size: contain;
-      mask-repeat: no-repeat;
-      mask-position: center;
-      mask-size: contain;
-      vertical-align: -0.125em;
-    }
-
     .live-corner-badge {
       position: absolute;
       top: -11px;
@@ -2859,25 +2845,25 @@ a.vip-link.active {
         <div class="live-corner-badge"><span class="live-corner-dot"></span><span class="live-corner-text">LIVE</span></div>
         <div style="text-align: center; margin: 0 10px;">
           <span style="font-size: small;">Aktuální teplota</span><br>
-          <span style="font-size: larger;" id="weather-display"><span class="icon-fa" style="-webkit-mask-image:url('assets/icons/ui/cloud-showers-heavy.svg');mask-image:url('assets/icons/ui/cloud-showers-heavy.svg');"></span> Načítám...</span>
+          <span style="font-size: larger;" id="weather-display"><i class="fas fa-cloud-showers-heavy"></i> Načítám...</span>
         </div>
         <span style="margin: 0 10px; color: gray;">|</span>
         <div style="text-align: center; margin: 0 10px;">
           <span style="font-size: small;">Místní čas</span><br>
-          <span style="font-size: larger;" id="local-time"><span class="icon-fa" style="-webkit-mask-image:url('assets/icons/ui/clock.svg');mask-image:url('assets/icons/ui/clock.svg');"></span> Načítám...</span>
+          <span style="font-size: larger;" id="local-time"><i class="fas fa-clock"></i> Načítám...</span>
         </div>
         <span style="margin: 0 10px; color: gray;">|</span>
         <div style="text-align: center; margin: 0 10px;">
           <span style="font-size: small;">Vzdálenost z ČR</span><br>
-          <span style="font-size: larger;"><span class="icon-fa" style="-webkit-mask-image:url('assets/icons/ui/plane.svg');mask-image:url('assets/icons/ui/plane.svg');"></span> 1054 km</span>
+          <span style="font-size: larger;"><i class="fas fa-plane"></i> 1054 km</span>
         </div>
       </div>
 
       <!-- HERO BOOKING WIDGET – pouze mobil -->
       <div id="hero-booking-widget" class="md:hidden">
-        <p class="widget-title"><span class="icon-fa" style="-webkit-mask-image:url('assets/icons/ui/circle-check.svg');mask-image:url('assets/icons/ui/circle-check.svg');"></span> Oficiální web · nejlepší cena</p>
+        <p class="widget-title"><i class="fas fa-circle-check"></i> Oficiální web · nejlepší cena</p>
         <button id="widget-btn-rezervovat">
-          <span class="icon-fa" style="-webkit-mask-image:url('assets/icons/ui/calendar-check.svg');mask-image:url('assets/icons/ui/calendar-check.svg');"></span>
+          <i class="fas fa-calendar-check"></i>
           Rezervovat
         </button>
       </div>
@@ -2885,22 +2871,22 @@ a.vip-link.active {
   <div class="mb-6"></div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-6xl">
           <div class="text-center bg-black bg-opacity-70 p-5 rounded-lg">
-            <span class="icon-fa text-3xl text-blue-300 mb-4 benefit-icon" style="-webkit-mask-image:url('assets/icons/ui/umbrella-beach.svg');mask-image:url('assets/icons/ui/umbrella-beach.svg');"></span>
+            <i class="fas fa-umbrella-beach text-3xl text-blue-300 mb-4 benefit-icon"></i>
             <h3 class="text-lg font-semibold text-white mb-2">Moře na dosah</h3>
             <p class="text-white text-sm">Krásná písečná pláž s pozvolným vstupem do moře, je vzdálená 6–7 minut pohodové chůze.</p>
           </div>
           <div class="text-center bg-black bg-opacity-70 p-5 rounded-lg">
-            <span class="icon-fa text-3xl text-blue-300 mb-4 benefit-icon" style="-webkit-mask-image:url('assets/icons/ui/water-ladder.svg');mask-image:url('assets/icons/ui/water-ladder.svg');"></span>
+            <i class="fas fa-swimming-pool text-3xl text-blue-300 mb-4 benefit-icon"></i>
             <h3 class="text-lg font-semibold text-white mb-2">Bazén a brouzdaliště</h3>
             <p class="text-white text-sm">Velký benefit je bazén s brouzdalištěm – bezpečné koupání hned u apartmánu.</p>
           </div>
           <div class="text-center bg-black bg-opacity-70 p-5 rounded-lg">
-            <span class="icon-fa text-3xl text-blue-300 mb-4 benefit-icon" style="-webkit-mask-image:url('assets/icons/ui/people-group.svg');mask-image:url('assets/icons/ui/people-group.svg');"></span>
+            <i class="fas fa-people-group text-3xl text-blue-300 mb-4 benefit-icon"></i>
             <h3 class="text-lg font-semibold text-white mb-2">Ideální pro rodiny</h3>
             <p class="text-white text-sm">Jsme rodiče tří dětí a přesně víme, co rodiny na dovolené potřebují. I proto je apartmán zařízený s maximálním důrazem na pohodlí.</p>
           </div>
           <div class="text-center bg-black bg-opacity-70 p-5 rounded-lg">
-            <span class="icon-fa text-3xl text-blue-300 mb-4 benefit-icon" style="-webkit-mask-image:url('assets/icons/ui/location-dot.svg');mask-image:url('assets/icons/ui/location-dot.svg');"></span>
+            <i class="fas fa-map-marker-alt text-3xl text-blue-300 mb-4 benefit-icon"></i>
             <h3 class="text-lg font-semibold text-white mb-2">Skvělá lokalita</h3>
             <p class="text-white text-sm">Klidná část letoviska, ale vše dostupné. Potraviny 2 minuty chůze, restaurace a obchody cca 300 metrů od domu.</p>
           </div>
@@ -2916,7 +2902,7 @@ a.vip-link.active {
         <div class="bg-white p-4 rounded-2xl shadow-md border border-gray-200 text-left hover:shadow-lg transition-shadow">
           <div class="flex items-center gap-3 mb-2">
             <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
-              <span class="icon-fa text-xl text-blue-700" style="-webkit-mask-image:url('assets/icons/ui/umbrella-beach.svg');mask-image:url('assets/icons/ui/umbrella-beach.svg');"></span>
+              <i class="fas fa-umbrella-beach text-xl text-blue-700"></i>
             </div>
             <h3 class="text-base font-bold leading-tight">Moře na dosah</h3>
           </div>
@@ -2926,7 +2912,7 @@ a.vip-link.active {
         <div class="bg-white p-4 rounded-2xl shadow-md border border-gray-200 text-left hover:shadow-lg transition-shadow">
           <div class="flex items-center gap-3 mb-2">
             <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
-              <span class="icon-fa text-xl text-blue-700" style="-webkit-mask-image:url('assets/icons/ui/water-ladder.svg');mask-image:url('assets/icons/ui/water-ladder.svg');"></span>
+              <i class="fas fa-swimming-pool text-xl text-blue-700"></i>
             </div>
             <h3 class="text-base font-bold leading-tight">Bazén</h3>
           </div>
@@ -2936,7 +2922,7 @@ a.vip-link.active {
         <div class="bg-white p-4 rounded-2xl shadow-md border border-gray-200 text-left hover:shadow-lg transition-shadow">
           <div class="flex items-center gap-3 mb-2">
             <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
-              <span class="icon-fa text-xl text-blue-700" style="-webkit-mask-image:url('assets/icons/ui/people-group.svg');mask-image:url('assets/icons/ui/people-group.svg');"></span>
+              <i class="fas fa-people-group text-xl text-blue-700"></i>
             </div>
             <h3 class="text-base font-bold leading-tight">Pro rodiny</h3>
           </div>
@@ -2946,7 +2932,7 @@ a.vip-link.active {
         <div class="bg-white p-4 rounded-2xl shadow-md border border-gray-200 text-left hover:shadow-lg transition-shadow">
           <div class="flex items-center gap-3 mb-2">
             <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
-              <span class="icon-fa text-xl text-blue-700" style="-webkit-mask-image:url('assets/icons/ui/location-dot.svg');mask-image:url('assets/icons/ui/location-dot.svg');"></span>
+              <i class="fas fa-map-marker-alt text-xl text-blue-700"></i>
             </div>
             <h3 class="text-base font-bold leading-tight">Vše po ruce</h3>
           </div>
@@ -4670,38 +4656,36 @@ a.vip-link.active {
       if (!el) return;
       const apiKey = '693012db2d650134c442e8b4a3ac8864';
       const url = `https://api.openweathermap.org/data/2.5/weather?q=Kavaje,AL&units=metric&appid=${apiKey}`;
-      const iconSpan = (name) => `<span class="icon-fa" style="-webkit-mask-image:url('assets/icons/ui/${name}.svg');mask-image:url('assets/icons/ui/${name}.svg');"></span>`;
       try {
         const res = await fetch(url, { cache: 'no-store' });
         const data = await res.json();
         if (data.cod === 200) {
           const temp = Math.round(data.main.temp);
           const condition = (data.weather?.[0]?.main || '').toLowerCase();
-          let iconName = 'cloud';
-          if (condition.includes('clear')) iconName = 'sun';
-          else if (condition.includes('cloud')) iconName = 'cloud';
-          else if (condition.includes('rain')) iconName = 'cloud-showers-heavy';
-          else if (condition.includes('snow')) iconName = 'snowflake';
-          else if (condition.includes('thunderstorm')) iconName = 'bolt';
-          el.innerHTML = `${iconSpan(iconName)} ${temp}°C`;
+          let iconClass = 'fas fa-cloud';
+          if (condition.includes('clear')) iconClass = 'fas fa-sun';
+          else if (condition.includes('cloud')) iconClass = 'fas fa-cloud';
+          else if (condition.includes('rain')) iconClass = 'fas fa-cloud-showers-heavy';
+          else if (condition.includes('snow')) iconClass = 'fas fa-snowflake';
+          else if (condition.includes('thunderstorm')) iconClass = 'fas fa-bolt';
+          el.innerHTML = `<i class="${iconClass}"></i> ${temp}°C`;
         } else {
           el.innerHTML = 'Chyba načtení';
         }
       } catch (err) {
-        el.innerHTML = `${iconSpan('triangle-exclamation')} Chyba`;
+        el.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Chyba';
       }
     }
 
     function updateLocalTime() {
       const el = document.getElementById('local-time');
       if (!el) return;
-      const clockIcon = `<span class="icon-fa" style="-webkit-mask-image:url('assets/icons/ui/clock.svg');mask-image:url('assets/icons/ui/clock.svg');"></span>`;
       try {
         const now = new Date();
         const options = { timeZone: 'Europe/Tirane', hour: '2-digit', minute: '2-digit', hour12: false };
-        el.innerHTML = `${clockIcon} ${now.toLocaleTimeString('cs-CZ', options)}`;
+        el.innerHTML = `<i class="fas fa-clock"></i> ${now.toLocaleTimeString('cs-CZ', options)}`;
       } catch (err) {
-        el.innerHTML = `${clockIcon} —`;
+        el.innerHTML = `<i class="fas fa-clock"></i> —`;
       }
     }
 
