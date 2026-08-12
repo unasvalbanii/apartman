@@ -114,6 +114,43 @@
       text-decoration: none;
     }
     .toc-item:hover { background: #dbeafe; }
+    html { scroll-behavior: smooth; }
+
+#scroll-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  background-color: #2563eb;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+@media (min-width: 641px) {
+  #scroll-to-top:hover { background-color: #1d4ed8; transform: scale(1.1); }
+}
+@media (max-width: 640px) {
+  #scroll-to-top:active { background-color: #1d4ed8; }
+}
+#scroll-to-top.hidden { opacity: 0; visibility: hidden; }
+
+@media (max-width: 640px) {
+  #scroll-to-top {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.75rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+}
   </style>
 </head>
 
@@ -286,5 +323,68 @@
     </div>
   </footer>
 
+  <div id="scroll-to-top" class="hidden" aria-label="Zpět nahoru">↑</div>
+
+  <script>
+  function throttle(fn, wait) {
+    let lastCall = 0;
+    return function (...args) {
+      const now = Date.now();
+      if (now - lastCall < wait) return;
+      lastCall = now;
+      return fn.apply(this, args);
+    };
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+
+    /* ===== Scroll to top tlačítko ===== */
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
+    const handleScroll = throttle(() => {
+      if (scrollToTopBtn) {
+        if (window.pageYOffset > 200) scrollToTopBtn.classList.remove('hidden');
+        else scrollToTopBtn.classList.add('hidden');
+      }
+    }, 100);
+    window.addEventListener('scroll', handleScroll);
+    if (scrollToTopBtn) {
+      scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+
+    /* ===== Sjednocený plynulý scroll na kotvy (stejná logika jako hlavní web) ===== */
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', function (e) {
+        const target = document.getElementById(this.getAttribute('href').substring(1));
+        if (!target) return;
+        e.preventDefault();
+
+        const scrollToTarget = () => {
+          const headerHeight = 0; // header na této stránce není fixní
+          let cancelled = false;
+          const cancelAuto = () => { cancelled = true; };
+          const cancelEvents = ['wheel', 'touchstart', 'pointerdown'];
+          cancelEvents.forEach(evt => window.addEventListener(evt, cancelAuto, { once: true, passive: true }));
+
+          const doScroll = () => {
+            if (cancelled) return;
+            const y = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          };
+
+          doScroll();
+          setTimeout(doScroll, 350);
+          setTimeout(doScroll, 700);
+          setTimeout(() => {
+            doScroll();
+            cancelEvents.forEach(evt => window.removeEventListener(evt, cancelAuto));
+          }, 1100);
+        };
+
+        scrollToTarget();
+      });
+    });
+
+  });
+</script>
 </body>
 </html>
