@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nakládání s obsahem webu | U nás v Albánii</title>
+  <meta name="description" content="Podmínky užití obsahu webu U nás v Albánii – fotografie, texty a grafické materiály jsou chráněny autorským zákonem a bez souhlasu majitele je nelze šířit ani jinak užívat.">
+  <meta name="robots" content="noindex, follow">
+
+  <link rel="icon" href="assets/logo/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/logo/favicon-490.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="preload" href="assets/fonts/poetsen-one.woff2" as="font" type="font/woff2" crossorigin>
+
+  <style>
+    @font-face {
+      font-family: 'Poetsen One';
+      src: url('assets/fonts/poetsen-one.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: block;
+    }
+    .logo-font { font-family: 'Poetsen One', sans-serif; letter-spacing: 0.5px; }
+    .logo-shadow { text-shadow: 0 1.5px 3px rgba(0,0,0,0.65); }
+    body { margin: 0; padding: 0; }
+
+    .heading-underline {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 22px;
+    }
+    .heading-underline::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 90%;
+      height: 16px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 20' preserveAspectRatio='none'%3E%3Cpath d='M0,10 Q100,0 200,10 T400,10' stroke='%23ffb500' stroke-width='6' fill='none' stroke-linecap='round' opacity='0.9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      pointer-events: none;
+    }
+
+    .legal-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 28px 30px;
+    }
+
+    .legal-card h2 {
+      color: #1e3a8b;
+      font-weight: 800;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .legal-card h2 i { color: #ffb500; font-size: 1.1rem; flex-shrink: 0; }
+
+    .legal-card p, .legal-card li { color: #374151; line-height: 1.7; font-size: 0.96rem; }
+    .legal-card ul { margin-top: 8px; margin-bottom: 8px; }
+    .legal-card li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+    .legal-card li i { color: #2563eb; font-size: 0.8rem; margin-top: 6px; flex-shrink: 0; }
+    .legal-card li.deny i { color: #dc2626; }
+
+    .law-ref {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f0f7ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 4px 12px;
+      margin: 3px 4px 3px 0;
+      white-space: nowrap;
+    }
+
+  </style>
+</head>
+
+<body class="font-sans text-gray-800 bg-gray-100">
+
+  <!-- Header -->
+  <header class="bg-blue-900 text-white py-4">
+    <div class="container mx-auto px-4 flex items-center justify-between max-w-5xl">
+      <a href="index.html" class="flex items-center gap-3 text-xl font-bold">
+        <img src="assets/logo/logo.png" alt="U nás v Albánii" class="h-9 w-auto" loading="eager" decoding="async">
+        <span class="logo-shadow logo-font">U nás v Albánii</span>
+      </a>
+      <a href="index.html" class="text-sm font-semibold text-blue-200 hover:text-white transition flex items-center gap-2">
+        <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">Zpět na web</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-12 max-w-5xl">
+
+    <div class="text-center mb-10">
+      <p class="text-xs font-bold uppercase tracking-widest text-blue-600 mb-3">Právní informace</p>
+      <h1 class="text-3xl sm:text-4xl font-bold heading-underline">Nakládání s obsahem webu</h1>
+      <p class="max-w-2xl mx-auto mt-6 text-gray-600">
+        Vlastní fotografie, texty a popisky na tomto webu jsou původním autorským dílem a jsou chráněny
+        zákonem. Část ilustračních materiálů je vytvořena pomocí umělé inteligence – níže vysvětlujeme,
+        co to znamená a co hrozí za neoprávněné užití obsahu webu.
+      </p>
+    </div>
+
+    <div class="max-w-3xl mx-auto space-y-6">
+
+      <!-- Právní základ + co je chráněno -->
+      <section class="legal-card">
+        <h2><i class="fas fa-shield-halved"></i> Co je chráněno a proč</h2>
+        <p>
+          Vlastní fotografie a texty, které provozovatel webu vytvořil svou tvůrčí činností, jsou jeho
+          autorským dílem ve smyslu <span class="law-ref"><i class="fas fa-gavel"></i> § 2 a § 12 zákona
+          č. 121/2000 Sb.</span> Ochrana vzniká automaticky vytvořením díla, bez nutnosti registrace nebo
+          značky ©, a majetková práva trvají po celý život autora a dalších 70 let po jeho smrti (§ 27
+          téhož zákona).
+        </p>
+      </section>
+
+      <!-- Původ obsahu / AI -->
+      <section class="legal-card">
+        <h2><i class="fas fa-robot"></i> Původ obsahu – vlastní tvorba a AI</h2>
+        <p>
+          Fotografie apartmánu, jeho interiéru a bezprostředního okolí jsou vlastní autorskou tvorbou
+          provozovatele webu a vztahuje se na ně ochrana popsaná výše. Některé ilustrační obrázky na webu
+          jsou vytvořeny s využitím nástrojů generativní umělé inteligence.
+        </p>
+        <p class="mt-3">
+          Podle českého práva může být autorem díla vždy jen fyzická osoba – čistě AI generovaný obsah bez
+          výrazného lidského tvůrčího vkladu proto sám o sobě není autorským dílem ve smyslu autorského
+          zákona. I na tento obsah se nicméně vztahují podmínky užití tohoto webu: je určen výhradně
+          k zobrazení v rámci této stránky a jeho stahování, kopírování či další šíření mimo tento web
+          bez souhlasu provozovatele není dovoleno.
+        </p>
+      </section>
+
+      <!-- Co je zakázáno -->
+      <section class="legal-card">
+        <h2><i class="fas fa-ban"></i> Bez souhlasu je zakázáno</h2>
+        <ul>
+          <li class="deny"><i class="fas fa-xmark"></i> Stahovat, kopírovat nebo jinak rozmnožovat fotografie a texty z tohoto webu.</li>
+          <li class="deny"><i class="fas fa-xmark"></i> Publikovat obsah (celý nebo jeho část) na jiných webech, inzertních portálech, sociálních sítích nebo v nabídkách ubytování.</li>
+          <li class="deny"><i class="fas fa-xmark"></i> Upravovat nebo přepisovat texty a vydávat je za vlastní obsah.</li>
+          <li class="deny"><i class="fas fa-xmark"></i> Používat obsah ke komerčním účelům bez licence.</li>
+        </ul>
+        <p class="mt-2 text-sm text-gray-500">
+          V pořádku je naopak odkázat na web hypertextovým odkazem nebo jej sdílet v soukromé komunikaci.
+        </p>
+      </section>
+
+      <!-- Důsledky -->
+      <section class="legal-card">
+        <h2><i class="fas fa-triangle-exclamation"></i> Co hrozí za neoprávněné užití</h2>
+        <p class="mb-2">
+          Neoprávněné užití lze vymáhat civilní, přestupkovou i trestní cestou:
+        </p>
+        <ul>
+          <li><i class="fas fa-file-contract"></i> <strong>Civilně</strong> – zákaz dalšího užívání, náhrada škody a vydání bezdůvodného obohacení (§ 40 autorského zákona).</li>
+          <li><i class="fas fa-hand"></i> <strong>Jako přestupek</strong> – pokuta až 150 000 Kč (§ 105a–105c autorského zákona).</li>
+          <li><i class="fas fa-handcuffs"></i> <strong>Jako trestný čin</strong> – u závažnějších případů (např. při zisku z podnikání) odnětí svobody až na 8 let (§ 270 trestního zákoníku, 40/2009 Sb.).</li>
+        </ul>
+        <p class="mt-3 text-sm text-gray-500">
+          Uvedené sankce se vážou na obsah, který je autorským dílem (vlastní fotografie a texty). U obrázků
+          vytvořených pomocí AI se neoprávněné užití posuzuje podle podmínek užití webu, případně jako
+          porušení smluvních nebo dobrých mravů v hospodářské soutěži.
+        </p>
+      </section>
+
+      <!-- Jak získat souhlas -->
+      <section class="legal-card">
+        <h2><i class="fas fa-envelope-open-text"></i> Chcete obsah použít legálně?</h2>
+        <p>
+          Napište na
+          <a href="mailto:info@unasvalbanii.cz" class="text-blue-600 font-semibold underline">info@unasvalbanii.cz</a>
+          s popisem, co a k jakému účelu chcete použít – rádi se dohodneme na spolupráci či licenci.
+        </p>
+      </section>
+
+      <p class="text-xs text-gray-500 text-center pt-2">
+        Tato stránka má informativní charakter a nejde o právní poradenství. U konkrétního podezření na
+        porušení autorských práv doporučujeme konzultaci s advokátem specializujícím se na autorské právo.
+      </p>
+
+    </div>
+  </main>
+
+  <footer class="bg-gray-900 text-white mt-6">
+    <div class="container mx-auto px-4 py-6 max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-xs text-gray-400">© 2026 U nás v Albánii · Všechna práva vyhrazena</p>
+      <div class="flex gap-4 text-xs text-gray-400">
+        <a href="index.html" class="hover:text-white transition">Hlavní stránka</a>
+        <a href="/ochrana-osobnich-udaju" class="hover:text-white transition">Ochrana osobních údajů</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
