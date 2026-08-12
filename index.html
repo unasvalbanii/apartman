@@ -2828,7 +2828,7 @@ a.vip-link.active {
               <li><a href="#trips">Výlety</a></li>
               <li><a href="#faq">FAQ</a></li>
               <li><a href="#contact">Kontakt</a></li>
-              <li><a href="#reservation" class="reservation-link font-bold" id="nav-rezervace-desktop">REZERVACE</a></li>
+              <li><a href="#reservation" class="reservation-link font-bold" id="nav-rezervace-desktop" data-umami-event="rezervace_start_nav">REZERVACE</a></li>
             </ul>
           </nav>
         </div>
@@ -2844,7 +2844,7 @@ a.vip-link.active {
           <li><a href="#trips" class="block py-3 px-6 text-lg">Výlety</a></li>
           <li><a href="#faq" class="block py-3 px-6 text-lg">FAQ</a></li>
           <li><a href="#contact" class="block py-3 px-6 text-lg">Kontakt</a></li>
-          <li><a href="#reservation" class="block py-3 px-6 text-lg reservation-link font-bold" id="nav-rezervace-mobile">REZERVACE</a></li>
+          <li><a href="#reservation" class="block py-3 px-6 text-lg reservation-link font-bold" id="nav-rezervace-mobile" data-umami-event="rezervace_start_nav">REZERVACE</a></li>
         </ul>
       </nav>
     </div>
@@ -2874,7 +2874,7 @@ a.vip-link.active {
       <!-- HERO BOOKING WIDGET – pouze mobil -->
       <div id="hero-booking-widget" class="md:hidden">
         <p class="widget-title"><i class="fas fa-circle-check"></i> Oficiální web · nejlepší cena</p>
-        <button id="widget-btn-rezervovat">
+        <button id="widget-btn-rezervovat" data-umami-event="rezervace_start_hero">
           <i class="fas fa-calendar-check"></i>
           Rezervovat
         </button>
@@ -3093,7 +3093,7 @@ a.vip-link.active {
 
       <div class="apartment-cta">
         <div class="text-center mt-8 mb-16">
-          <button type="button" onclick="openReservationDrawer(null, null, 2, 0, 0)" class="reservation-link-block font-bold text-xl">REZERVACE</button>
+          <button type="button" onclick="openReservationDrawer(null, null, 2, 0, 0)" class="reservation-link-block font-bold text-xl" data-umami-event="rezervace_start_apartman">REZERVACE</button>
         </div>
       </div>
     </div>
@@ -4288,7 +4288,7 @@ a.vip-link.active {
           <div class="summary-row"><span>Celková cena</span><span id="ds-cena">—</span></div>
         </div>
 
-        <button class="drawer-btn-primary" id="drawer-btn-submit">
+        <button class="drawer-btn-primary" id="drawer-btn-submit" data-umami-event="rezervace_odeslano">
           <i class="fas fa-paper-plane"></i> Odeslat poptávku
         </button>
         <button class="drawer-btn-secondary drawer-back-btn">Zpět a upravit</button>
@@ -4468,7 +4468,8 @@ a.vip-link.active {
             class="w-full flex items-center justify-center gap-2 font-bold text-sm rounded-xl py-3 transition"
             style="background-color:#ffb500; color:#000;"
             onmouseover="this.style.backgroundColor='#e69500'"
-            onmouseout="this.style.backgroundColor='#ffb500'">
+            onmouseout="this.style.backgroundColor='#ffb500'"
+            data-umami-event="kontakt_odeslano">
             <i class="fas fa-paper-plane"></i> Odeslat zprávu
           </button>
 
@@ -4488,7 +4489,8 @@ a.vip-link.active {
           class="w-full flex items-center justify-center gap-2 font-bold text-sm rounded-xl py-3 border transition"
           style="background:rgba(255,181,0,0.1); color:#ffb500; border-color:rgba(255,181,0,0.35);"
           onmouseover="this.style.background='rgba(255,181,0,0.2)'"
-          onmouseout="this.style.background='rgba(255,181,0,0.1)'">
+          onmouseout="this.style.background='rgba(255,181,0,0.1)'"
+          data-umami-event="rezervace_start_kontakt">
           <i class="fas fa-calendar-check"></i> Přejít na rezervaci
         </button>
       </div>
