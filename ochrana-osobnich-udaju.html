@@ -4,329 +4,285 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ochrana osobních údajů | U nás v Albánii</title>
+  <meta name="description" content="Zásady zpracování osobních údajů webu U nás v Albánii dle nařízení GDPR.">
+
   <link rel="icon" href="assets/logo/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/logo/favicon-490.png">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="preload" href="assets/fonts/poetsen-one.woff2" as="font" type="font/woff2" crossorigin>
+
   <style>
-    html { scroll-behavior: smooth; }
+    @font-face {
+      font-family: 'Poetsen One';
+      src: url('assets/fonts/poetsen-one.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: block;
+    }
+    .logo-font { font-family: 'Poetsen One', sans-serif; letter-spacing: 0.5px; }
+    .logo-shadow { text-shadow: 0 1.5px 3px rgba(0,0,0,0.65); }
     body { margin: 0; padding: 0; }
 
-    .prose h2 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #1e3a8a;
-      margin-top: 2.5rem;
-      margin-bottom: 0.75rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid #dbeafe;
+    .heading-underline {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 22px;
+    }
+    .heading-underline::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 90%;
+      height: 16px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 20' preserveAspectRatio='none'%3E%3Cpath d='M0,10 Q100,0 200,10 T400,10' stroke='%23ffb500' stroke-width='6' fill='none' stroke-linecap='round' opacity='0.9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      pointer-events: none;
+    }
+
+    .legal-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 28px 30px;
+    }
+
+    .legal-card h2 {
+      color: #1e3a8b;
+      font-weight: 800;
+      font-size: 1.25rem;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 10px;
+      margin-bottom: 14px;
     }
-    .prose h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
+    .legal-card h2 i { color: #ffb500; font-size: 1.1rem; flex-shrink: 0; }
+
+    .legal-card h3 {
       color: #1f2937;
-      margin-top: 1.5rem;
-      margin-bottom: 0.5rem;
+      font-weight: 700;
+      font-size: 0.98rem;
+      margin-top: 14px;
+      margin-bottom: 6px;
     }
-    .prose p { margin-bottom: 0.85rem; line-height: 1.75; color: #374151; }
-    .prose ul { margin: 0.5rem 0 1rem 0; padding-left: 1.25rem; }
-    .prose ul li {
-      margin-bottom: 0.4rem;
-      line-height: 1.65;
-      color: #374151;
-      position: relative;
-      padding-left: 0.25rem;
-    }
-    .prose ul li::marker { color: #2563eb; }
-    .prose a { color: #2563eb; text-decoration: underline; }
-    .prose a:hover { color: #1d4ed8; }
-    .prose strong { color: #1f2937; }
 
-    .info-box {
-      background: #eff6ff;
-      border-left: 4px solid #2563eb;
-      border-radius: 0 8px 8px 0;
-      padding: 1rem 1.25rem;
-      margin: 1.25rem 0;
-    }
-    .info-box p { margin: 0; color: #1e40af; font-size: 0.95rem; }
+    .legal-card p, .legal-card li { color: #374151; line-height: 1.7; font-size: 0.96rem; }
+    .legal-card ul { margin-top: 8px; margin-bottom: 8px; }
+    .legal-card li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+    .legal-card li i { color: #2563eb; font-size: 0.8rem; margin-top: 6px; flex-shrink: 0; }
 
-    .placeholder {
-      background: #fef9c3;
-      border: 1.5px dashed #f59e0b;
-      border-radius: 6px;
-      padding: 2px 8px;
-      color: #92400e;
-      font-weight: 600;
-      font-size: 0.9em;
+    .law-ref {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f0f7ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 4px 12px;
+      margin: 3px 4px 3px 0;
+      white-space: nowrap;
     }
+
+    .contact-box {
+      background: #f0f7ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-top: 10px;
+    }
+    .contact-box p { margin: 0; color: #1e40af; font-size: 0.9rem; }
 
     .toc-item {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       padding: 0.4rem 0.75rem;
-      border-radius: 6px;
+      border-radius: 8px;
       color: #1e40af;
-      font-size: 0.92rem;
+      font-size: 0.86rem;
+      font-weight: 600;
       transition: background 0.15s;
       text-decoration: none;
     }
     .toc-item:hover { background: #dbeafe; }
   </style>
 </head>
-<body class="font-sans bg-gray-50 text-gray-800">
+
+<body class="font-sans text-gray-800 bg-gray-100">
 
   <!-- Header -->
-  <header class="bg-blue-900 text-white py-4 shadow-md">
-    <div class="container mx-auto px-4 max-w-5xl">
-      <div class="flex items-center justify-between">
-        <a href="/" class="flex items-center gap-3 text-xl font-bold hover:opacity-90 transition-opacity">
-          <img src="assets/logo/logo.png" alt="U nás v Albánii" class="h-9 w-auto" onerror="this.style.display='none'">
-          <span>U nás v Albánii</span>
-        </a>
-        <a href="/" class="text-sm text-blue-200 hover:text-white transition-colors flex items-center gap-1">
-          <i class="fas fa-arrow-left text-xs"></i> Zpět na web
-        </a>
-      </div>
+  <header class="bg-blue-900 text-white py-4">
+    <div class="container mx-auto px-4 flex items-center justify-between max-w-5xl">
+      <a href="index.html" class="flex items-center gap-3 text-xl font-bold">
+        <img src="assets/logo/logo.png" alt="U nás v Albánii" class="h-9 w-auto" loading="eager" decoding="async">
+        <span class="logo-shadow logo-font">U nás v Albánii</span>
+      </a>
+      <a href="index.html" class="text-sm font-semibold text-blue-200 hover:text-white transition flex items-center gap-2">
+        <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">Zpět na web</span>
+      </a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <div class="bg-blue-900 text-white pt-2 pb-10">
-    <div class="container mx-auto px-4 max-w-5xl text-center">
-      <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-blue-800 mb-4 mt-6">
-        <i class="fas fa-shield-halved text-2xl text-blue-300"></i>
-      </div>
-      <h1 class="text-3xl font-bold mb-2">Ochrana osobních údajů</h1>
-      <p class="text-blue-200 text-sm">Zásady zpracování osobních údajů dle nařízení GDPR (EU) 2016/679</p>
-      <p class="text-blue-300 text-xs mt-2">Poslední aktualizace: červen 2026</p>
+  <main class="container mx-auto px-4 py-12 max-w-5xl">
+
+    <div class="text-center mb-10">
+      <p class="text-xs font-bold uppercase tracking-widest text-blue-600 mb-3">Právní informace</p>
+      <h1 class="text-3xl sm:text-4xl font-bold heading-underline">Ochrana osobních údajů</h1>
+      <p class="max-w-2xl mx-auto mt-6 text-gray-600">
+        Zásady zpracování osobních údajů dle nařízení GDPR (EU) 2016/679. Vaše soukromí bereme vážně
+        a údaje zpracováváme jen v rozsahu nezbytném pro vyřízení rezervace.
+      </p>
+      <p class="text-xs text-gray-400 mt-3">Poslední aktualizace: srpen 2026</p>
     </div>
-  </div>
 
-  <!-- Main content -->
-  <main class="container mx-auto px-4 max-w-5xl py-10">
-    <div class="flex flex-col lg:flex-row gap-8 items-start">
+    <!-- Rychlá navigace -->
+    <div class="max-w-3xl mx-auto mb-8">
+      <div class="legal-card !py-4">
+        <nav class="flex flex-wrap justify-center gap-1">
+          <a href="#spravce" class="toc-item"><i class="fas fa-user-tie text-blue-400"></i> Správce</a>
+          <a href="#udaje" class="toc-item"><i class="fas fa-database text-blue-400"></i> Jaké údaje</a>
+          <a href="#doba" class="toc-item"><i class="fas fa-clock text-blue-400"></i> Doba uchování</a>
+          <a href="#prava" class="toc-item"><i class="fas fa-scale-balanced text-blue-400"></i> Vaše práva</a>
+          <a href="#cookies" class="toc-item"><i class="fas fa-cookie-bite text-blue-400"></i> Cookies</a>
+          <a href="#kontakt" class="toc-item"><i class="fas fa-envelope text-blue-400"></i> Kontakt</a>
+        </nav>
+      </div>
+    </div>
 
-      <!-- TOC sidebar -->
-      <aside class="lg:w-64 flex-shrink-0 lg:sticky lg:top-6">
-        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
-          <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 px-1">Obsah</p>
-          <nav class="flex flex-col gap-0.5">
-            <a href="#spravce" class="toc-item"><i class="fas fa-user-tie w-4 text-center text-blue-400"></i> Správce údajů</a>
-            <a href="#jake-udaje" class="toc-item"><i class="fas fa-database w-4 text-center text-blue-400"></i> Jaké údaje</a>
-            <a href="#ucel" class="toc-item"><i class="fas fa-bullseye w-4 text-center text-blue-400"></i> Účel a právní základ</a>
-            <a href="#doba" class="toc-item"><i class="fas fa-clock w-4 text-center text-blue-400"></i> Doba uchování</a>
-            <a href="#prikazi" class="toc-item"><i class="fas fa-share-nodes w-4 text-center text-blue-400"></i> Příjemci údajů</a>
-            <a href="#prava" class="toc-item"><i class="fas fa-scale-balanced w-4 text-center text-blue-400"></i> Vaše práva</a>
-            <a href="#cookies" class="toc-item"><i class="fas fa-cookie-bite w-4 text-center text-blue-400"></i> Cookies</a>
-            <a href="#bezpecnost" class="toc-item"><i class="fas fa-lock w-4 text-center text-blue-400"></i> Zabezpečení</a>
-            <a href="#kontakt" class="toc-item"><i class="fas fa-envelope w-4 text-center text-blue-400"></i> Kontakt</a>
-          </nav>
-        </div>
-        <div class="mt-4 bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-800">
-          <i class="fas fa-circle-info mr-1"></i>
-          Máte otázku ohledně svých údajů? Kontaktujte nás na
-          <a href="mailto:info@unasvalbanii.cz" class="font-semibold underline">info@unasvalbanii.cz</a>
-        </div>
-      </aside>
+    <div class="max-w-3xl mx-auto space-y-6">
 
-      <!-- Document body -->
-      <article class="flex-1 bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:p-10 prose max-w-none">
+      <!-- 1. Správce -->
+      <section id="spravce" class="legal-card">
+        <h2><i class="fas fa-user-tie"></i> Kdo je správcem údajů</h2>
+        <p>
+          Správcem osobních údajů je provozovatel tohoto webu a apartmánu v Albánii, kontaktní e-mail
+          <a href="mailto:info@unasvalbanii.cz" class="text-blue-600 font-semibold underline">info@unasvalbanii.cz</a>,
+          telefon +420 728 621 498. Zpracování neprobíhá ve velkém rozsahu, správce proto nemá povinnost
+          jmenovat pověřence pro ochranu osobních údajů (DPO).
+        </p>
+      </section>
 
-        <div class="info-box">
-          <p><i class="fas fa-circle-info mr-2"></i>Tyto zásady popisují, jak nakládáme s osobními údaji návštěvníků webu <strong>unasvalbanii.cz</strong> a zájemců o pronájem apartmánu. Vaše soukromí bereme vážně a údaje zpracováváme výhradně v rozsahu nezbytném pro poskytnutí služby.</p>
-        </div>
+      <!-- 2. Jaké údaje a proč -->
+      <section id="udaje" class="legal-card">
+        <h2><i class="fas fa-database"></i> Jaké údaje zpracováváme a proč</h2>
+        <p>Údaje získáváme pouze tehdy, když nám je sami poskytnete – vyplněním rezervačního nebo kontaktního formuláře.</p>
 
-        <!-- 1. Správce -->
-        <h2 id="spravce"><i class="fas fa-user-tie text-blue-400"></i> 1. Správce osobních údajů</h2>
-        <p>Správcem osobních údajů ve smyslu čl. 4 odst. 7 nařízení GDPR je:</p>
-        <div class="bg-gray-50 rounded-lg border border-gray-200 p-4 my-4 text-sm">
-          <p class="mb-1"><strong>Jméno a příjmení:</strong> <span class="placeholder">[DOPLŇTE JMÉNO A PŘÍJMENÍ]</span></p>
-          <p class="mb-1"><strong>Adresa:</strong> <span class="placeholder">[DOPLŇTE ADRESU]</span></p>
-          <p class="mb-1"><strong>IČO:</strong> <span class="placeholder">[DOPLŇTE IČO, nebo uveďte „nepodnikatel"]</span></p>
-          <p class="mb-1"><strong>E-mail:</strong> <a href="mailto:info@unasvalbanii.cz">info@unasvalbanii.cz</a></p>
-          <p class="mb-0"><strong>Telefon:</strong> <span class="placeholder">[DOPLŇTE TELEFON]</span></p>
-        </div>
-        <p>Správce není povinen jmenovat pověřence pro ochranu osobních údajů (DPO), neboť zpracování neprobíhá ve velkém rozsahu ani se netýká zvláštních kategorií údajů.</p>
+        <h3>Rezervační formulář</h3>
+        <p>Jméno, příjmení, adresa, e-mail, telefon a údaje o pobytu (termín, počet osob) – za účelem
+          vyřízení rezervace a uzavření smlouvy o krátkodobém pronájmu.
+          <span class="law-ref"><i class="fas fa-gavel"></i> čl. 6/1/b GDPR</span></p>
 
-        <!-- 2. Jaké údaje -->
-        <h2 id="jake-udaje"><i class="fas fa-database text-blue-400"></i> 2. Jaké osobní údaje zpracováváme</h2>
+        <h3>Kontaktní formulář</h3>
+        <p>Jméno, e-mail a obsah zprávy – za účelem odpovědi na váš dotaz.
+          <span class="law-ref"><i class="fas fa-gavel"></i> čl. 6/1/f GDPR</span></p>
 
-        <h3>2.1 Rezervační a poptávkový formulář</h3>
-        <p>Při odeslání poptávky prostřednictvím rezervačního formuláře na webu zpracováváme:</p>
+        <h3>Účetní doklady</h3>
+        <p>U realizovaných pobytů dále zpracováváme fakturační údaje z důvodu plnění zákonných povinností
+          (účetnictví, daně). <span class="law-ref"><i class="fas fa-gavel"></i> čl. 6/1/c GDPR</span></p>
+
+        <h3>Anonymní návštěvnost webu</h3>
+        <p>Pro měření návštěvnosti používáme nástroj <strong>Umami Cloud</strong>. Ten funguje bez cookies
+          a bez vytváření identifikátoru konkrétního návštěvníka – zpracovává pouze agregované a
+          anonymizované údaje o návštěvnosti (např. počet zobrazení stránek, typ zařízení, přibližná
+          zeměpisná poloha odvozená z IP adresy, kterou v anonymizované podobě uchovává jen krátkodobě).
+          Jednotlivé návštěvníky tak nedokážeme identifikovat. Právním základem je oprávněný zájem
+          provozovatele na zlepšování webu.
+          <span class="law-ref"><i class="fas fa-gavel"></i> čl. 6/1/f GDPR</span></p>
+
+        <p class="mt-2 text-sm text-gray-500">
+          Web nepoužívá Google Analytics, reklamní sítě ani sledovací pixely a údaje nevyužívá
+          k automatizovanému rozhodování ani profilování.
+        </p>
+      </section>
+
+      <!-- 3. Doba uchování a příjemci -->
+      <section id="doba" class="legal-card">
+        <h2><i class="fas fa-clock"></i> Doba uchování a příjemci údajů</h2>
         <ul>
-          <li>Jméno a příjmení</li>
-          <li>Poštovní adresa (ulice a číslo, PSČ, město, stát)</li>
-          <li>E-mailová adresa</li>
-          <li>Telefonní číslo</li>
-          <li>Informace o pobytu (termín příjezdu a odjezdu, počet osob, počet dětí a miminek)</li>
+          <li><i class="fas fa-check"></i> <strong>Nevyřízené poptávky:</strong> nejdéle 90 dní od odeslání formuláře.</li>
+          <li><i class="fas fa-check"></i> <strong>Realizované pobyty:</strong> po dobu 3 let od ukončení pobytu (promlčecí lhůta).</li>
+          <li><i class="fas fa-check"></i> <strong>Účetní doklady:</strong> 10 let dle zákona o účetnictví.</li>
         </ul>
+        <p>
+          Údaje sdílíme jen s technickými zpracovateli nutnými pro chod webu – zejména se službou
+          <strong>EmailJS</strong> (odesílání e-mailových notifikací z formulářů, sídlo USA, přenos na
+          základě standardních smluvních doložek), s naším poskytovatelem e-mailu a se službou
+          <strong>Umami Cloud</strong> (anonymní analytika návštěvnosti webu). Údaje neprodáváme
+          ani nepředáváme třetím stranám za účelem marketingu.
+        </p>
+      </section>
 
-        <h3>2.2 Kontaktní formulář</h3>
-        <p>Při odeslání zprávy prostřednictvím kontaktního formuláře zpracováváme:</p>
+      <!-- 4. Vaše práva -->
+      <section id="prava" class="legal-card">
+        <h2><i class="fas fa-scale-balanced"></i> Vaše práva</h2>
+        <p>Dle GDPR máte právo na:</p>
         <ul>
-          <li>Jméno</li>
-          <li>E-mailová adresa</li>
-          <li>Obsah zprávy</li>
+          <li><i class="fas fa-check"></i> <strong>Přístup</strong> ke svým údajům a jejich kopii.</li>
+          <li><i class="fas fa-check"></i> <strong>Opravu</strong> nepřesných údajů.</li>
+          <li><i class="fas fa-check"></i> <strong>Výmaz</strong>, pokud údaje již nejsou potřebné.</li>
+          <li><i class="fas fa-check"></i> <strong>Omezení zpracování</strong> nebo <strong>námitku</strong> proti němu.</li>
+          <li><i class="fas fa-check"></i> <strong>Přenositelnost</strong> údajů ve strojově čitelném formátu.</li>
         </ul>
-
-        <h3>2.3 Další zpracovávané údaje</h3>
-        <p><span class="placeholder">[POKUD ZPRACOVÁVÁTE DALŠÍ ÚDAJE – NAPŘ. FOTOGRAFIE DOKLADŮ, PLATEBNÍ INFORMACE APOD., DOPLŇTE ZDE. JINAK TENTO ODSTAVEC SMAŽTE.]</span></p>
-
-        <h3>2.4 Údaje, které nezpracováváme</h3>
-        <p>Web <strong>nepoužívá</strong> žádné analytické nástroje (Google Analytics apod.), reklamní sítě ani sledovací pixely třetích stran. Nezpracováváme zvláštní kategorie osobních údajů (zdravotní stav, biometrické údaje apod.).</p>
-
-        <!-- 3. Účel a právní základ -->
-        <h2 id="ucel"><i class="fas fa-bullseye text-blue-400"></i> 3. Účel zpracování a právní základ</h2>
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm border-collapse mt-2 mb-4">
-            <thead>
-              <tr class="bg-blue-50">
-                <th class="text-left p-3 border border-gray-200 font-semibold text-blue-900">Účel</th>
-                <th class="text-left p-3 border border-gray-200 font-semibold text-blue-900">Právní základ (GDPR)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="hover:bg-gray-50">
-                <td class="p-3 border border-gray-200">Zpracování poptávky a uzavření smlouvy o krátkodobém pronájmu</td>
-                <td class="p-3 border border-gray-200">Čl. 6 odst. 1 písm. b) – plnění smlouvy / příprava na uzavření smlouvy</td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="p-3 border border-gray-200">Komunikace se zájemcem o pronájem (e-mail, telefon)</td>
-                <td class="p-3 border border-gray-200">Čl. 6 odst. 1 písm. b) – plnění smlouvy</td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="p-3 border border-gray-200">Odpověď na dotaz zaslaný kontaktním formulářem</td>
-                <td class="p-3 border border-gray-200">Čl. 6 odst. 1 písm. f) – oprávněný zájem správce</td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="p-3 border border-gray-200">Plnění zákonných povinností (účetnictví, daně)</td>
-                <td class="p-3 border border-gray-200">Čl. 6 odst. 1 písm. c) – splnění právní povinnosti</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="contact-box">
+          <p><i class="fas fa-envelope mr-1"></i> Žádosti vyřizujeme na <strong>info@unasvalbanii.cz</strong> nejpozději do 30 dnů.</p>
         </div>
-        <p>Osobní údaje nejsou využívány k automatizovanému rozhodování ani profilování ve smyslu čl. 22 GDPR.</p>
+        <p class="mt-3 text-sm text-gray-500">
+          Stížnost můžete podat u Úřadu pro ochranu osobních údajů (Pplk. Sochora 27, 170 00 Praha 7,
+          <a href="https://www.uoou.cz" target="_blank" rel="noopener" class="text-blue-600 underline">www.uoou.cz</a>).
+        </p>
+      </section>
 
-        <!-- 4. Doba uchování -->
-        <h2 id="doba"><i class="fas fa-clock text-blue-400"></i> 4. Doba uchování osobních údajů</h2>
-        <p>Osobní údaje uchováváme po dobu nezbytně nutnou k naplnění účelu, pro který byly shromážděny:</p>
-        <ul>
-          <li><strong>Nevyřízené poptávky (bez uzavřené smlouvy):</strong> po dobu vyřízení poptávky, nejdéle 90 dní od odeslání formuláře.</li>
-          <li><strong>Realizované pronájmy:</strong> po dobu trvání smluvního vztahu a následně po dobu 3 let od ukončení pobytu (zákonná promlčecí lhůta dle občanského zákoníku).</li>
-          <li><strong>Účetní a daňové doklady:</strong> po dobu 10 let od konce zdaňovacího období, v němž byla transakce uskutečněna, dle zákona č. 563/1991 Sb. o účetnictví.</li>
-          <li><strong>Kontaktní dotazy:</strong> po dobu vyřízení dotazu a 6 měsíců poté.</li>
-        </ul>
-        <p>Po uplynutí příslušné lhůty jsou osobní údaje bezpečně smazány nebo anonymizovány.</p>
+      <!-- 5. Cookies -->
+      <section id="cookies" class="legal-card">
+        <h2><i class="fas fa-cookie-bite"></i> Cookies</h2>
+        <p>
+          Web používá pouze technicky nezbytné úložiště (zapamatování zavření cookie lišty na 365 dní)
+          a externí knihovny bez cookies (Swiper, Flatpickr, Font Awesome). Pro měření návštěvnosti
+          používáme nástroj Umami Cloud, který funguje <strong>bez cookies</strong> – proto se na něj
+          nevztahuje povinnost žádat souhlas. Nepoužíváme žádné cookies pro marketing nebo cílenou
+          reklamu ani sledovací pixely třetích stran. Vloženou mapu Google Maps zobrazujeme jako statický
+          iframe – cookies si nastavuje Google dle vlastních zásad.
+        </p>
+        <p class="text-sm text-gray-500 mt-2">
+          Na technicky nezbytná data se dle § 89 odst. 3 zákona č. 127/2005 Sb. nevztahuje požadavek na souhlas.
+        </p>
+      </section>
 
-        <!-- 5. Příjemci -->
-        <h2 id="prikazi"><i class="fas fa-share-nodes text-blue-400"></i> 5. Příjemci osobních údajů</h2>
-        <p>Osobní údaje nejsou předávány třetím stranám za účelem marketingu ani prodeje. Údaje mohou být sdíleny výhradně s:</p>
-        <ul>
-          <li><strong>EmailJS (Emailjs.com)</strong> – technický zprostředkovatel odesílání e-mailových notifikací z rezervačního formuláře. EmailJS zpracovává údaje jako zpracovatel dle čl. 28 GDPR. Sídlo: USA, přenos dat probíhá na základě standardních smluvních doložek (SCC).</li>
-          <li><strong>Poskytovatel e-mailové schránky</strong> – e-mailová komunikace je uložena u poskytovatele e-mailových služeb správce.</li>
-          <li><strong>Orgány veřejné moci</strong> – v případě zákonné povinnosti (správce daně, soudy apod.).</li>
-        </ul>
-        <p>Osobní údaje <strong>nejsou předávány</strong> do třetích zemí mimo EHP, s výjimkou EmailJS (USA) – viz výše.</p>
-
-        <!-- 6. Vaše práva -->
-        <h2 id="prava"><i class="fas fa-scale-balanced text-blue-400"></i> 6. Vaše práva</h2>
-        <p>Jako subjekt údajů máte dle GDPR následující práva:</p>
-        <ul>
-          <li><strong>Právo na přístup (čl. 15):</strong> Máte právo získat potvrzení, zda zpracováváme vaše osobní údaje, a pokud ano, přístup k nim.</li>
-          <li><strong>Právo na opravu (čl. 16):</strong> Máte právo na opravu nepřesných nebo neúplných osobních údajů.</li>
-          <li><strong>Právo na výmaz – „právo být zapomenut" (čl. 17):</strong> Máte právo na výmaz osobních údajů, pokud již nejsou potřebné pro účel, pro který byly shromážděny, nebo pokud odvoláte souhlas.</li>
-          <li><strong>Právo na omezení zpracování (čl. 18):</strong> Máte právo požádat o omezení zpracování v zákonem stanovených případech.</li>
-          <li><strong>Právo na přenositelnost (čl. 20):</strong> Máte právo obdržet své údaje ve strukturovaném, běžně používaném a strojově čitelném formátu.</li>
-          <li><strong>Právo vznést námitku (čl. 21):</strong> Máte právo vznést námitku proti zpracování prováděnému na základě oprávněného zájmu správce.</li>
-          <li><strong>Právo odvolat souhlas:</strong> Pokud je zpracování založeno na souhlasu, máte právo jej kdykoli odvolat, aniž by tím byla dotčena zákonnost zpracování před jeho odvoláním.</li>
-        </ul>
-
-        <div class="info-box">
-          <p><i class="fas fa-envelope mr-2"></i>Žádosti týkající se vašich práv zasílejte e-mailem na <a href="mailto:info@unasvalbanii.cz" class="font-semibold">info@unasvalbanii.cz</a>. Na žádost odpovíme nejpozději do <strong>30 dnů</strong> od jejího obdržení.</p>
+      <!-- 6. Zabezpečení a kontakt -->
+      <section id="kontakt" class="legal-card">
+        <h2><i class="fas fa-lock"></i> Zabezpečení a kontakt</h2>
+        <p>
+          Přenos dat je šifrován (HTTPS/TLS) a přístup k údajům mají pouze osoby nezbytné pro provoz webu.
+          Veškeré dotazy k ochraně osobních údajů směřujte na:
+        </p>
+        <div class="contact-box">
+          <p><i class="fas fa-envelope mr-1"></i> info@unasvalbanii.cz &nbsp;|&nbsp; <i class="fas fa-phone mr-1"></i> +420 728 621 498</p>
         </div>
+      </section>
 
-        <h3>Právo podat stížnost</h3>
-        <p>Máte právo podat stížnost u dozorového úřadu, kterým je pro Českou republiku:</p>
-        <div class="bg-gray-50 rounded-lg border border-gray-200 p-4 my-3 text-sm">
-          <p class="mb-1 font-semibold">Úřad pro ochranu osobních údajů (ÚOOÚ)</p>
-          <p class="mb-1">Pplk. Sochora 27, 170 00 Praha 7</p>
-          <p class="mb-1">Tel.: +420 234 514 111</p>
-          <p class="mb-0">Web: <a href="https://www.uoou.cz" target="_blank" rel="noopener">www.uoou.cz</a></p>
-        </div>
+      <p class="text-xs text-gray-500 text-center pt-2">
+        Tyto zásady jsou účinné od srpna 2026. Správce si vyhrazuje právo na jejich aktualizaci.
+      </p>
 
-        <!-- 7. Cookies -->
-        <h2 id="cookies"><i class="fas fa-cookie-bite text-blue-400"></i> 7. Cookies a technické soubory</h2>
-        <p>Web <strong>unasvalbanii.cz</strong> využívá výhradně technicky nezbytné soubory cookies a úložiště prohlížeče, bez nichž by web nemohl správně fungovat. Nepoužíváme žádné analytické, marketingové ani sledovací cookies třetích stran.</p>
-
-        <h3>Technicky nezbytné soubory</h3>
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm border-collapse mt-2 mb-4">
-            <thead>
-              <tr class="bg-blue-50">
-                <th class="text-left p-3 border border-gray-200 font-semibold text-blue-900">Název / zdroj</th>
-                <th class="text-left p-3 border border-gray-200 font-semibold text-blue-900">Typ</th>
-                <th class="text-left p-3 border border-gray-200 font-semibold text-blue-900">Účel</th>
-                <th class="text-left p-3 border border-gray-200 font-semibold text-blue-900">Doba</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="hover:bg-gray-50">
-                <td class="p-3 border border-gray-200"><code>cookie_notice</code></td>
-                <td class="p-3 border border-gray-200">localStorage</td>
-                <td class="p-3 border border-gray-200">Zapamatování zavření informační lišty o cookies</td>
-                <td class="p-3 border border-gray-200">365 dní</td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="p-3 border border-gray-200">CDN knihovny (Swiper, Flatpickr, Hammer.js, Font Awesome)</td>
-                <td class="p-3 border border-gray-200">Bez cookies</td>
-                <td class="p-3 border border-gray-200">Načítání funkčních komponent webu z externích CDN</td>
-                <td class="p-3 border border-gray-200">–</td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="p-3 border border-gray-200">Google Maps (iframe)</td>
-                <td class="p-3 border border-gray-200">Cookies třetí strany</td>
-                <td class="p-3 border border-gray-200">Zobrazení mapy – cookies nastavuje Google dle vlastních zásad</td>
-                <td class="p-3 border border-gray-200">Dle Google</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p>Na technicky nezbytné cookies se dle § 89 odst. 3 zákona č. 127/2005 Sb. nevztahuje požadavek na souhlas. Google Maps je integrováno jako statický iframe – pokud si nepřejete, aby Google nastavoval cookies, doporučujeme neinteragovat s mapou nebo používat prohlížeč s blokováním cookies třetích stran.</p>
-
-        <!-- 8. Zabezpečení -->
-        <h2 id="bezpecnost"><i class="fas fa-lock text-blue-400"></i> 8. Zabezpečení osobních údajů</h2>
-        <p>Přijímáme přiměřená technická a organizační opatření k ochraně osobních údajů před neoprávněným přístupem, ztrátou nebo zničením:</p>
-        <ul>
-          <li>Přenos dat je šifrován prostřednictvím protokolu HTTPS (TLS).</li>
-          <li>Přístup k osobním údajům je omezen na minimální okruh osob nezbytných pro provoz.</li>
-          <li>E-mailová komunikace obsahující osobní údaje je chráněna heslem poskytovatele e-mailových služeb.</li>
-        </ul>
-
-        <!-- 9. Kontakt -->
-        <h2 id="kontakt"><i class="fas fa-envelope text-blue-400"></i> 9. Kontakt pro záležitosti ochrany osobních údajů</h2>
-        <p>Veškeré dotazy, žádosti nebo stížnosti týkající se zpracování osobních údajů zasílejte na:</p>
-        <div class="bg-gray-50 rounded-lg border border-gray-200 p-4 my-3 text-sm">
-          <p class="mb-1"><strong>E-mail:</strong> <a href="mailto:info@unasvalbanii.cz">info@unasvalbanii.cz</a></p>
-          <p class="mb-0"><strong>Telefon:</strong> <span class="placeholder">[DOPLŇTE TELEFON]</span></p>
-        </div>
-
-        <div class="mt-8 pt-6 border-t border-gray-200 text-xs text-gray-400 text-center">
-          Tyto zásady jsou účinné od června 2026. Správce si vyhrazuje právo na jejich aktualizaci. O podstatných změnách budou uživatelé informováni prostřednictvím webu.
-        </div>
-
-      </article>
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-6 mt-10">
-    <div class="container mx-auto px-4 max-w-5xl text-center text-sm">
-      <p>© 2026 U nás v Albánii. Všechna práva vyhrazena.</p>
-      <a href="/" class="text-gray-400 hover:text-white mt-1 inline-block transition-colors">← Zpět na hlavní stránku</a>
+  <footer class="bg-gray-900 text-white mt-6">
+    <div class="container mx-auto px-4 py-6 max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-xs text-gray-400">© 2026 U nás v Albánii · Všechna práva vyhrazena</p>
+      <div class="flex gap-4 text-xs text-gray-400">
+        <a href="index.html" class="hover:text-white transition">Hlavní stránka</a>
+        <a href="/nakladani-s-obsahem" class="hover:text-white transition">Nakládání s obsahem webu</a>
+      </div>
     </div>
   </footer>
 
