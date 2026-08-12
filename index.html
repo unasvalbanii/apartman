@@ -2032,6 +2032,12 @@ a.vip-link.active {
   -webkit-appearance: none;
 }
 
+@media (max-width: 640px) {
+  .drawer-input {
+    font-size: 16px;
+  }
+}
+
 .drawer-input:focus {
   border-color: #2563eb;
   background: #ffffff;
@@ -2287,6 +2293,7 @@ a.vip-link.active {
   transition: background 0.15s ease, border-color 0.15s ease;
   -webkit-tap-highlight-color: transparent;
   line-height: 1;
+  touch-action: manipulation;
 }
 
 .drawer-counter-btn:active {
