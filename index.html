@@ -4616,7 +4616,7 @@ a.vip-link.active {
   <!-- Spodní lišta -->
   <div class="border-t border-white border-opacity-5">
     <div class="container mx-auto px-4 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <p class="text-xs text-gray-400">© 2026 U nás v Albánii · Všechna práva vyhrazena</p>
+      <p class="text-xs text-gray-400">© <span id="footer-year">2026</span> U nás v Albánii · Všechna práva vyhrazena</p>
       <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
         <a href="/ochrana-osobnich-udaju" class="text-xs text-gray-400 hover:text-white transition">Ochrana osobních údajů</a>
         <span class="text-xs text-gray-600">·</span>
@@ -4948,6 +4948,9 @@ a.vip-link.active {
       window.addEventListener('resize', throttle(apply, 150));
     }
     document.addEventListener('DOMContentLoaded', () => {
+      const footerYearEl = document.getElementById('footer-year');
+      if (footerYearEl) footerYearEl.textContent = new Date().getFullYear();
+
       const header = document.getElementById('main-header');
       const scrollToTopBtn = document.getElementById('scroll-to-top');
 
