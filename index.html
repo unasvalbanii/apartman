@@ -4535,49 +4535,78 @@ a.vip-link.active {
         <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color:#ffb500;">Pro naše hosty</p>
 
         <div class="rounded-2xl p-6" style="background:rgba(255,181,0,0.07);border:1px solid rgba(255,181,0,0.2);">
-          <div class="flex items-start gap-4 mb-5">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                 style="background:rgba(255,181,0,0.15);border:1px solid rgba(255,181,0,0.35);">
-              <i class="fas fa-lock" style="font-size:1.1rem;color:#ffb500;"></i>
+          <div class="flex flex-col md:flex-row gap-8">
+
+            <div class="flex-1">
+              <div class="flex items-start gap-4 mb-5">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                     style="background:rgba(255,181,0,0.15);border:1px solid rgba(255,181,0,0.35);">
+                  <i class="fas fa-lock" style="font-size:1.1rem;color:#ffb500;"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-white text-base mb-1">VIP sekce pro hosty</h3>
+                  <p class="text-sm text-gray-400 leading-relaxed">Exkluzivní sekce s praktickými informacemi pro váš pobyt – vše na jednom místě.</p>
+                </div>
+              </div>
+
+              <a href="#" id="footer-vip-link"
+                 class="inline-flex items-center gap-2 font-bold text-sm rounded-xl px-5 py-3 transition"
+                 style="background:#ffb500;color:#000;"
+                 onmouseover="this.style.background='#e69500'"
+                 onmouseout="this.style.background='#ffb500'">
+                <i class="fas fa-arrow-right"></i>
+                Vstoupit do VIP sekce
+              </a>
+
+              <p class="text-xs text-gray-500 mt-4">
+                <i class="fas fa-circle-info mr-1"></i>
+                Přístupové údaje obdržíte e-mailem po dokončení rezervace.
+              </p>
             </div>
-            <div>
-              <h3 class="font-bold text-white text-base mb-1">VIP sekce pro hosty</h3>
-              <p class="text-sm text-gray-400 leading-relaxed">Exkluzivní sekce s praktickými informacemi pro váš pobyt – vše na jednom místě.</p>
+
+            <div class="md:w-60 flex-shrink-0 md:border-l md:pl-8" style="border-color: rgba(255,181,0,0.2);">
+              <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-500 mb-3">Co ve VIP sekci najdete</p>
+              <div class="grid grid-cols-3 gap-4">
+                <div class="flex flex-col items-center text-center gap-1.5">
+                  <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(255,181,0,0.12);">
+                    <i class="fas fa-car text-xs" style="color:#ffb500;"></i>
+                  </div>
+                  <span class="text-[10px] text-gray-400 leading-tight">Příjezd</span>
+                </div>
+                <div class="flex flex-col items-center text-center gap-1.5">
+                  <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(255,181,0,0.12);">
+                    <i class="fas fa-home text-xs" style="color:#ffb500;"></i>
+                  </div>
+                  <span class="text-[10px] text-gray-400 leading-tight">Apartmán</span>
+                </div>
+                <div class="flex flex-col items-center text-center gap-1.5">
+                  <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(255,181,0,0.12);">
+                    <i class="fas fa-map-marker-alt text-xs" style="color:#ffb500;"></i>
+                  </div>
+                  <span class="text-[10px] text-gray-400 leading-tight">Okolí</span>
+                </div>
+                <div class="flex flex-col items-center text-center gap-1.5">
+                  <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(255,181,0,0.12);">
+                    <i class="fas fa-utensils text-xs" style="color:#ffb500;"></i>
+                  </div>
+                  <span class="text-[10px] text-gray-400 leading-tight">Jídlo</span>
+                </div>
+                <div class="flex flex-col items-center text-center gap-1.5">
+                  <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(255,181,0,0.12);">
+                    <i class="fas fa-lightbulb text-xs" style="color:#ffb500;"></i>
+                  </div>
+                  <span class="text-[10px] text-gray-400 leading-tight">Tipy</span>
+                </div>
+                <div class="flex flex-col items-center text-center gap-1.5">
+                  <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(255,181,0,0.12);">
+                    <i class="fas fa-luggage-cart text-xs" style="color:#ffb500;"></i>
+                  </div>
+                  <span class="text-[10px] text-gray-400 leading-tight">Odjezd</span>
+                </div>
+              </div>
             </div>
+
           </div>
-
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-2 text-sm text-gray-300">
-              <i class="fas fa-circle-check text-green-400 text-xs flex-shrink-0"></i>
-              Instrukce k příjezdu a předání klíčů
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-300">
-              <i class="fas fa-circle-check text-green-400 text-xs flex-shrink-0"></i>
-              WiFi heslo a kódy do apartmánu
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-300">
-              <i class="fas fa-circle-check text-green-400 text-xs flex-shrink-0"></i>
-              Tipy a doporučení přímo od majitelů
-            </li>
-            <li class="flex items-center gap-2 text-sm text-gray-300">
-              <i class="fas fa-circle-check text-green-400 text-xs flex-shrink-0"></i>
-              Kontakty pro případ potřeby
-            </li>
-          </ul>
-
-          <a href="#" id="footer-vip-link"
-             class="inline-flex items-center gap-2 font-bold text-sm rounded-xl px-5 py-3 transition"
-             style="background:#ffb500;color:#000;"
-             onmouseover="this.style.background='#e69500'"
-             onmouseout="this.style.background='#ffb500'">
-            <i class="fas fa-arrow-right"></i>
-            Vstoupit do VIP sekce
-          </a>
-
-          <p class="text-xs text-gray-500 mt-4">
-            <i class="fas fa-circle-info mr-1"></i>
-            Přístupové údaje obdržíte e-mailem po dokončení rezervace.
-          </p>
         </div>
       </div>
 
