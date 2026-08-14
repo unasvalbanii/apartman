@@ -47,6 +47,9 @@
     /* ── HEADER ── */
     #vip-header {
       background: var(--navy);
+      position: sticky; top: 0; z-index: 200;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+      transition: box-shadow .3s;
     }
     .header-inner {
   max-width: 1100px; margin: 0 auto;
@@ -173,11 +176,7 @@
     .section-nav-bar::-webkit-scrollbar { display: none; }
 
     /* ── SWIPE HINT (mobil) ── */
-    .section-nav-wrap {
-      position: sticky; top: 0; z-index: 200;
-      background: #fff;
-      box-shadow: 0 2px 12px rgba(0,0,0,.15);
-    }
+    .section-nav-wrap { position: relative; }
     .section-nav-wrap::after {
       content: '';
       position: absolute; top: 0; right: 0; bottom: 0;
@@ -228,7 +227,7 @@
     main { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
 
     /* ── SECTION ── */
-    .section { margin-bottom: 3.5rem; scroll-margin-top: 80px; }
+    .section { margin-bottom: 3.5rem; scroll-margin-top: 160px; }
     .section-header {
       display: flex; align-items: center; gap: 1rem;
       margin-bottom: 1.5rem; padding-bottom: .75rem;
@@ -1383,8 +1382,9 @@
 
   /* ── Smooth scroll + active nav link ── */
   const headerH = () => {
+    const header = document.getElementById('vip-header');
     const navBar = document.getElementById('section-nav-bar');
-    return navBar ? navBar.offsetHeight : 38;
+    return (header ? header.offsetHeight : 58) + (navBar ? navBar.offsetHeight : 38);
   };
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
