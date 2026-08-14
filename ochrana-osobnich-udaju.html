@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nakládání s obsahem webu | U nás v Albánii</title>
-  <meta name="description" content="Podmínky užití obsahu webu U nás v Albánii – fotografie, texty a grafické materiály jsou chráněny autorským zákonem a bez souhlasu majitele je nelze šířit ani jinak užívat.">
-  <meta name="robots" content="noindex, follow">
+  <title>Ochrana osobních údajů | U nás v Albánii</title>
+  <meta name="description" content="Zásady zpracování osobních údajů webu U nás v Albánii dle nařízení GDPR.">
 
   <link rel="icon" href="assets/logo/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/logo/favicon-490.png">
@@ -22,7 +21,7 @@
       font-style: normal;
       font-display: block;
     }
-    .logo-font { font-family: 'Poetsen One', sans-serif; letter-spacing: 0.5px; font-weight: 400; }
+    .logo-font { font-family: 'Poetsen One', sans-serif; letter-spacing: 0.5px; font-weight: 400;}
     .logo-shadow { text-shadow: 0 1.5px 3px rgba(0,0,0,0.65); }
     body { margin: 0; padding: 0; }
 
@@ -65,11 +64,18 @@
     }
     .legal-card h2 i { color: #ffb500; font-size: 1.1rem; flex-shrink: 0; }
 
+    .legal-card h3 {
+      color: #1f2937;
+      font-weight: 700;
+      font-size: 0.98rem;
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+
     .legal-card p, .legal-card li { color: #374151; line-height: 1.7; font-size: 0.96rem; }
     .legal-card ul { margin-top: 8px; margin-bottom: 8px; }
     .legal-card li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
     .legal-card li i { color: #2563eb; font-size: 0.8rem; margin-top: 6px; flex-shrink: 0; }
-    .legal-card li.deny i { color: #dc2626; }
 
     .law-ref {
       display: inline-flex;
@@ -86,7 +92,31 @@
       white-space: nowrap;
     }
 
-    #scroll-to-top {
+    .contact-box {
+      background: #f0f7ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-top: 10px;
+    }
+    .contact-box p { margin: 0; color: #1e40af; font-size: 0.9rem; }
+
+    .toc-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: 8px;
+      color: #1e40af;
+      font-size: 0.86rem;
+      font-weight: 600;
+      transition: background 0.15s;
+      text-decoration: none;
+    }
+    .toc-item:hover { background: #dbeafe; }
+    html { scroll-behavior: smooth; }
+
+#scroll-to-top {
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
@@ -143,90 +173,141 @@
 
     <div class="text-center mb-10">
       <p class="text-xs font-bold uppercase tracking-widest text-blue-600 mb-3">Právní informace</p>
-      <h1 class="text-3xl sm:text-4xl font-bold heading-underline">Nakládání s obsahem webu</h1>
+      <h1 class="text-3xl sm:text-4xl font-bold heading-underline">Ochrana osobních údajů</h1>
       <p class="max-w-2xl mx-auto mt-6 text-gray-600">
-        Vlastní fotografie, texty a popisky na tomto webu jsou původním autorským dílem a jsou chráněny
-        zákonem. Část ilustračních materiálů je vytvořena pomocí umělé inteligence – níže vysvětlujeme,
-        co to znamená a co hrozí za neoprávněné užití obsahu webu.
+        Zásady zpracování osobních údajů dle nařízení GDPR (EU) 2016/679. Vaše soukromí bereme vážně
+        a údaje zpracováváme jen v rozsahu nezbytném pro vyřízení rezervace.
       </p>
+      <p class="text-xs text-gray-400 mt-3">Poslední aktualizace: srpen 2026</p>
+    </div>
+
+    <!-- Rychlá navigace -->
+    <div class="max-w-3xl mx-auto mb-8">
+      <div class="legal-card !py-4">
+        <nav class="flex flex-wrap justify-center gap-1">
+          <a href="#spravce" class="toc-item"><i class="fas fa-user-tie text-blue-400"></i> Správce</a>
+          <a href="#udaje" class="toc-item"><i class="fas fa-database text-blue-400"></i> Jaké údaje</a>
+          <a href="#doba" class="toc-item"><i class="fas fa-clock text-blue-400"></i> Doba uchování</a>
+          <a href="#prava" class="toc-item"><i class="fas fa-scale-balanced text-blue-400"></i> Vaše práva</a>
+          <a href="#cookies" class="toc-item"><i class="fas fa-cookie-bite text-blue-400"></i> Cookies</a>
+          <a href="#kontakt" class="toc-item"><i class="fas fa-envelope text-blue-400"></i> Kontakt</a>
+        </nav>
+      </div>
     </div>
 
     <div class="max-w-3xl mx-auto space-y-6">
 
-      <!-- Právní základ + co je chráněno -->
-      <section class="legal-card">
-        <h2><i class="fas fa-shield-halved"></i> Co je chráněno a proč</h2>
+      <!-- 1. Správce -->
+      <section id="spravce" class="legal-card">
+        <h2><i class="fas fa-user-tie"></i> Kdo je správcem údajů</h2>
         <p>
-          Vlastní fotografie a texty, které provozovatel webu vytvořil svou tvůrčí činností, jsou jeho
-          autorským dílem ve smyslu <span class="law-ref"><i class="fas fa-gavel"></i> § 2 a § 12 zákona
-          č. 121/2000 Sb.</span> Ochrana vzniká automaticky vytvořením díla, bez nutnosti registrace nebo
-          značky ©, a majetková práva trvají po celý život autora a dalších 70 let po jeho smrti (§ 27
-          téhož zákona).
+          Správcem osobních údajů je provozovatel tohoto webu a apartmánu v Albánii, kontaktní e-mail
+          <a href="mailto:info@unasvalbanii.cz" class="text-blue-600 font-semibold underline">info@unasvalbanii.cz</a>,
+          telefon +420 728 621 498. Zpracování neprobíhá ve velkém rozsahu, správce proto nemá povinnost
+          jmenovat pověřence pro ochranu osobních údajů (DPO).
         </p>
       </section>
 
-      <!-- Původ obsahu / AI -->
-      <section class="legal-card">
-        <h2><i class="fas fa-robot"></i> Původ obsahu – vlastní tvorba a AI</h2>
-        <p>
-          Fotografie apartmánu, jeho interiéru a bezprostředního okolí jsou vlastní autorskou tvorbou
-          provozovatele webu a vztahuje se na ně ochrana popsaná výše. Některé ilustrační obrázky na webu
-          jsou vytvořeny s využitím nástrojů generativní umělé inteligence.
-        </p>
-        <p class="mt-3">
-          Podle českého práva může být autorem díla vždy jen fyzická osoba – čistě AI generovaný obsah bez
-          výrazného lidského tvůrčího vkladu proto sám o sobě není autorským dílem ve smyslu autorského
-          zákona. I na tento obsah se nicméně vztahují podmínky užití tohoto webu: je určen výhradně
-          k zobrazení v rámci této stránky a jeho stahování, kopírování či další šíření mimo tento web
-          bez souhlasu provozovatele není dovoleno.
-        </p>
-      </section>
+      <!-- 2. Jaké údaje a proč -->
+      <section id="udaje" class="legal-card">
+        <h2><i class="fas fa-database"></i> Jaké údaje zpracováváme a proč</h2>
+        <p>Údaje získáváme pouze tehdy, když nám je sami poskytnete – vyplněním rezervačního nebo kontaktního formuláře.</p>
 
-      <!-- Co je zakázáno -->
-      <section class="legal-card">
-        <h2><i class="fas fa-ban"></i> Bez souhlasu je zakázáno</h2>
-        <ul>
-          <li class="deny"><i class="fas fa-xmark"></i> Stahovat, kopírovat nebo jinak rozmnožovat fotografie a texty z tohoto webu.</li>
-          <li class="deny"><i class="fas fa-xmark"></i> Publikovat obsah (celý nebo jeho část) na jiných webech, inzertních portálech, sociálních sítích nebo v nabídkách ubytování.</li>
-          <li class="deny"><i class="fas fa-xmark"></i> Upravovat nebo přepisovat texty a vydávat je za vlastní obsah.</li>
-          <li class="deny"><i class="fas fa-xmark"></i> Používat obsah ke komerčním účelům bez licence.</li>
-        </ul>
+        <h3>Rezervační formulář</h3>
+        <p>Jméno, příjmení, adresa, e-mail, telefon a údaje o pobytu (termín, počet osob) – za účelem
+          vyřízení rezervace a uzavření smlouvy o krátkodobém pronájmu.
+          <span class="law-ref"><i class="fas fa-gavel"></i> čl. 6/1/b GDPR</span></p>
+
+        <h3>Kontaktní formulář</h3>
+        <p>Jméno, e-mail a obsah zprávy – za účelem odpovědi na váš dotaz.
+          <span class="law-ref"><i class="fas fa-gavel"></i> čl. 6/1/f GDPR</span></p>
+
+        <h3>Účetní doklady</h3>
+        <p>U realizovaných pobytů dále zpracováváme fakturační údaje z důvodu plnění zákonných povinností
+          (účetnictví, daně). <span class="law-ref"><i class="fas fa-gavel"></i> čl. 6/1/c GDPR</span></p>
+
+        <h3>Anonymní návštěvnost webu</h3>
+        <p>Pro měření návštěvnosti používáme nástroj <strong>Umami Cloud</strong>. Ten funguje bez cookies
+          a bez vytváření identifikátoru konkrétního návštěvníka – zpracovává pouze agregované a
+          anonymizované údaje o návštěvnosti (např. počet zobrazení stránek, typ zařízení, přibližná
+          zeměpisná poloha odvozená z IP adresy, kterou v anonymizované podobě uchovává jen krátkodobě).
+          Jednotlivé návštěvníky tak nedokážeme identifikovat. Právním základem je oprávněný zájem
+          provozovatele na zlepšování webu.
+          <span class="law-ref"><i class="fas fa-gavel"></i> čl. 6/1/f GDPR</span></p>
+
         <p class="mt-2 text-sm text-gray-500">
-          V pořádku je naopak odkázat na web hypertextovým odkazem nebo jej sdílet v soukromé komunikaci.
+          Web nepoužívá Google Analytics, reklamní sítě ani sledovací pixely a údaje nevyužívá
+          k automatizovanému rozhodování ani profilování.
         </p>
       </section>
 
-      <!-- Důsledky -->
-      <section class="legal-card">
-        <h2><i class="fas fa-triangle-exclamation"></i> Co hrozí za neoprávněné užití</h2>
-        <p class="mb-2">
-          Neoprávněné užití lze vymáhat civilní, přestupkovou i trestní cestou:
-        </p>
+      <!-- 3. Doba uchování a příjemci -->
+      <section id="doba" class="legal-card">
+        <h2><i class="fas fa-clock"></i> Doba uchování a příjemci údajů</h2>
         <ul>
-          <li><i class="fas fa-file-contract"></i> <strong>Civilně</strong> – zákaz dalšího užívání, náhrada škody a vydání bezdůvodného obohacení (§ 40 autorského zákona).</li>
-          <li><i class="fas fa-hand"></i> <strong>Jako přestupek</strong> – pokuta až 150 000 Kč (§ 105a–105c autorského zákona).</li>
-          <li><i class="fas fa-handcuffs"></i> <strong>Jako trestný čin</strong> – u závažnějších případů (např. při zisku z podnikání) odnětí svobody až na 8 let (§ 270 trestního zákoníku, 40/2009 Sb.).</li>
+          <li><i class="fas fa-check"></i> <strong>Nevyřízené poptávky:</strong> nejdéle 90 dní od odeslání formuláře.</li>
+          <li><i class="fas fa-check"></i> <strong>Realizované pobyty:</strong> po dobu 3 let od ukončení pobytu (promlčecí lhůta).</li>
+          <li><i class="fas fa-check"></i> <strong>Účetní doklady:</strong> 10 let dle zákona o účetnictví.</li>
         </ul>
-        <p class="mt-3 text-sm text-gray-500">
-          Uvedené sankce se vážou na obsah, který je autorským dílem (vlastní fotografie a texty). U obrázků
-          vytvořených pomocí AI se neoprávněné užití posuzuje podle podmínek užití webu, případně jako
-          porušení smluvních nebo dobrých mravů v hospodářské soutěži.
+        <p>
+          Údaje sdílíme jen s technickými zpracovateli nutnými pro chod webu – zejména se službou
+          <strong>EmailJS</strong> (odesílání e-mailových notifikací z formulářů, sídlo USA, přenos na
+          základě standardních smluvních doložek), s naším poskytovatelem e-mailu a se službou
+          <strong>Umami Cloud</strong> (anonymní analytika návštěvnosti webu). Údaje neprodáváme
+          ani nepředáváme třetím stranám za účelem marketingu.
         </p>
       </section>
 
-      <!-- Jak získat souhlas -->
-      <section class="legal-card">
-        <h2><i class="fas fa-envelope-open-text"></i> Chcete obsah použít legálně?</h2>
-        <p>
-          Napište na
-          <a href="mailto:info@unasvalbanii.cz" class="text-blue-600 font-semibold underline">info@unasvalbanii.cz</a>
-          s popisem, co a k jakému účelu chcete použít – rádi se dohodneme na spolupráci či licenci.
+      <!-- 4. Vaše práva -->
+      <section id="prava" class="legal-card">
+        <h2><i class="fas fa-scale-balanced"></i> Vaše práva</h2>
+        <p>Dle GDPR máte právo na:</p>
+        <ul>
+          <li><i class="fas fa-check"></i> <strong>Přístup</strong> ke svým údajům a jejich kopii.</li>
+          <li><i class="fas fa-check"></i> <strong>Opravu</strong> nepřesných údajů.</li>
+          <li><i class="fas fa-check"></i> <strong>Výmaz</strong>, pokud údaje již nejsou potřebné.</li>
+          <li><i class="fas fa-check"></i> <strong>Omezení zpracování</strong> nebo <strong>námitku</strong> proti němu.</li>
+          <li><i class="fas fa-check"></i> <strong>Přenositelnost</strong> údajů ve strojově čitelném formátu.</li>
+        </ul>
+        <div class="contact-box">
+          <p><i class="fas fa-envelope mr-1"></i> Žádosti vyřizujeme na <strong>info@unasvalbanii.cz</strong> nejpozději do 30 dnů.</p>
+        </div>
+        <p class="mt-3 text-sm text-gray-500">
+          Stížnost můžete podat u Úřadu pro ochranu osobních údajů (Pplk. Sochora 27, 170 00 Praha 7,
+          <a href="https://www.uoou.cz" target="_blank" rel="noopener" class="text-blue-600 underline">www.uoou.cz</a>).
         </p>
+      </section>
+
+      <!-- 5. Cookies -->
+      <section id="cookies" class="legal-card">
+        <h2><i class="fas fa-cookie-bite"></i> Cookies</h2>
+        <p>
+          Web používá pouze technicky nezbytné úložiště (zapamatování zavření cookie lišty na 365 dní)
+          a externí knihovny bez cookies (Swiper, Flatpickr, Font Awesome). Pro měření návštěvnosti
+          používáme nástroj Umami Cloud, který funguje <strong>bez cookies</strong> – proto se na něj
+          nevztahuje povinnost žádat souhlas. Nepoužíváme žádné cookies pro marketing nebo cílenou
+          reklamu ani sledovací pixely třetích stran. Vloženou mapu Google Maps zobrazujeme jako statický
+          iframe – cookies si nastavuje Google dle vlastních zásad.
+        </p>
+        <p class="text-sm text-gray-500 mt-2">
+          Na technicky nezbytná data se dle § 89 odst. 3 zákona č. 127/2005 Sb. nevztahuje požadavek na souhlas.
+        </p>
+      </section>
+
+      <!-- 6. Zabezpečení a kontakt -->
+      <section id="kontakt" class="legal-card">
+        <h2><i class="fas fa-lock"></i> Zabezpečení a kontakt</h2>
+        <p>
+          Přenos dat je šifrován (HTTPS/TLS) a přístup k údajům mají pouze osoby nezbytné pro provoz webu.
+          Veškeré dotazy k ochraně osobních údajů směřujte na:
+        </p>
+        <div class="contact-box">
+          <p><i class="fas fa-envelope mr-1"></i> info@unasvalbanii.cz &nbsp;|&nbsp; <i class="fas fa-phone mr-1"></i> +420 728 621 498</p>
+        </div>
       </section>
 
       <p class="text-xs text-gray-500 text-center pt-2">
-        Tato stránka má informativní charakter a nejde o právní poradenství. U konkrétního podezření na
-        porušení autorských práv doporučujeme konzultaci s advokátem specializujícím se na autorské právo.
+        Tyto zásady jsou účinné od srpna 2026. Správce si vyhrazuje právo na jejich aktualizaci.
       </p>
 
     </div>
@@ -237,7 +318,7 @@
       <p class="text-xs text-gray-400">© 2026 U nás v Albánii · Všechna práva vyhrazena</p>
       <div class="flex gap-4 text-xs text-gray-400">
         <a href="index.html" class="hover:text-white transition">Hlavní stránka</a>
-        <a href="/ochrana-osobnich-udaju" class="hover:text-white transition">Ochrana osobních údajů</a>
+        <a href="/nakladani-s-obsahem" class="hover:text-white transition">Nakládání s obsahem webu</a>
       </div>
     </div>
   </footer>
@@ -256,6 +337,8 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+
+    /* ===== Zpět na web (obnoví scroll pozici na předchozí stránce) ===== */
     const backLink = document.getElementById('back-link');
     if (backLink) {
       backLink.addEventListener('click', (e) => {
@@ -266,8 +349,8 @@
       });
     }
 
+    /* ===== Scroll to top tlačítko ===== */
     const scrollToTopBtn = document.getElementById('scroll-to-top');
-
     const handleScroll = throttle(() => {
       if (scrollToTopBtn) {
         if (window.pageYOffset > 200) scrollToTopBtn.classList.remove('hidden');
@@ -275,10 +358,43 @@
       }
     }, 100);
     window.addEventListener('scroll', handleScroll);
-
     if (scrollToTopBtn) {
       scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
+
+    /* ===== Sjednocený plynulý scroll na kotvy (stejná logika jako hlavní web) ===== */
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', function (e) {
+        const target = document.getElementById(this.getAttribute('href').substring(1));
+        if (!target) return;
+        e.preventDefault();
+
+        const scrollToTarget = () => {
+          const headerHeight = 0; // header na této stránce není fixní
+          let cancelled = false;
+          const cancelAuto = () => { cancelled = true; };
+          const cancelEvents = ['wheel', 'touchstart', 'pointerdown'];
+          cancelEvents.forEach(evt => window.addEventListener(evt, cancelAuto, { once: true, passive: true }));
+
+          const doScroll = () => {
+            if (cancelled) return;
+            const y = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          };
+
+          doScroll();
+          setTimeout(doScroll, 350);
+          setTimeout(doScroll, 700);
+          setTimeout(() => {
+            doScroll();
+            cancelEvents.forEach(evt => window.removeEventListener(evt, cancelAuto));
+          }, 1100);
+        };
+
+        scrollToTarget();
+      });
+    });
+
   });
 </script>
 </body>
