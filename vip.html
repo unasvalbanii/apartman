@@ -6,7 +6,16 @@
   <title>VIP průvodce pobytem | U nás v Albánii</title>
   <link rel="icon" href="assets/logo/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preload" href="assets/fonts/poetsen-one.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    @font-face {
+      font-family: 'Poetsen One';
+      src: url('assets/fonts/poetsen-one.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: block;
+    }
+
     /* ── TOKENY ── */
     :root {
       --navy:    #1e3a8b;
@@ -52,7 +61,7 @@
       flex-shrink: 0;
     }
     .header-brand img { height: 40px; width: auto; display: block; }
-    .header-brand .brand-name { color: #fff; font-weight: 700; font-size: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.65); }
+    .header-brand .brand-name { font-family: 'Poetsen One', sans-serif; letter-spacing: 0.5px; color: #fff; font-weight: 400; font-size: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.65); }
     .header-brand .badge {
       background: var(--gold); color: #000;
       font-size: .6rem; font-weight: 800;
