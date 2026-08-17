@@ -279,6 +279,31 @@
       transition: all 0.3s ease;
       z-index: 100;
     }
+
+    #floating-reservation-btn {
+      position: fixed;
+      right: 1.5rem;
+      background-color: #ffb500;
+      color: #000000;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      cursor: pointer;
+      z-index: 100;
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.15s ease, background-color 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #floating-reservation-btn.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #floating-reservation-btn:active {
+      background-color: #e69500;
+      transform: scale(0.94);
+    }
     @media (min-width: 641px) {
       #scroll-to-top:hover { background-color: #1d4ed8; transform: scale(1.1); }
     }
@@ -306,6 +331,13 @@
         height: 3.5rem;
         font-size: 1.75rem;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+      #floating-reservation-btn {
+        bottom: calc(1.5rem + 3.5rem + 12px);
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.4rem;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
       }
       #lightbox .prev,
       #lightbox .next { width: 60px; height: 60px; }
@@ -4401,6 +4433,10 @@ a.vip-link.active {
     <p id="lightbox-caption"></p>
   </div>
 
+  <button type="button" id="floating-reservation-btn" class="hidden md:hidden" onclick="openReservationDrawer(null, null, 2, 0, 0)" aria-label="Rychlá rezervace" data-umami-event="rezervace_start_floating">
+    <i class="fas fa-calendar-check"></i>
+  </button>
+
   <div id="scroll-to-top" class="hidden" aria-label="Zpět nahoru">↑</div>
 
   <section id="contact" class="py-16 bg-blue-900 text-white">
@@ -4991,6 +5027,8 @@ a.vip-link.active {
 
       const header = document.getElementById('main-header');
       const scrollToTopBtn = document.getElementById('scroll-to-top');
+      const floatingResBtn = document.getElementById('floating-reservation-btn');
+      const heroSectionEl = document.getElementById('home');
 
       function setHeaderHeightVar() {
         if (!header) return;
@@ -5006,6 +5044,11 @@ a.vip-link.active {
           if (scrollToTopBtn) {
             if (window.pageYOffset > 200) scrollToTopBtn.classList.remove('hidden');
             else scrollToTopBtn.classList.add('hidden');
+          }
+          if (floatingResBtn && heroSectionEl) {
+            const heroBottom = heroSectionEl.offsetTop + heroSectionEl.offsetHeight - (header.offsetHeight || 0);
+            if (window.pageYOffset > heroBottom) floatingResBtn.classList.remove('hidden');
+            else floatingResBtn.classList.add('hidden');
           }
         }, 100);
         window.addEventListener('scroll', handleScroll);
