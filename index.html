@@ -333,6 +333,9 @@
         font-size: 1.75rem;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
       }
+      #scroll-to-top.above-cta {
+        bottom: 5.5rem;
+      }
       #lightbox .prev,
       #lightbox .next { width: 60px; height: 60px; }
       #lightbox-pagination { bottom: 70px; }
@@ -5007,8 +5010,13 @@ a.vip-link.active {
           }
           if (mobileStickyCta && heroSection) {
             const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-            if (window.pageYOffset > heroBottom - 100) mobileStickyCta.classList.add('visible');
-            else mobileStickyCta.classList.remove('visible');
+            if (window.pageYOffset > heroBottom - 100) {
+              mobileStickyCta.classList.add('visible');
+              if (scrollToTopBtn) scrollToTopBtn.classList.add('above-cta');
+            } else {
+              mobileStickyCta.classList.remove('visible');
+              if (scrollToTopBtn) scrollToTopBtn.classList.remove('above-cta');
+            }
           }
         }, 100);
         window.addEventListener('scroll', handleScroll);
