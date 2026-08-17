@@ -577,13 +577,18 @@ a.vip-link.active {
         right: 8px;
         top: 8px;
         font-size: 10px;
-        padding: 6px 10px;
+        padding: 4px 8px;
         flex-direction: row;
         justify-content: space-between;
         gap: 4px;
         background: rgba(0,0,0,0.8);
       }
       #home .absolute > span { display: none; }
+      #home .absolute .live-corner-badge { padding: 3px 8px; gap: 4px; }
+      #home .absolute .live-corner-text { font-size: 8px; }
+      #home .absolute > div { margin: 0 4px !important; }
+      #home .absolute > div > span:first-child { display: none; }
+      #home .absolute > div span[style*="font-size: larger"] { font-size: 11px !important; }
 
       #apartment .grid,
       #home .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4,
