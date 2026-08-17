@@ -5041,15 +5041,13 @@ a.vip-link.active {
         const handleScroll = throttle(() => {
           if (window.pageYOffset > 10) header.classList.add('sticky');
           else header.classList.remove('sticky');
-          if (scrollToTopBtn) {
-            if (window.pageYOffset > 200) scrollToTopBtn.classList.remove('hidden');
-            else scrollToTopBtn.classList.add('hidden');
-          }
-          if (floatingResBtn && heroSectionEl) {
-            const heroBottom = heroSectionEl.offsetTop + heroSectionEl.offsetHeight - (header.offsetHeight || 0);
-            if (window.pageYOffset > heroBottom) floatingResBtn.classList.remove('hidden');
-            else floatingResBtn.classList.add('hidden');
-          }
+          const showThreshold = heroSectionEl
+            ? Math.max(200, heroSectionEl.offsetTop + heroSectionEl.offsetHeight - (header.offsetHeight || 0))
+            : 200;
+          const shouldShowFabs = window.pageYOffset > showThreshold;
+
+          if (scrollToTopBtn) scrollToTopBtn.classList.toggle('hidden', !shouldShowFabs);
+          if (floatingResBtn) floatingResBtn.classList.toggle('hidden', !shouldShowFabs);
         }, 100);
         window.addEventListener('scroll', handleScroll);
       }
