@@ -577,7 +577,11 @@ a.vip-link.active {
       .menu-toggle.open span:nth-child(2) { opacity: 0; }
       .menu-toggle.open span:nth-child(3) { top: 10px; transform: rotate(-45deg); }
 
-      #apartment .grid { grid-template-columns: 1fr; gap: 1rem; }
+      @media (max-width: 640px) {
+      #apartment .grid,
+      #home .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4,
+      #trips .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 { grid-template-columns: 1fr; }
+    }
 
       #home .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4 {
         grid-template-columns: repeat(2, 1fr);
@@ -651,7 +655,6 @@ a.vip-link.active {
       #home .absolute .live-corner-text { font-size: 8px; }
       #home .absolute .live-corner-dot { width: 5px; height: 5px; }
 
-      #apartment .grid,
       #home .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4,
       #trips .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 { grid-template-columns: 1fr; }
     }
@@ -1231,7 +1234,7 @@ a.vip-link.active {
       .weather-badges .badge i.icon-sea { color: #2563eb; }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 1023px) {
       #location .location-mobile-swipe {
         display: flex;
         align-items: flex-start;
@@ -1253,7 +1256,7 @@ a.vip-link.active {
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 1023px) {
       #apartment .apartment-benefits-swipe {
         display: flex;
         align-items: flex-start;
@@ -2900,13 +2903,13 @@ a.vip-link.active {
           <span class="logo-shadow logo-font">U nás v Albánii</span>
         </a>
 
-        <div class="menu-toggle md:hidden" id="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu" role="button" tabindex="0">
+        <div class="menu-toggle lg:hidden" id="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu" role="button" tabindex="0">
           <span></span>
           <span></span>
           <span></span>
         </div>
 
-        <div class="hidden md:flex items-center gap-4">
+        <div class="hidden lg:flex items-center gap-4">
           <nav>
             <ul class="flex space-x-10">
               <li><a href="#apartment">Apartmán</a></li>
@@ -2922,7 +2925,7 @@ a.vip-link.active {
       </div>
 
       <div id="mobile-menu-overlay"></div>
-        <nav class="md:hidden">
+        <nav class="lg:hidden">
         <ul class="flex-col bg-blue-900 pt-4 pb-6" id="mobile-menu" aria-hidden="true">
           <li><a href="#home" class="block py-3 px-6 text-lg">Domů</a></li>
           <li><a href="#apartment" class="block py-3 px-6 text-lg">Apartmán</a></li>
@@ -3206,7 +3209,7 @@ a.vip-link.active {
       </div>
 
       <!-- 3 boxy uvnitř containeru -->
-      <div class="apartment-benefits-swipe md:grid md:grid-cols-3 md:gap-8 mt-8 md:mt-16">
+      <div class="apartment-benefits-swipe lg:grid lg:grid-cols-3 lg:gap-8 mt-6 lg:mt-16">
         <div class="apartment-benefit-card text-center">
           <img src="assets/images/apartman/kapacita-rodina.webp" alt="Rodinný apartmán – kapacita" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy" decoding="async">
           <h3 class="text-xl font-semibold">Až pro 5 osob</h3>
@@ -3223,7 +3226,7 @@ a.vip-link.active {
           <p>Apartmán byl dokončen v roce 2026 a nabízí moderní, nové a pečlivě řešené zázemí pro pohodlný pobyt.</p>
         </div>
       </div> <!-- ✅ konec gridu -->
-      <div class="swipe-hint-pill md:hidden"><i class="fas fa-arrows-left-right"></i> Posuňte prstem do strany</div>
+      <div class="swipe-hint-pill lg:hidden"><i class="fas fa-arrows-left-right"></i> Posuňte prstem do strany</div>
     </div> <!-- konec containeru py-12 -->
   </section>
 
@@ -3271,7 +3274,7 @@ a.vip-link.active {
 
     <div class="container mx-auto px-4 py-12" id="location-swipe-wrap">
       <!-- ✅ Mobil: swipe (scroll-snap). Od md: klasický grid -->
-      <div class="location-mobile-swipe md:grid md:grid-cols-3 md:gap-8">
+      <div class="location-mobile-swipe lg:grid lg:grid-cols-3 lg:gap-8">
         
         <div class="location-card text-center bg-white p-6 rounded-lg shadow-md">
           <h3 class="text-xl font-bold mb-4">Transfer z letiště</h3>
@@ -3301,7 +3304,7 @@ a.vip-link.active {
 
       </div>
 
-      <div class="swipe-hint-pill md:hidden"><i class="fas fa-arrows-left-right"></i> Posuňte prstem do strany</div>
+      <div class="swipe-hint-pill lg:hidden"><i class="fas fa-arrows-left-right"></i> Posuňte prstem do strany</div>
     </div>
 
   </div>
