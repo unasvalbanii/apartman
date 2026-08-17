@@ -577,19 +577,21 @@ a.vip-link.active {
         top: 8px !important;
         right: auto !important;
         transform: translateX(-50%);
-        width: calc(100% - 16px);
-        max-width: 340px;
+        width: auto;
+        max-width: calc(100% - 16px);
         box-sizing: border-box;
-        font-size: 10px;
-        padding: 6px 10px;
+        font-size: 9px;
+        padding: 5px 8px;
+        border-radius: 12px;
         flex-direction: row;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: center;
         align-items: center;
-        gap: 6px 10px;
-        background: rgba(0,0,0,0.85) !important;
+        gap: 4px;
+        background: rgba(0,0,0,0.7) !important;
       }
       #home .absolute > span { display: none; }
+      #home .absolute > div > span:last-child { font-size: 11px !important; }
 
       #apartment .grid,
       #home .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4,
