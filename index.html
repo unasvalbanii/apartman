@@ -588,7 +588,7 @@ a.vip-link.active {
 
       #home .absolute > span { display: none; }
       #home .absolute > div br { display: none; }
-      #home .absolute > div > span:first-child { display: none; }
+      #home .absolute > div > span[style*="font-size: small"] { display: none; }
 
       #home .absolute > div {
         margin: 0 8px !important;
@@ -596,7 +596,7 @@ a.vip-link.active {
         align-items: center;
         gap: 4px;
       }
-      #home .absolute > div:not(:last-child)::after {
+      #home .absolute > div:not(:last-child):not(.live-corner-badge)::after {
         content: '';
         display: inline-block;
         width: 1px;
@@ -611,6 +611,10 @@ a.vip-link.active {
       }
 
       #home .absolute .live-corner-badge {
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        box-shadow: none !important;
         padding: 3px 8px;
         gap: 4px;
       }
