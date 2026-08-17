@@ -2017,8 +2017,18 @@ a.vip-link.active {
   background: #e5e7eb;
 }
 
+#vip-drawer-close {
+  width: 38px;
+  height: 38px;
+}
+
 @media (max-width: 640px) {
   #reservation-drawer-close {
+    width: 44px;
+    height: 44px;
+    font-size: 1.25rem;
+  }
+  #vip-drawer-close {
     width: 44px;
     height: 44px;
     font-size: 1.25rem;
@@ -2726,6 +2736,14 @@ a.vip-link.active {
   transition: background 0.2s ease;
 }
 #trip-modal-close:hover { background: #e69500; }
+
+@media (max-width: 640px) {
+  #trip-modal-close {
+    width: 44px;
+    height: 44px;
+    font-size: 1.25rem;
+  }
+}
 
 #trip-modal-body { padding: 24px; }
 
@@ -4126,7 +4144,7 @@ a.vip-link.active {
         <p style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin:2px 0 0;">Pouze pro naše hosty</p>
       </div>
       <button id="vip-drawer-close" aria-label="Zavřít VIP přihlášení"
-        style="margin-left:auto;width:38px;height:38px;border-radius:9999px;border:none;background:rgba(255,255,255,0.1);color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">✕</button>
+        style="margin-left:auto;border-radius:9999px;border:none;background:rgba(255,255,255,0.1);color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">✕</button>
     </div>
 
     <div style="padding:24px 24px 40px;">
@@ -7188,4 +7206,3 @@ document.querySelectorAll('.price-legend-toggle').forEach(btn => {
 </script>
 </body>
 </html>
-
