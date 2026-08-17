@@ -573,8 +573,9 @@ a.vip-link.active {
 
     @media (max-width: 640px) {
       #home .absolute {
-        left: 50%;
-        top: 8px;
+        left: 50% !important;
+        top: 8px !important;
+        right: auto !important;
         transform: translateX(-50%);
         width: calc(100% - 16px);
         max-width: 340px;
@@ -586,7 +587,7 @@ a.vip-link.active {
         justify-content: center;
         align-items: center;
         gap: 6px 10px;
-        background: rgba(0,0,0,0.8);
+        background: rgba(0,0,0,0.85) !important;
       }
       #home .absolute > span { display: none; }
 
