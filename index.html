@@ -94,25 +94,10 @@
       transition: all 0.3s ease;
     }
 
-    #header-rezervace-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background-color: #ffb500;
+    nav ul li a.reservation-link {
+      padding: 0.5rem 1rem;
       color: #000000;
-      font-weight: 800;
-      font-size: 0.78rem;
-      padding: 8px 14px;
-      border: none;
-      border-radius: 9999px;
-      cursor: pointer;
-      white-space: nowrap;
-      -webkit-tap-highlight-color: transparent;
-      transition: background-color 0.2s ease, transform 0.15s ease;
-    }
-    #header-rezervace-btn:active {
-      background-color: #e69500;
-      transform: scale(0.97);
+      transition: color 0.3s ease;
     }
 
     @media (min-width: 641px) {
@@ -277,6 +262,23 @@
       transform: none;
     }
 
+    #scroll-to-top {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 3rem;
+      height: 3rem;
+      background-color: #2563eb;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
     @media (min-width: 641px) {
       #scroll-to-top:hover { background-color: #1d4ed8; transform: scale(1.1); }
     }
@@ -305,7 +307,6 @@
         font-size: 1.75rem;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
       }
-
       #lightbox .prev,
       #lightbox .next { width: 60px; height: 60px; }
       #lightbox-pagination { bottom: 70px; }
@@ -573,13 +574,11 @@ a.vip-link.active {
     @media (max-width: 640px) {
       #home .absolute {
         left: 8px;
-        right: 8px;
         top: 8px;
-        font-size: 10px;
-        padding: 6px 10px;
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 4px;
+        font-size: 11px;
+        padding: 6px 8px;
+        flex-direction: column;
+        gap: 6px;
         background: rgba(0,0,0,0.8);
       }
       #home .absolute > span { display: none; }
@@ -2814,15 +2813,10 @@ a.vip-link.active {
           <span class="logo-shadow logo-font">U nás v Albánii</span>
         </a>
 
-        <div class="flex items-center gap-3 md:hidden">
-          <button type="button" id="header-rezervace-btn" onclick="openReservationDrawer(null, null, 2, 0, 0)" data-umami-event="rezervace_start_header">
-            <i class="fas fa-calendar-check"></i> Rezervovat
-          </button>
-          <div class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu" role="button" tabindex="0">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+        <div class="menu-toggle md:hidden" id="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu" role="button" tabindex="0">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
 
         <div class="hidden md:flex items-center gap-4">
@@ -4370,6 +4364,8 @@ a.vip-link.active {
     <div id="lightbox-pagination" aria-label="Paginace lightboxu"></div>
     <p id="lightbox-caption"></p>
   </div>
+
+  <div id="scroll-to-top" class="hidden" aria-label="Zpět nahoru">↑</div>
 
   <section id="contact" class="py-16 bg-blue-900 text-white">
   <div class="container mx-auto px-4">
