@@ -1242,7 +1242,7 @@ a.vip-link.active {
     @media (max-width: 1023px) {
       #location .location-mobile-swipe {
         display: flex;
-        align-items: flex-start;
+        align-items: stretch;
         gap: 12px;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
@@ -1258,13 +1258,16 @@ a.vip-link.active {
       #location .location-mobile-swipe .location-card {
         flex: 0 0 92%;
         scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
     }
 
     @media (max-width: 1023px) {
       #apartment .apartment-benefits-swipe {
         display: flex;
-        align-items: flex-start;
+        align-items: stretch;
         gap: 12px;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
@@ -1279,6 +1282,9 @@ a.vip-link.active {
       #apartment .apartment-benefits-swipe .apartment-benefit-card {
         flex: 0 0 92%;
         scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
     }
 
@@ -7167,4 +7173,3 @@ document.querySelectorAll('.price-legend-toggle').forEach(btn => {
 </script>
 </body>
 </html>
-
