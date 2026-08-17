@@ -573,22 +573,49 @@ a.vip-link.active {
 
     @media (max-width: 640px) {
       #home .absolute {
-        left: 8px;
-        right: 8px;
-        top: 8px;
-        font-size: 10px;
-        padding: 4px 8px;
+        left: 8px !important;
+        right: 8px !important;
+        top: 8px !important;
+        padding: 5px 12px !important;
+        font-size: 10px !important;
+        background: rgba(0,0,0,0.75) !important;
+        border-radius: 9999px;
         flex-direction: row;
-        justify-content: space-between;
-        gap: 4px;
-        background: rgba(0,0,0,0.8);
+        justify-content: center;
+        align-items: center;
+        gap: 0;
       }
+
       #home .absolute > span { display: none; }
-      #home .absolute .live-corner-badge { padding: 3px 8px; gap: 4px; }
-      #home .absolute .live-corner-text { font-size: 8px; }
-      #home .absolute > div { margin: 0 4px !important; }
+      #home .absolute > div br { display: none; }
       #home .absolute > div > span:first-child { display: none; }
-      #home .absolute > div span[style*="font-size: larger"] { font-size: 11px !important; }
+
+      #home .absolute > div {
+        margin: 0 8px !important;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      #home .absolute > div:not(:last-child)::after {
+        content: '';
+        display: inline-block;
+        width: 1px;
+        height: 12px;
+        background: rgba(255,255,255,0.25);
+        margin-left: 8px;
+      }
+
+      #home .absolute > div span[style*="font-size: larger"] {
+        font-size: 11px !important;
+        font-weight: 600;
+      }
+
+      #home .absolute .live-corner-badge {
+        padding: 3px 7px;
+        gap: 4px;
+      }
+      #home .absolute .live-corner-text { font-size: 7px; }
+      #home .absolute .live-corner-dot { width: 5px; height: 5px; }
 
       #apartment .grid,
       #home .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4,
