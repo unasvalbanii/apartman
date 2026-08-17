@@ -968,7 +968,10 @@ a.vip-link.active {
       50% { transform: translateX(4px); opacity: 1; }
     }
 
-    .pudorys-img { cursor: zoom-in; }
+        .pudorys-img { cursor: default; }
+    @media (max-width: 640px) {
+      .pudorys-img { cursor: zoom-in; }
+    }
     .pudorys-zoom-hint {
       position: absolute;
       bottom: 10px;
@@ -5989,6 +5992,7 @@ if (navRezervaceMobile) {
       const pudorysImg = document.querySelector('.pudorys-img');
       if (pudorysImg) {
         pudorysImg.addEventListener('click', () => {
+          if (window.innerWidth > 640) return;
           if (!lightbox || !lightboxImg) return;
           lightboxMode = 'faq';
           faqImages = [{ full: pudorysImg.dataset.full || pudorysImg.src, alt: pudorysImg.alt || '' }];
