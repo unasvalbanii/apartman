@@ -963,6 +963,25 @@ a.vip-link.active {
       50% { transform: translateX(4px); opacity: 1; }
     }
 
+    .pudorys-img { cursor: zoom-in; }
+    .pudorys-zoom-hint {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.7);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .pudorys-zoom-hint i { color: #ffb500; font-size: 0.7rem; }
+
     @media (max-width: 640px) {
       #apartment,
       #location,
@@ -3181,8 +3200,9 @@ a.vip-link.active {
 </div>
 
     <div class="container mx-auto px-4 py-12" id="apartment-boxes-wrap">
-      <div class="bg-white rounded-lg overflow-hidden">
-        <img src="assets/images/apartman/pudorys.webp" alt="Půdorys apartmánu" class="w-full h-auto mx-auto block max-w-[70rem]" loading="eager" decoding="async">
+      <div class="bg-white rounded-lg overflow-hidden relative">
+        <img src="assets/images/apartman/pudorys.webp" alt="Půdorys apartmánu" class="w-full h-auto mx-auto block max-w-[70rem] pudorys-img" loading="eager" decoding="async" data-full="assets/images/apartman/pudorys.webp">
+        <div class="pudorys-zoom-hint md:hidden"><i class="fas fa-magnifying-glass-plus"></i> Klepnutím přiblížíte</div>
       </div>
 
       <!-- 3 boxy uvnitř containeru -->
@@ -5960,6 +5980,26 @@ if (navRezervaceMobile) {
 
       bindGalleryClicks();
       bindFaqClicks();
+
+      const pudorysImg = document.querySelector('.pudorys-img');
+      if (pudorysImg) {
+        pudorysImg.addEventListener('click', () => {
+          if (!lightbox || !lightboxImg) return;
+          lightboxMode = 'faq';
+          faqImages = [{ full: pudorysImg.dataset.full || pudorysImg.src, alt: pudorysImg.alt || '' }];
+          currentIndex = 0;
+          lightboxImg.classList.add('fading');
+          if (paginationEl) { paginationEl.innerHTML = ''; paginationEl.style.display = 'none'; }
+          lightbox.classList.add('active');
+          const preload = new Image();
+          preload.onload = preload.onerror = () => {
+            setLightboxImage(currentIndex);
+            requestAnimationFrame(() => { lightboxImg.classList.remove('fading'); });
+          };
+          preload.src = faqImages[0].full;
+        });
+      }
+
       window.addEventListener('resize', throttle(bindGalleryClicks, 200));
       document.querySelectorAll('#faq details').forEach((d) => {
         d.addEventListener('toggle', () => { if (d.open) setTimeout(bindFaqClicks, 100); });
