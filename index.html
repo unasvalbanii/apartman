@@ -5099,6 +5099,14 @@ a.vip-link.active {
           lightboxImg.style.transition = 'opacity 0.35s ease, transform 0.2s ease';
           updateTransform();
         });
+
+        const singleTap = new Hammer.Tap({ event: 'singletap', taps: 1 });
+        hammer.add(singleTap);
+        singleTap.recognizeWith(doubleTap);
+        singleTap.requireFailure(doubleTap);
+        hammer.on('singletap', () => {
+          lightbox.classList.toggle('ui-hidden');
+        });
       };
 
       const disable = () => { if (!hammer) return; resetZoom(); hammer.destroy(); hammer = null; };
@@ -5973,6 +5981,7 @@ if (navRezervaceMobile) {
   if (!lightbox || !lightboxImg) return;
   lightboxMode = 'apartment';
   currentIndex = index;
+  lightbox.classList.remove('ui-hidden');
   lightboxImg.classList.add('fading');
   if (paginationEl) {
     buildPagination(galleryImages.length);
@@ -5991,6 +6000,7 @@ if (navRezervaceMobile) {
       function openFaqLightbox(group, targetFull) {
   if (!lightbox || !lightboxImg) return;
   lightboxMode = 'faq';
+  lightbox.classList.remove('ui-hidden');
   const seen = new Set();
   faqImages = [];
   document.querySelectorAll(`[data-faq-group="${group}"]`).forEach((img) => {
@@ -6016,7 +6026,7 @@ if (navRezervaceMobile) {
   preload.src = faqImages[currentIndex].full;
 }
 
-      function closeLightbox() { if (lightbox) lightbox.classList.remove('active'); }
+      function closeLightbox() { if (lightbox) { lightbox.classList.remove('active'); lightbox.classList.remove('ui-hidden'); } }
       function showPrev() { goTo(currentIndex - 1); }
       function showNext() { goTo(currentIndex + 1); }
 
