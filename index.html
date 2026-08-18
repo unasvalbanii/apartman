@@ -213,14 +213,20 @@
     }
 
     #lightbox-caption {
-      position: absolute;
-      bottom: 52px;
-      color: #ffffff;
-      text-align: center;
-      width: 100%;
-      font-size: 1rem;
-      padding: 0 1rem;
-    }
+  position: absolute;
+  bottom: 52px;
+  color: #ffffff;
+  text-align: center;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0 1rem;
+  transition: opacity 0.25s ease;
+}
+
+#lightbox.ui-hidden #lightbox-caption {
+  opacity: 0;
+  pointer-events: none;
+}
 
     #lightbox-pagination {
       position: absolute;
@@ -7225,4 +7231,3 @@ document.querySelectorAll('.price-legend-toggle').forEach(btn => {
 </script>
 </body>
 </html>
-
