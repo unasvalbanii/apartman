@@ -245,7 +245,7 @@
     main { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
 
     /* ── SECTION ── */
-    .section { margin-bottom: 3.5rem; scroll-margin-top: 160px; }
+    .section { margin-bottom: 3.5rem; scroll-margin-top: 90px; }
     .section-header {
       display: flex; align-items: center; gap: 1rem;
       margin-bottom: 1.5rem; padding-bottom: .75rem;
@@ -1404,9 +1404,8 @@
 
   /* ── Smooth scroll + active nav link ── */
   const headerH = () => {
-    const header = document.getElementById('vip-header');
-    const navBar = document.getElementById('section-nav-bar');
-    return (header ? header.offsetHeight : 58) + (navBar ? navBar.offsetHeight : 38);
+    const navWrap = document.getElementById('section-nav-wrap');
+    return navWrap ? navWrap.offsetHeight : 38;
   };
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
