@@ -46,9 +46,6 @@
     /* ── HEADER ── */
     #vip-header {
       background: var(--navy);
-      position: sticky; top: 0; z-index: 200;
-      box-shadow: 0 2px 12px rgba(0,0,0,.25);
-      transition: box-shadow .3s;
     }
     .header-bar {
       padding: 1rem 0;
@@ -193,7 +190,11 @@
     .section-nav-bar::-webkit-scrollbar { display: none; }
 
     /* ── SWIPE HINT (mobil) ── */
-    .section-nav-wrap { position: relative; }
+    .section-nav-wrap {
+      position: sticky; top: 0; z-index: 200;
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,.15);
+    }
     .section-nav-wrap::after {
       content: '';
       position: absolute; top: 0; right: 0; bottom: 0;
