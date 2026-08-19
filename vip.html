@@ -428,6 +428,36 @@
       border-radius: 999px; padding: 2px 10px; margin-top: .3rem;
     }
 
+    /* ── POČASÍ ── */
+    .weather-forecast {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: .75rem;
+    }
+    @media (max-width: 700px) {
+      .weather-forecast { grid-template-columns: repeat(2, 1fr); }
+    }
+    .weather-day-card {
+      background: #fff; border: 1px solid var(--gray-2); border-radius: 14px;
+      padding: 1rem .75rem; text-align: center;
+    }
+    .weather-day-card .wd-day {
+      font-size: .78rem; font-weight: 800; color: var(--navy);
+      text-transform: uppercase; letter-spacing: .05em; margin-bottom: .3rem;
+    }
+    .weather-day-card .wd-date {
+      font-size: .72rem; color: var(--gray-3); margin-bottom: .6rem;
+    }
+    .weather-day-card i.wd-icon {
+      font-size: 1.8rem; color: var(--gold-d); margin-bottom: .5rem; display: block;
+    }
+    .weather-day-card .wd-temps {
+      font-size: .95rem; font-weight: 700; color: var(--text);
+    }
+    .weather-day-card .wd-temps .wd-min {
+      color: var(--gray-3); font-weight: 600;
+    }
+
     /* ── FAQ ── */
     details.faq-item {
       background: #fff; border: 1px solid var(--gray-2);
@@ -592,6 +622,7 @@
     <a href="#pool">🏊 Bazén</a>
     <a href="#okoli">🗺️ Okolí</a>
     <a href="#restaurace">🍽️ Jídlo</a>
+    <a href="#pocasi">🌤️ Počasí</a>
     <a href="#tipy">💡 Tipy</a>
     <a href="#odjezd">🧳 Odjezd</a>
     <a href="#kontakty">📞 Kontakty</a>
@@ -608,6 +639,7 @@
   <a href="#pool"><i class="fas fa-swimming-pool" style="width:20px;text-align:center;margin-right:8px;color:var(--gold)"></i>Bazén</a>
   <a href="#okoli"><i class="fas fa-map-marker-alt" style="width:20px;text-align:center;margin-right:8px;color:var(--gold)"></i>Okolí</a>
   <a href="#restaurace"><i class="fas fa-utensils" style="width:20px;text-align:center;margin-right:8px;color:var(--gold)"></i>Kde se najíst</a>
+  <a href="#pocasi"><i class="fas fa-cloud-sun" style="width:20px;text-align:center;margin-right:8px;color:var(--gold)"></i>Počasí</a>
   <a href="#tipy"><i class="fas fa-lightbulb" style="width:20px;text-align:center;margin-right:8px;color:var(--gold)"></i>Tipy majitelů</a>
   <a href="#odjezd"><i class="fas fa-luggage-cart" style="width:20px;text-align:center;margin-right:8px;color:var(--gold)"></i>Odjezd</a>
   <a href="#kontakty"><i class="fas fa-phone" style="width:20px;text-align:center;margin-right:8px;color:var(--gold)"></i>Kontakty</a>
@@ -1105,6 +1137,28 @@
     </div>
   </section>
 
+  <!-- ── 5b. POČASÍ ── -->
+  <section class="section" id="pocasi">
+    <div class="section-header">
+      <div class="section-icon"><i class="fas fa-cloud-sun"></i></div>
+      <div>
+        <h2>Počasí</h2>
+        <div class="sub">Předpověď na následujících 5 dní</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-location-dot"></i> Golem, Albánie</div>
+      <div class="weather-forecast" id="weather-forecast">
+        <div class="weather-day-card"><div class="wd-day">Načítám…</div></div>
+        <div class="weather-day-card"></div>
+        <div class="weather-day-card"></div>
+        <div class="weather-day-card"></div>
+        <div class="weather-day-card"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── 7. TIPY MAJITELŮ ── -->
   <section class="section" id="tipy">
     <div class="section-header">
@@ -1505,6 +1559,69 @@
       .catch(() => {
         elEur.textContent = '100';
         elCzk.textContent = '4';
+      });
+  })();
+
+  /* ── 5denní předpověď počasí (OpenWeatherMap, stejné API jako na hlavním webu) ── */
+  (function () {
+    const wrap = document.getElementById('weather-forecast');
+    if (!wrap) return;
+
+    const apiKey = '693012db2d650134c442e8b4a3ac8864';
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=Kavaje,AL&units=metric&appid=${apiKey}`;
+
+    function iconFor(condition) {
+      condition = (condition || '').toLowerCase();
+      if (condition.includes('clear')) return 'fa-sun';
+      if (condition.includes('cloud')) return 'fa-cloud';
+      if (condition.includes('rain')) return 'fa-cloud-showers-heavy';
+      if (condition.includes('snow')) return 'fa-snowflake';
+      if (condition.includes('thunderstorm')) return 'fa-bolt';
+      if (condition.includes('drizzle')) return 'fa-cloud-rain';
+      if (condition.includes('mist') || condition.includes('fog') || condition.includes('haze')) return 'fa-smog';
+      return 'fa-cloud';
+    }
+
+    const dayNames = ['Ne', 'Po', 'Út', 'St', 'Čt', 'Pá', 'So'];
+
+    fetch(url, { cache: 'no-store' })
+      .then(r => r.json())
+      .then(data => {
+        if (data.cod != 200 || !Array.isArray(data.list)) throw new Error('Neplatná data předpovědi');
+
+        const byDay = {};
+        data.list.forEach(item => {
+          const date = new Date(item.dt * 1000);
+          const key = date.toISOString().slice(0, 10);
+          if (!byDay[key]) byDay[key] = [];
+          byDay[key].push({ date, temp: item.main.temp, condition: item.weather?.[0]?.main || '', hour: date.getHours() });
+        });
+
+        const todayKey = new Date().toISOString().slice(0, 10);
+        const days = Object.keys(byDay).filter(k => k !== todayKey).slice(0, 5);
+
+        wrap.innerHTML = '';
+        days.forEach(key => {
+          const entries = byDay[key];
+          const temps = entries.map(e => e.temp);
+          const min = Math.round(Math.min(...temps));
+          const max = Math.round(Math.max(...temps));
+          const midday = entries.reduce((best, e) => Math.abs(e.hour - 13) < Math.abs(best.hour - 13) ? e : best, entries[0]);
+          const date = midday.date;
+
+          const card = document.createElement('div');
+          card.className = 'weather-day-card';
+          card.innerHTML = `
+            <div class="wd-day">${dayNames[date.getDay()]}</div>
+            <div class="wd-date">${date.getDate()}. ${date.getMonth() + 1}.</div>
+            <i class="fas ${iconFor(midday.condition)} wd-icon"></i>
+            <div class="wd-temps">${max}° <span class="wd-min">${min}°</span></div>
+          `;
+          wrap.appendChild(card);
+        });
+      })
+      .catch(() => {
+        wrap.innerHTML = '<div class="weather-day-card"><div class="wd-day">Předpověď se nepodařilo načíst</div></div>';
       });
   })();
 </script>
