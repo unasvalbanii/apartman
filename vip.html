@@ -451,17 +451,33 @@
 
     /* ── SCROLL TO TOP ── */
     #scroll-to-top {
-      position: fixed; bottom: 1.5rem; right: 1.5rem;
-      width: 48px; height: 48px; border-radius: 50%;
-      background: var(--navy-l); color: #fff;
+      position: fixed;
+      bottom: 1.5rem; right: 1.5rem;
+      width: 3rem; height: 3rem;
+      background-color: var(--navy-l); color: #fff;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem; cursor: pointer; border: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,.2);
-      transition: all .3s; z-index: 150;
-      opacity: 0; visibility: hidden;
+      border-radius: 9999px;
+      box-shadow: 0 4px 6px rgba(0,0,0,.1);
+      cursor: pointer; border: none;
+      transition: all .3s ease;
+      z-index: 150;
+      font-size: 1.3rem;
     }
-    #scroll-to-top.visible { opacity: 1; visibility: visible; }
-    #scroll-to-top:hover { background: var(--navy); transform: scale(1.08); }
+    @media (min-width: 641px) {
+      #scroll-to-top:hover { background-color: var(--navy); transform: scale(1.1); }
+    }
+    @media (max-width: 640px) {
+      #scroll-to-top:active { background-color: var(--navy); }
+    }
+    #scroll-to-top.hidden { opacity: 0; visibility: hidden; }
+    @media (max-width: 640px) {
+      #scroll-to-top {
+        bottom: 1.5rem; right: 1.5rem;
+        width: 3.5rem; height: 3.5rem;
+        font-size: 1.75rem;
+        box-shadow: 0 6px 12px rgba(0,0,0,.15);
+      }
+    }
 
         /* ── FOOTER ── */
     footer {
@@ -1369,9 +1385,7 @@
 </footer>
 
 <!-- Scroll to top -->
-<button id="scroll-to-top" aria-label="Zpět nahoru">
-  <i class="fas fa-arrow-up"></i>
-</button>
+<div id="scroll-to-top" class="hidden" aria-label="Zpět nahoru">↑</div>
 
 <script>
   /* ── Rok v patičce ── */
@@ -1401,11 +1415,23 @@
   mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
 
   /* ── Scroll to top ── */
+  function throttle(fn, wait) {
+    let lastCall = 0;
+    return function (...args) {
+      const now = Date.now();
+      if (now - lastCall < wait) return;
+      lastCall = now;
+      return fn.apply(this, args);
+    };
+  }
   const sttBtn = document.getElementById('scroll-to-top');
-  window.addEventListener('scroll', () => {
-    sttBtn.classList.toggle('visible', window.scrollY > 300);
-  });
-  sttBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  const handleScrollToTop = throttle(() => {
+    if (sttBtn) sttBtn.classList.toggle('hidden', window.pageYOffset <= 200);
+  }, 100);
+  window.addEventListener('scroll', handleScrollToTop);
+  if (sttBtn) {
+    sttBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
 
   /* ── Smooth scroll + active nav link ── */
   const headerH = () => {
