@@ -41,42 +41,28 @@
       background: var(--sand);
       color: var(--text);
       line-height: 1.7;
+      overflow-x: hidden;
     }
 
     /* ── HEADER ── */
     #vip-header {
       background: var(--navy);
-    }
-    .header-bar {
-      padding: 1rem 0;
+      position: sticky; top: 0; z-index: 200;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+      transition: box-shadow .3s;
     }
     .header-inner {
-      width: 100%; max-width: 100%; margin: 0 auto;
-      padding: 0 1rem;
-      box-sizing: border-box;
-      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-      flex-wrap: nowrap;
-    }
-    @media (min-width: 1280px) and (max-width: 1366px) {
-      .header-inner { max-width: 1180px; }
-    }
-    @media (min-width: 1367px) and (max-width: 1600px) {
-      .header-inner { max-width: 1230px; }
-    }
-    @media (min-width: 1601px) {
-      .header-inner { max-width: 1536px; }
-    }
-    .header-brand-group {
-      display: flex; align-items: center; gap: .75rem;
-      flex-shrink: 0; min-width: 0;
-    }
+  max-width: 1100px; margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
     .header-brand {
       display: flex; align-items: center; gap: .75rem; text-decoration: none;
-      min-width: 0;
+      flex-shrink: 0;
     }
-    .header-brand img { height: 40px; width: auto; display: block; flex-shrink: 0; }
-    .header-brand .brand-name { font-family: 'Poetsen One', sans-serif; letter-spacing: 0.5px; color: #fff; font-weight: 400; font-size: 1.5rem; text-shadow: 0 1.5px 3px rgba(0,0,0,0.65); line-height: 1; white-space: nowrap; }
-    .header-brand-group .badge {
+    .header-brand img { height: 40px; width: auto; display: block; }
+    .header-brand .brand-name { font-family: 'Poetsen One', sans-serif; letter-spacing: 0.5px; color: #fff; font-weight: 400; font-size: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.65); }
+    .header-brand .badge {
       background: var(--gold); color: #000;
       font-size: .6rem; font-weight: 800;
       padding: 2px 8px; border-radius: 999px;
@@ -190,11 +176,7 @@
     .section-nav-bar::-webkit-scrollbar { display: none; }
 
     /* ── SWIPE HINT (mobil) ── */
-    .section-nav-wrap {
-      position: sticky; top: 0; z-index: 200;
-      background: #fff;
-      box-shadow: 0 2px 12px rgba(0,0,0,.15);
-    }
+    .section-nav-wrap { position: relative; }
     .section-nav-wrap::after {
       content: '';
       position: absolute; top: 0; right: 0; bottom: 0;
@@ -245,7 +227,7 @@
     main { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
 
     /* ── SECTION ── */
-    .section { margin-bottom: 3.5rem; scroll-margin-top: 90px; }
+    .section { margin-bottom: 3.5rem; scroll-margin-top: 160px; }
     .section-header {
       display: flex; align-items: center; gap: 1rem;
       margin-bottom: 1.5rem; padding-bottom: .75rem;
@@ -539,25 +521,21 @@
 
 <!-- ═══════════════════════ HEADER ═══════════════════════ -->
 <header id="vip-header">
-  <div class="header-bar">
   <div class="header-inner">
-    <div class="header-brand-group">
-      <a class="header-brand" href="https://unasvalbanii.cz/vip">
-        <img src="assets/logo/logo.png"
-       alt="U nás v Albánii"
-       loading="eager"
-       decoding="async"
-       draggable="false"
-       style="height:40px;width:auto;">
-        <span class="brand-name">U nás v Albánii</span>
-      </a>
+    <a class="header-brand" href="/">
+      <img src="assets/logo/logo.png"
+     alt="U nás v Albánii"
+     loading="eager"
+     decoding="async"
+     draggable="false"
+     style="height:40px;width:auto;">
+<span class="brand-name">U nás v Albánii</span>
       <span class="badge">VIP</span>
-    </div>
+    </a>
 
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
-  </div>
   </div>
 
   <!-- ═══════════════════════ SECTION NAV BAR ═══════════════════════ -->
@@ -712,7 +690,7 @@
 
     <div class="card">
       <div class="card-title"><i class="fas fa-parking"></i> Parkování</div>
-      <p>Parkování je možné přímo u objektu nebo v okolí.</p>
+      <p>Parkování je možné přímo u objektu nebo v bezprostředním okolí za nízký poplatek. Správce vám po příjezdu ukáže volná místa. Příjezd autem z ČR trvá přibližně 14–16 hodin přes Slovinsko, Chorvatsko a Černou Horu.</p>
     </div>
   </section>
 
@@ -1404,8 +1382,9 @@
 
   /* ── Smooth scroll + active nav link ── */
   const headerH = () => {
-    const navWrap = document.getElementById('section-nav-wrap');
-    return navWrap ? navWrap.offsetHeight : 38;
+    const header = document.getElementById('vip-header');
+    const navBar = document.getElementById('section-nav-bar');
+    return (header ? header.offsetHeight : 58) + (navBar ? navBar.offsetHeight : 38);
   };
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
