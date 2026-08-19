@@ -428,26 +428,30 @@
       border-radius: 999px; padding: 2px 10px; margin-top: .3rem;
     }
 
-        /* ── POČASÍ – TENKÝ PÁS ── */
-    .weather-strip {
-      background: #fff; border-bottom: 1px solid var(--gray-2);
+        /* ── POČASÍ V HLAVIČCE ── */
+    .header-weather {
       display: flex; align-items: center; justify-content: center;
       gap: 0; overflow-x: auto; scrollbar-width: none;
-      padding: .6rem 1rem;
+      padding: .55rem 1rem 0;
+      margin-top: .75rem;
+      border-top: 1px solid rgba(255,255,255,.14);
     }
-    .weather-strip::-webkit-scrollbar { display: none; }
-    .ws-item {
-      display: flex; align-items: center; gap: .45rem;
-      padding: 0 1rem; white-space: nowrap; flex-shrink: 0;
+    .header-weather::-webkit-scrollbar { display: none; }
+    .hw-item {
+      display: flex; align-items: center; gap: .4rem;
+      padding: 0 .85rem; white-space: nowrap; flex-shrink: 0;
     }
-    .ws-item + .ws-item { border-left: 1px solid var(--gray-2); }
-    .ws-item .ws-day { font-size: .75rem; font-weight: 700; color: var(--text-s); }
-    .ws-item i { font-size: .9rem; color: var(--gold-d); }
-    .ws-item .ws-temps { font-size: .82rem; font-weight: 700; color: var(--text); }
-    .ws-item .ws-temps .ws-min { color: var(--gray-3); font-weight: 600; }
+    .hw-item + .hw-item { border-left: 1px solid rgba(255,255,255,.16); }
+    .hw-item .hw-day {
+      font-size: .7rem; font-weight: 700; color: rgba(255,255,255,.6);
+      text-transform: uppercase; letter-spacing: .04em;
+    }
+    .hw-item i { font-size: .82rem; color: var(--gold); }
+    .hw-item .hw-temps { font-size: .8rem; font-weight: 700; color: #fff; }
+    .hw-item .hw-temps .hw-min { color: rgba(255,255,255,.5); font-weight: 600; }
     @media (max-width: 600px) {
-      .weather-strip { justify-content: flex-start; }
-      .ws-item { padding: 0 .75rem; }
+      .header-weather { justify-content: flex-start; }
+      .hw-item { padding: 0 .65rem; }
     }
 
     /* ── FAQ ── */
@@ -602,12 +606,11 @@
       <span></span><span></span><span></span>
     </button>
   </div>
+  <div class="header-weather" id="weather-forecast">
+    <div class="hw-item"><span class="hw-day">Načítám…</span></div>
+  </div>
   </div>
 </header>
-
-<div class="weather-strip" id="weather-forecast">
-  <div class="ws-item"><span class="ws-day">Načítám…</span></div>
-</div>
 
 <!-- ═══════════════════════ SECTION NAV BAR ═══════════════════════ -->
 <div class="section-nav-wrap" id="section-nav-wrap">
@@ -1582,17 +1585,17 @@
           const date = midday.date;
 
           const item = document.createElement('div');
-          item.className = 'ws-item';
+          item.className = 'hw-item';
           item.innerHTML = `
-            <span class="ws-day">${dayNames[date.getDay()]}</span>
+            <span class="hw-day">${dayNames[date.getDay()]}</span>
             <i class="fas ${iconFor(midday.condition)}"></i>
-            <span class="ws-temps">${max}° <span class="ws-min">${min}°</span></span>
+            <span class="hw-temps">${max}° <span class="hw-min">${min}°</span></span>
           `;
           wrap.appendChild(item);
         });
       })
       .catch(() => {
-        wrap.innerHTML = '<div class="ws-item"><span class="ws-day">Předpověď se nepodařilo načíst</span></div>';
+        wrap.innerHTML = '<div class="hw-item"><span class="hw-day">Předpověď se nepodařilo načíst</span></div>';
       });
   })();
 </script>
