@@ -458,6 +458,28 @@
       color: var(--gray-3); font-weight: 600;
     }
 
+        /* ── POČASÍ – TENKÝ PÁS ── */
+    .weather-strip {
+      background: #fff; border-bottom: 1px solid var(--gray-2);
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; overflow-x: auto; scrollbar-width: none;
+      padding: .6rem 1rem;
+    }
+    .weather-strip::-webkit-scrollbar { display: none; }
+    .ws-item {
+      display: flex; align-items: center; gap: .45rem;
+      padding: 0 1rem; white-space: nowrap; flex-shrink: 0;
+    }
+    .ws-item + .ws-item { border-left: 1px solid var(--gray-2); }
+    .ws-item .ws-day { font-size: .75rem; font-weight: 700; color: var(--text-s); }
+    .ws-item i { font-size: .9rem; color: var(--gold-d); }
+    .ws-item .ws-temps { font-size: .82rem; font-weight: 700; color: var(--text); }
+    .ws-item .ws-temps .ws-min { color: var(--gray-3); font-weight: 600; }
+    @media (max-width: 600px) {
+      .weather-strip { justify-content: flex-start; }
+      .ws-item { padding: 0 .75rem; }
+    }
+
     /* ── FAQ ── */
     details.faq-item {
       background: #fff; border: 1px solid var(--gray-2);
@@ -612,6 +634,10 @@
   </div>
   </div>
 </header>
+
+<div class="weather-strip" id="weather-forecast">
+  <div class="ws-item"><span class="ws-day">Načítám…</span></div>
+</div>
 
 <!-- ═══════════════════════ SECTION NAV BAR ═══════════════════════ -->
  <div style="max-width:960px;margin:0 auto;padding:1.5rem 1.5rem 0;">
@@ -1597,19 +1623,18 @@
           const midday = entries.reduce((best, e) => Math.abs(e.hour - 13) < Math.abs(best.hour - 13) ? e : best, entries[0]);
           const date = midday.date;
 
-          const card = document.createElement('div');
-          card.className = 'weather-day-card';
-          card.innerHTML = `
-            <div class="wd-day">${dayNames[date.getDay()]}</div>
-            <div class="wd-date">${date.getDate()}. ${date.getMonth() + 1}.</div>
-            <i class="fas ${iconFor(midday.condition)} wd-icon"></i>
-            <div class="wd-temps">${max}° <span class="wd-min">${min}°</span></div>
+          const item = document.createElement('div');
+          item.className = 'ws-item';
+          item.innerHTML = `
+            <span class="ws-day">${dayNames[date.getDay()]}</span>
+            <i class="fas ${iconFor(midday.condition)}"></i>
+            <span class="ws-temps">${max}° <span class="ws-min">${min}°</span></span>
           `;
-          wrap.appendChild(card);
+          wrap.appendChild(item);
         });
       })
       .catch(() => {
-        wrap.innerHTML = '<div class="weather-day-card"><div class="wd-day">Předpověď se nepodařilo načíst</div></div>';
+        wrap.innerHTML = '<div class="ws-item"><span class="ws-day">Předpověď se nepodařilo načíst</span></div>';
       });
   })();
 </script>
