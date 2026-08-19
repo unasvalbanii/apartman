@@ -442,32 +442,6 @@
       border-radius: 999px; padding: 2px 10px; margin-top: .3rem;
     }
 
-        /* ── POČASÍ V HLAVIČCE ── */
-    .header-weather {
-      display: flex; align-items: center; justify-content: center;
-      gap: 0; overflow-x: auto; scrollbar-width: none;
-      padding: .55rem 1rem 0;
-      margin-top: .75rem;
-      border-top: 1px solid rgba(255,255,255,.14);
-    }
-    .header-weather::-webkit-scrollbar { display: none; }
-    .hw-item {
-      display: flex; align-items: center; gap: .4rem;
-      padding: 0 .85rem; white-space: nowrap; flex-shrink: 0;
-    }
-    .hw-item + .hw-item { border-left: 1px solid rgba(255,255,255,.16); }
-    .hw-item .hw-day {
-      font-size: .7rem; font-weight: 700; color: rgba(255,255,255,.6);
-      text-transform: uppercase; letter-spacing: .04em;
-    }
-    .hw-item i { font-size: .82rem; color: var(--gold); }
-    .hw-item .hw-temps { font-size: .8rem; font-weight: 700; color: #fff; }
-    .hw-item .hw-temps .hw-min { color: rgba(255,255,255,.5); font-weight: 600; }
-    @media (max-width: 600px) {
-      .header-weather { justify-content: flex-start; }
-      .hw-item { padding: 0 .65rem; }
-    }
-
     /* ── FAQ ── */
     details.faq-item {
       background: #fff; border: 1px solid var(--gray-2);
@@ -623,9 +597,6 @@
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
-  </div>
-  <div class="header-weather" id="weather-forecast">
-    <div class="hw-item"><span class="hw-day">Načítám…</span></div>
   </div>
   </div>
 </header>
