@@ -41,24 +41,34 @@
       background: var(--sand);
       color: var(--text);
       line-height: 1.7;
-      overflow-x: clip;
+      overflow-x: hidden;
     }
 
     /* ── HEADER ── */
     #vip-header {
       background: var(--navy);
+      position: sticky; top: 0; z-index: 200;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+      transition: box-shadow .3s;
     }
     .header-inner {
-  max-width: 1100px; margin: 0 auto;
-  padding: 1rem 1.5rem;
+  max-width: 1220px; margin: 0 auto;
+  padding: 1rem 1rem;
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+
+@media (min-width: 641px) and (max-width: 1279px) {
+  .header-inner { max-width: 100%; }
+}
+@media (min-width: 1280px) and (max-width: 1366px) {
+  .header-inner { max-width: 1180px; }
 }
     .header-brand {
       display: flex; align-items: center; gap: .75rem; text-decoration: none;
       flex-shrink: 0;
     }
     .header-brand img { height: 40px; width: auto; display: block; }
-    .header-brand .brand-name { font-family: 'Poetsen One', sans-serif; letter-spacing: 0.5px; color: #fff; font-weight: 400; font-size: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.65); }
+    .header-brand .brand-name { font-family: 'Poetsen One', sans-serif; letter-spacing: 0.5px; color: #fff; font-weight: 400; font-size: 1.5rem; text-shadow: 0 1.5px 3px rgba(0,0,0,0.65); }
     .header-brand .badge {
       background: var(--gold); color: #000;
       font-size: .6rem; font-weight: 800;
@@ -173,11 +183,7 @@
     .section-nav-bar::-webkit-scrollbar { display: none; }
 
     /* ── SWIPE HINT (mobil) ── */
-    .section-nav-wrap {
-      position: sticky; top: 0; z-index: 200;
-      background: #fff;
-      box-shadow: 0 2px 12px rgba(0,0,0,.15);
-    }
+    .section-nav-wrap { position: relative; }
     .section-nav-wrap::after {
       content: '';
       position: absolute; top: 0; right: 0; bottom: 0;
@@ -228,7 +234,7 @@
     main { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
 
     /* ── SECTION ── */
-    .section { margin-bottom: 3.5rem; scroll-margin-top: 80px; }
+    .section { margin-bottom: 3.5rem; scroll-margin-top: 160px; }
     .section-header {
       display: flex; align-items: center; gap: 1rem;
       margin-bottom: 1.5rem; padding-bottom: .75rem;
@@ -538,23 +544,23 @@
       <span></span><span></span><span></span>
     </button>
   </div>
-</header>
 
-<!-- ═══════════════════════ SECTION NAV BAR ═══════════════════════ -->
-<div class="section-nav-wrap" id="section-nav-wrap">
-  <div class="section-nav-bar" id="section-nav-bar">
-    <a href="#prijezd">🚗 Příjezd</a>
-    <a href="#apartman">🏠 Apartmán</a>
-    <a href="#wifi">📶 WiFi</a>
-    <a href="#pool">🏊 Bazén</a>
-    <a href="#okoli">🗺️ Okolí</a>
-    <a href="#restaurace">🍽️ Jídlo</a>
-    <a href="#tipy">💡 Tipy</a>
-    <a href="#odjezd">🧳 Odjezd</a>
-    <a href="#kontakty">📞 Kontakty</a>
+  <!-- ═══════════════════════ SECTION NAV BAR ═══════════════════════ -->
+  <div class="section-nav-wrap" id="section-nav-wrap">
+    <div class="section-nav-bar" id="section-nav-bar">
+      <a href="#prijezd">🚗 Příjezd</a>
+      <a href="#apartman">🏠 Apartmán</a>
+      <a href="#wifi">📶 WiFi</a>
+      <a href="#pool">🏊 Bazén</a>
+      <a href="#okoli">🗺️ Okolí</a>
+      <a href="#restaurace">🍽️ Jídlo</a>
+      <a href="#tipy">💡 Tipy</a>
+      <a href="#odjezd">🧳 Odjezd</a>
+      <a href="#kontakty">📞 Kontakty</a>
+    </div>
+    <span class="swipe-hint" id="swipe-hint"><i class="fas fa-chevron-right"></i></span>
   </div>
-  <span class="swipe-hint" id="swipe-hint"><i class="fas fa-chevron-right"></i></span>
-</div>
+</header>
 
 <!-- Mobile nav overlay -->
 <div id="mobile-menu-overlay"></div>
@@ -1383,8 +1389,9 @@
 
   /* ── Smooth scroll + active nav link ── */
   const headerH = () => {
+    const header = document.getElementById('vip-header');
     const navBar = document.getElementById('section-nav-bar');
-    return navBar ? navBar.offsetHeight : 38;
+    return (header ? header.offsetHeight : 58) + (navBar ? navBar.offsetHeight : 38);
   };
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
