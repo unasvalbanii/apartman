@@ -463,15 +463,23 @@
     #scroll-to-top.visible { opacity: 1; visibility: visible; }
     #scroll-to-top:hover { background: var(--navy); transform: scale(1.08); }
 
-    /* ── FOOTER ── */
+        /* ── FOOTER ── */
     footer {
       background: #111827; color: rgba(255,255,255,.55);
-      text-align: center; padding: 2rem 1rem;
-      font-size: .82rem;
+      padding: 1.5rem 1rem;
+      font-size: .78rem;
     }
-    footer strong { color: var(--gold); }
-    footer a { color: var(--gold); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
+    footer .footer-inner {
+      max-width: 960px; margin: 0 auto;
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between;
+      gap: .75rem;
+    }
+    footer a { color: rgba(255,255,255,.55); text-decoration: none; transition: color .2s; }
+    footer a:hover { color: #fff; }
+    @media (max-width: 600px) {
+      footer .footer-inner { flex-direction: column; text-align: center; }
+    }
 
     /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -1354,13 +1362,10 @@
 
 <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
 <footer>
-  <p style="margin-bottom:.5rem;">🏖️ <strong>U nás v Albánii</strong> &mdash; Adriatic Garden Residence, Golem</p>
-  <p>Přejeme vám krásnou a odpočinkovou dovolenou! Budeme rádi za vaši zpětnou vazbu.</p>
-  <p style="margin-top:.75rem;">
-    <a href="/">← Zpět na hlavní web</a> &nbsp;&middot;&nbsp;
-    <a href="mailto:info@unasvalbanii.cz">info@unasvalbanii.cz</a>
-  </p>
-  <p style="margin-top:1rem;font-size:.72rem;opacity:.5;">© <span id="footer-year">2026</span> U nás v Albánii &middot; Stránka určena výhradně pro hosty apartmánu</p>
+  <div class="footer-inner">
+    <p>© <span id="footer-year">2026</span> U nás v Albánii · Stránka určena výhradně pro hosty apartmánu</p>
+    <a href="/">Hlavní stránka</a>
+  </div>
 </footer>
 
 <!-- Scroll to top -->
