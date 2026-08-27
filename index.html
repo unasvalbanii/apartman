@@ -2985,6 +2985,40 @@ a.vip-link.active {
   .flight-mobile-price i { color: #ffb500; font-size: 0.7rem; }
 }
 
+.route-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  max-width: 640px;
+  margin: 0 auto 16px;
+  text-align: left;
+}
+@media (min-width: 641px) {
+  .route-cards { grid-template-columns: 1fr 1fr; }
+}
+.route-card {
+  background: #f9fafb;
+  border: 1px solid #eef1f5;
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+.route-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: #1e3a8b;
+  font-size: 0.92rem;
+  margin-bottom: 6px;
+}
+.route-card-title i { color: #ffb500; font-size: 0.85rem; }
+.route-card p {
+  font-size: 0.85rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
 .airport-transfer-title {
   font-weight: 800;
   color: #1e3a8b;
@@ -3862,11 +3896,17 @@ a.vip-link.active {
 </div>
 
 <p class="text-center text-xs text-gray-500 mt-2">Ceny jsou orientační a liší se podle sezóny a předstihu nákupu.</p>
-      <p class="text-center mb-2"><strong>Autem</strong> – cesta z České republiky měří přibližně 1 500–1 700 km podle zvolené trasy:</p>
-      <ul class="text-left max-w-xl mx-auto mb-4 list-disc list-inside space-y-1">
-        <li><strong>Nejpohodlnější trasa</strong> vede přes Rakousko, Slovinsko, Chorvatsko a Černou Horu po kvalitních dálnicích podél pobřeží – čistá jízda cca 17–19 hodin.</li>
-        <li><strong>Nejrychlejší trasa</strong> vede přes Maďarsko, Srbsko a Severní Makedonii – trasa je kratší, ale silnice jsou místy hůře vybavené, čistá jízda cca 15–16 hodin.</li>
-      </ul>
+      <p class="text-center mb-2 mt-8"><strong>Autem</strong> – cesta z České republiky měří přibližně 1 500–1 700 km podle zvolené trasy:</p>
+      <div class="route-cards">
+        <div class="route-card">
+          <div class="route-card-title"><i class="fas fa-route"></i>Nejpohodlnější trasa</div>
+          <p>Přes Rakousko, Slovinsko, Chorvatsko a Černou Horu po kvalitních dálnicích podél pobřeží – čistá jízda cca 17–19 hodin.</p>
+        </div>
+        <div class="route-card">
+          <div class="route-card-title"><i class="fas fa-bolt"></i>Nejrychlejší trasa</div>
+          <p>Přes Maďarsko, Srbsko a Severní Makedonii – trasa je kratší, ale silnice jsou místy hůře vybavené, čistá jízda cca 15–16 hodin.</p>
+        </div>
+      </div>
       <p class="text-center mb-4">V obou případech doporučujeme cestu rozdělit na dva dny s přenocováním, ideálně někde v Chorvatsku nebo Černé Hoře.</p>
       <img src="assets/images/onas/mapa-trasa.webp" alt="Trasa cesty autem do Albánie" class="w-full max-w-2xl mx-auto rounded-lg shadow cursor-pointer" loading="lazy" decoding="async" data-faq-group="trasa-solo" data-faq-full="assets/images/onas/mapa-trasa-full.webp">
     </div>
@@ -4278,11 +4318,17 @@ a.vip-link.active {
 </div>
 
 <p class="text-center text-xs text-gray-500 mt-2">Ceny jsou orientační a liší se podle sezóny a předstihu nákupu.</p>
-              <p class="text-center mb-2"><strong>Autem</strong> – cesta z České republiky měří přibližně 1 500–1 700 km podle zvolené trasy:</p>
-              <ul class="text-left max-w-xl mx-auto mb-4 list-disc list-inside space-y-1">
-                <li><strong>Nejpohodlnější trasa</strong> vede přes Rakousko, Slovinsko, Chorvatsko a Černou Horu po kvalitních dálnicích podél pobřeží – čistá jízda cca 17–19 hodin.</li>
-                <li><strong>Nejrychlejší trasa</strong> vede přes Maďarsko, Srbsko a Severní Makedonii – trasa je kratší, ale silnice jsou místy hůře vybavené, čistá jízda cca 15–16 hodin.</li>
-              </ul>
+              <p class="text-center mb-2 mt-8"><strong>Autem</strong> – cesta z České republiky měří přibližně 1 500–1 700 km podle zvolené trasy:</p>
+              <div class="route-cards">
+                <div class="route-card">
+                  <div class="route-card-title"><i class="fas fa-route"></i>Nejpohodlnější trasa</div>
+                  <p>Přes Rakousko, Slovinsko, Chorvatsko a Černou Horu po kvalitních dálnicích podél pobřeží – čistá jízda cca 17–19 hodin.</p>
+                </div>
+                <div class="route-card">
+                  <div class="route-card-title"><i class="fas fa-bolt"></i>Nejrychlejší trasa</div>
+                  <p>Přes Maďarsko, Srbsko a Severní Makedonii – trasa je kratší, ale silnice jsou místy hůře vybavené, čistá jízda cca 15–16 hodin.</p>
+                </div>
+              </div>
               <p class="text-center mb-4">V obou případech doporučujeme cestu rozdělit na dva dny s přenocováním, ideálně někde v Chorvatsku nebo Černé Hoře.</p>
               <img src="assets/images/onas/mapa-trasa.webp" alt="Trasa cesty autem do Albánie" class="w-full max-w-2xl mx-auto rounded-lg shadow cursor-pointer" loading="lazy" decoding="async" data-faq-group="trasa-solo" data-faq-full="assets/images/onas/mapa-trasa-full.webp">
             </div>
