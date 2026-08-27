@@ -2933,8 +2933,56 @@ a.vip-link.active {
 .flight-table tbody tr:hover {
   background: #f9fafb;
 }
+
+.flight-mobile-cards { display: none; }
+
 @media (max-width: 640px) {
-  .flight-table-wrap { margin-left: -1px; }
+  .flight-table-wrap { display: none !important; }
+
+  .flight-mobile-cards {
+    display: block;
+    max-width: 480px;
+    margin: 1.25rem auto 0;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+    text-align: left;
+  }
+  .flight-mobile-card {
+    padding: 14px 18px;
+    border-top: 1px solid #f1f5f9;
+  }
+  .flight-mobile-card:first-child { border-top: none; }
+  .flight-mobile-airport {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: #1e3a8b;
+    font-size: 0.92rem;
+    margin-bottom: 6px;
+  }
+  .flight-mobile-airport i { color: #2563eb; font-size: 0.85rem; }
+  .flight-mobile-companies {
+    font-size: 0.82rem;
+    color: #4b5563;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .flight-mobile-price {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #fffaf0;
+    color: #b8790a;
+    border: 1px solid #ffe3ac;
+  }
+  .flight-mobile-price i { color: #ffb500; font-size: 0.7rem; }
 }
 
 .airport-transfer-title {
@@ -3793,6 +3841,24 @@ a.vip-link.active {
       </tr>
     </tbody>
   </table>
+</div>
+
+<div class="flight-mobile-cards">
+  <div class="flight-mobile-card">
+    <div class="flight-mobile-airport"><i class="fas fa-plane-departure"></i>Praha</div>
+    <div class="flight-mobile-companies">Wizz Air, Ryanair, Smartwings</div>
+    <span class="flight-mobile-price"><i class="fas fa-tag"></i>cca 2 000–4 500 Kč</span>
+  </div>
+  <div class="flight-mobile-card">
+    <div class="flight-mobile-airport"><i class="fas fa-plane-departure"></i>Bratislava</div>
+    <div class="flight-mobile-companies">Wizz Air, Ryanair</div>
+    <span class="flight-mobile-price"><i class="fas fa-tag"></i>cca 700–1 500 Kč</span>
+  </div>
+  <div class="flight-mobile-card">
+    <div class="flight-mobile-airport"><i class="fas fa-plane-departure"></i>Vídeň</div>
+    <div class="flight-mobile-companies">Austrian Airlines, Ryanair</div>
+    <span class="flight-mobile-price"><i class="fas fa-tag"></i>cca 1 300–3 000 Kč</span>
+  </div>
 </div>
 
 <p class="text-center text-xs text-gray-500 mt-2">Ceny jsou orientační a liší se podle sezóny a předstihu nákupu.</p>
