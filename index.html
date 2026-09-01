@@ -1041,7 +1041,6 @@ a.vip-link.active {
   overflow: hidden !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important;
   transition: transform 0.25s ease !important;
-  will-change: transform;
 }
 
     #apartment .apartment-grid.grid .gallery-item:hover {
@@ -6358,6 +6357,11 @@ if (navRezervaceMobile) {
       bindGalleryClicks();
       bindFaqClicks();
 
+      document.querySelectorAll('#apartment .apartment-grid.grid .gallery-item').forEach((el) => {
+        el.addEventListener('mouseenter', () => { el.style.willChange = 'transform'; });
+        el.addEventListener('mouseleave', () => { el.style.willChange = 'auto'; });
+      });
+
       const pudorysImg = document.querySelector('.pudorys-img');
       if (pudorysImg) {
         pudorysImg.addEventListener('click', () => {
@@ -6726,24 +6730,51 @@ function showMinNightsTooltip() {
       const sections = document.querySelectorAll("section[id]");
       const navLinks = document.querySelectorAll("nav ul li a[href^='#']");
 
-      function setActiveLink() {
-        if (window.innerWidth < 1024) return; // mobil: podsvícení jen po kliknutí, ne podle scrollu
-        let current = "";
-        const offset = (header ? header.offsetHeight : 72) + 20;
-        const scrollPosition = window.scrollY + offset;
-        sections.forEach((section) => {
-          if (scrollPosition >= section.offsetTop && scrollPosition < section.offsetTop + section.offsetHeight)
-            current = section.getAttribute("id");
-        });
-        if (window.scrollY < offset) current = "home";
+      function setActiveLinkById(id) {
         navLinks.forEach((link) => {
           link.classList.remove("active");
-          if (link.getAttribute("href") === `#${current}`) link.classList.add("active");
+          if (link.getAttribute("href") === `#${id}`) link.classList.add("active");
         });
       }
 
-      setActiveLink();
-      window.addEventListener("scroll", throttle(setActiveLink, 100));
+      let sectionObserver = null;
+
+      function initSectionObserver() {
+        if (window.innerWidth < 1024) return; // mobil: podsvícení jen po kliknutí, ne podle scrollu
+        if (sectionObserver) return;
+        const offset = (header ? header.offsetHeight : 72) + 20;
+        sectionObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveLinkById(entry.target.getAttribute("id"));
+            }
+          });
+        }, {
+          root: null,
+          rootMargin: `-${offset}px 0px -70% 0px`,
+          threshold: 0
+        });
+        sections.forEach((s) => sectionObserver.observe(s));
+      }
+
+      function destroySectionObserver() {
+        if (sectionObserver) {
+          sectionObserver.disconnect();
+          sectionObserver = null;
+        }
+      }
+
+      function handleDesktopModeChange() {
+        if (window.innerWidth < 1024) {
+          destroySectionObserver();
+        } else {
+          initSectionObserver();
+        }
+      }
+
+      if (window.scrollY < ((header ? header.offsetHeight : 72) + 20)) setActiveLinkById("home");
+      initSectionObserver();
+      window.addEventListener("resize", throttle(handleDesktopModeChange, 200));
 
       // Mobil: podsvícení odkazu v menu okamžitě po kliknutí, poté se samo schová (mimo viditelnou plochu)
       mobileMenu.querySelectorAll('a').forEach((link) => {
