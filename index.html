@@ -5211,14 +5211,22 @@ a.vip-link.active {
         applyTouchMode(sw);
       };
 
-      document.querySelectorAll('.mySwiper').forEach(initOneSwiper);
+      // Karusely mimo FAQ (pokud nějaké jsou) inicializovat rovnou.
+      // Karusely uvnitř #faq se inicializují líně až při prvním otevření dané položky (viz níže).
+      document.querySelectorAll('.mySwiper').forEach((el) => {
+        if (el.closest('#faq details')) return;
+        initOneSwiper(el);
+      });
 
       document.querySelectorAll('#faq details').forEach((d) => {
         d.addEventListener('toggle', () => {
           if (!d.open) return;
           const fix = () => {
             d.querySelectorAll('.mySwiper').forEach((el) => {
-              if (!el.swiper) return;
+              if (!el.swiper) {
+                initOneSwiper(el);
+                return;
+              }
               const sw = el.swiper;
               applyTouchMode(sw);
               sw.update(); sw.updateSize(); sw.updateSlides(); sw.updateProgress();
