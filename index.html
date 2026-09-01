@@ -4574,9 +4574,9 @@ a.vip-link.active {
 </div>
 <div class="price-legend-collapsible" id="drawer-legend-body">
   <div class="price-legend">
-    <div class="price-legend-item"><span class="price-legend-dot" style="background:#86efac;"></span>Jaro/Podzim — 1 500 Kč/noc</div>
-    <div class="price-legend-item"><span class="price-legend-dot" style="background:#fbbf24;"></span>Červen/Září — 2 000 Kč/noc</div>
-    <div class="price-legend-item"><span class="price-legend-dot" style="background:#f87171;"></span>Čvc/Srp — 2 500 Kč/noc</div>
+    <div class="price-legend-item"><span class="price-legend-dot" style="background:#86efac;"></span>Listopad–duben — 2 399 Kč/noc</div>
+    <div class="price-legend-item"><span class="price-legend-dot" style="background:#fbbf24;"></span>Květen/Červen/Září/Říjen — 3 099 Kč/noc</div>
+    <div class="price-legend-item"><span class="price-legend-dot" style="background:#f87171;"></span>Červenec–srpen — 3 599 Kč/noc</div>
   </div>
 </div>
         <div id="drawer-cal-container"></div>
@@ -5099,16 +5099,11 @@ a.vip-link.active {
       };
     }
 
-    /* ========================= Ceník – CZK (kurz 1 EUR = 25 Kč) ========================= */
-    const EUR_TO_CZK = 25;
-
+    /* ========================= Ceník – CZK ========================= */
     const PRICE_CONFIG = [
-      // { months: [1,2,3,4,10,11,12], label: 'Mimosezóna',        pricePerNight: 50 * EUR_TO_CZK },
-      { months: [5],         label: 'Jaro (květen)',        pricePerNight: 60 * EUR_TO_CZK },
-      { months: [6],         label: 'Červen',               pricePerNight: 80 * EUR_TO_CZK },
-      { months: [7, 8],      label: 'Hlavní sezóna',        pricePerNight: 100 * EUR_TO_CZK },
-      { months: [9],         label: 'Září',                 pricePerNight: 80 * EUR_TO_CZK },
-      { months: [1,2,3,4,10,11,12], label: 'Jaro/Podzim',  pricePerNight: 60 * EUR_TO_CZK },
+      { months: [11,12,1,2,3,4], label: 'Listopad–duben',        pricePerNight: 2399 },
+      { months: [5,6,9,10],      label: 'Květen/Červen/Září/Říjen', pricePerNight: 3099 },
+      { months: [7,8],           label: 'Červenec–srpen',        pricePerNight: 3599 },
     ];
 
     function getPriceForDate(date) {
