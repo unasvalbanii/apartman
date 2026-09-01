@@ -5424,21 +5424,24 @@ a.vip-link.active {
       const floatingResBtn = document.getElementById('floating-reservation-btn');
       const heroSectionEl = document.getElementById('home');
 
+      let cachedShowThreshold = 200;
+
       function setHeaderHeightVar() {
         if (!header) return;
         document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+        cachedShowThreshold = heroSectionEl
+          ? Math.max(200, heroSectionEl.offsetTop + heroSectionEl.offsetHeight - (header.offsetHeight || 0))
+          : 200;
       }
       setHeaderHeightVar();
       window.addEventListener('resize', throttle(setHeaderHeightVar, 150));
+      window.addEventListener('load', setHeaderHeightVar);
 
       if (header) {
         const handleScroll = throttle(() => {
           if (window.pageYOffset > 10) header.classList.add('sticky');
           else header.classList.remove('sticky');
-          const showThreshold = heroSectionEl
-            ? Math.max(200, heroSectionEl.offsetTop + heroSectionEl.offsetHeight - (header.offsetHeight || 0))
-            : 200;
-          const shouldShowFabs = window.pageYOffset > showThreshold;
+          const shouldShowFabs = window.pageYOffset > cachedShowThreshold;
 
           if (scrollToTopBtn) scrollToTopBtn.classList.toggle('hidden', !shouldShowFabs);
           if (floatingResBtn) floatingResBtn.classList.toggle('hidden', !shouldShowFabs);
