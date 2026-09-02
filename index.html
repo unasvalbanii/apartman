@@ -4942,7 +4942,6 @@ a.vip-link.active {
             <div class="summary-cell summary-cell-bordered"><span class="summary-label">Jméno</span><span id="ds-jmeno">—</span></div>
             <div class="summary-cell"><span class="summary-label">Telefon</span><span id="ds-telefon">—</span></div>
             <div class="summary-cell summary-cell-full"><span class="summary-label">E-mail</span><span id="ds-email">—</span></div>
-            <div class="summary-cell summary-cell-full"><span class="summary-label">Závěrečný úklid</span><span id="ds-cleaning">900 Kč</span></div>
             <div class="summary-cell summary-cell-full summary-cell-total"><span class="summary-label">Celková cena</span><span id="ds-cena">—</span></div>
           </div>
         </div>
@@ -6327,7 +6326,6 @@ a.vip-link.active {
           document.getElementById('ds-jmeno').textContent   = `${document.getElementById('d-jmeno').value} ${document.getElementById('d-prijmeni').value}`;
           document.getElementById('ds-email').textContent   = email.value;
           document.getElementById('ds-telefon').textContent = document.getElementById('d-predvolba').value + ' ' + telefon.value;
-          document.getElementById('ds-cleaning').textContent = `${CLEANING_FEE.toLocaleString('cs-CZ')} Kč`;
           document.getElementById('ds-cena').textContent    = `${dTotalPrice.toLocaleString('cs-CZ')} Kč`;
 
           goToDrawerStep(4);
