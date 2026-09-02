@@ -1513,6 +1513,33 @@ a.vip-link.active {
   text-align: center;
 }
 
+#inline-calendar .flatpickr-day.has-day-price {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 46px !important;
+  line-height: 1.05 !important;
+  gap: 1px;
+  padding-top: 2px;
+}
+#inline-calendar .flatpickr-day.has-day-price::after {
+  content: attr(data-price) " Kč";
+  display: block;
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: #2563eb;
+  line-height: 1;
+}
+#inline-calendar .flatpickr-day.selected.has-day-price::after,
+#inline-calendar .flatpickr-day.startRange.has-day-price::after,
+#inline-calendar .flatpickr-day.endRange.has-day-price::after {
+  color: #ffffff;
+}
+#inline-calendar .flatpickr-day.inRange.has-day-price::after {
+  color: #1e40af;
+}
+
     .flatpickr-day:hover {
       background: #dbeafe;
       color: #1e40af;
@@ -2292,11 +2319,6 @@ a.vip-link.active {
   border-radius: 12px !important;
   gap: 1px;
   padding-top: 2px;
-}
-#drawer-cal-container .flatpickr-innerContainer,
-#drawer-cal-container .flatpickr-days,
-#drawer-cal-container .dayContainer {
-  overflow: visible !important;
 }
 #drawer-cal-container .flatpickr-day.has-day-price::after {
   content: attr(data-price) " Kč";
@@ -6725,6 +6747,17 @@ function showMinNightsTooltip() {
             altInput: false,
             showMonths: showMonths,
             disable: bookedDates,
+
+            onDayCreate: function(dObj, dStr, fp, dayElem) {
+              const today = new Date();
+              today.setHours(0, 0, 0, 0);
+              const isBooked = dayElem.classList.contains('flatpickr-disabled');
+              const isAdjacentMonth = dayElem.classList.contains('prevMonthDay') || dayElem.classList.contains('nextMonthDay');
+              if (dayElem.dateObj >= today && !isBooked && !isAdjacentMonth) {
+                dayElem.setAttribute('data-price', getPriceForDate(dayElem.dateObj));
+                dayElem.classList.add('has-day-price');
+              }
+            },
 
             onReady: function(selectedDates, dateStr, instance) {
               const cal = instance.calendarContainer;
