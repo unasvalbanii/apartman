@@ -2305,18 +2305,20 @@ a.vip-link.active {
 #drawer-cal-container .day-price-discount-dot {
   display: inline-block;
   box-sizing: border-box;
-  min-width: 14px;
-  height: 14px;
+  position: relative;
+  top: -5px;
+  min-width: 13px;
+  height: 13px;
   padding: 0 3px;
-  margin-left: 3px;
+  margin-left: 2px;
   border-radius: 9999px;
   background-color: #ffb500;
   color: #1f2937;
-  font-size: 8px;
+  font-size: 7px;
   font-weight: 800;
-  line-height: 14px;
+  line-height: 13px;
   text-align: center;
-  vertical-align: super;
+  vertical-align: baseline;
 }
 
 #drawer-cal-container .flatpickr-day:hover {
@@ -6075,7 +6077,6 @@ a.vip-link.active {
                   const discountDot = document.createElement('span');
                   discountDot.className = 'day-price-discount-dot';
                   discountDot.textContent = '%';
-                  discountDot.style.cssText = 'display:inline-block;box-sizing:border-box;min-width:14px;height:14px;padding:0 3px;margin-left:3px;border-radius:9999px;background-color:#ffb500;color:#1f2937;font-size:8px;font-weight:800;line-height:14px;text-align:center;vertical-align:super;';
                   priceLabel.appendChild(discountDot);
                 }
                 dayElem.appendChild(priceLabel);
