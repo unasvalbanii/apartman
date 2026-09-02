@@ -2293,6 +2293,11 @@ a.vip-link.active {
   gap: 1px;
   padding-top: 2px;
 }
+#drawer-cal-container .flatpickr-innerContainer,
+#drawer-cal-container .flatpickr-days,
+#drawer-cal-container .dayContainer {
+  overflow: visible !important;
+}
 #drawer-cal-container .flatpickr-day.has-day-price::after {
   content: attr(data-price) " Kč";
   display: block;
