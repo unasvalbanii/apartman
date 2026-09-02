@@ -2291,18 +2291,20 @@ a.vip-link.active {
   border-radius: 12px !important;
   gap: 1px;
 }
-#drawer-cal-container .flatpickr-day.has-day-price::after {
-  content: attr(data-price);
-  font-size: 0.52rem;
+#drawer-cal-container .day-price-label {
+  display: block;
+  font-size: 0.62rem;
   font-weight: 700;
   color: #2563eb;
+  line-height: 1;
+  margin-top: 1px;
 }
-#drawer-cal-container .flatpickr-day.selected.has-day-price::after,
-#drawer-cal-container .flatpickr-day.startRange.has-day-price::after,
-#drawer-cal-container .flatpickr-day.endRange.has-day-price::after {
+#drawer-cal-container .flatpickr-day.selected .day-price-label,
+#drawer-cal-container .flatpickr-day.startRange .day-price-label,
+#drawer-cal-container .flatpickr-day.endRange .day-price-label {
   color: #ffffff;
 }
-#drawer-cal-container .flatpickr-day.inRange.has-day-price::after {
+#drawer-cal-container .flatpickr-day.inRange .day-price-label {
   color: #1e40af;
 }
 
@@ -6021,8 +6023,12 @@ a.vip-link.active {
               const isBooked = dayElem.classList.contains('flatpickr-disabled');
               const isAdjacentMonth = dayElem.classList.contains('prevMonthDay') || dayElem.classList.contains('nextMonthDay');
               if (dayElem.dateObj >= today && !isBooked && !isAdjacentMonth) {
-                dayElem.setAttribute('data-price', getPriceForDate(dayElem.dateObj));
+                const price = getPriceForDate(dayElem.dateObj);
                 dayElem.classList.add('has-day-price');
+                const priceLabel = document.createElement('span');
+                priceLabel.className = 'day-price-label';
+                priceLabel.textContent = price;
+                dayElem.appendChild(priceLabel);
               }
             },
             onChange: function(selectedDates) {
