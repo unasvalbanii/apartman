@@ -2300,6 +2300,23 @@ a.vip-link.active {
   line-height: 1.5;
   margin-top: 1px;
 }
+#drawer-cal-container .day-price-discount-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
+  margin-left: 3px;
+  border-radius: 9999px;
+  background: #ffb500;
+  color: #1f2937;
+  font-size: 0.42rem;
+  font-weight: 800;
+  line-height: 1;
+  vertical-align: middle;
+  opacity: 1;
+  flex-shrink: 0;
+}
 
 #drawer-cal-container .flatpickr-day:hover {
   background: #dbeafe !important;
@@ -6048,6 +6065,12 @@ a.vip-link.active {
                 priceLabel.className = 'day-price-label';
                 priceLabel.textContent = price.toLocaleString('cs-CZ') + ' Kč';
                 priceLabel.style.cssText = 'display:block;font-size:0.62rem;font-weight:400;line-height:1.5;color:currentColor;opacity:0.62;';
+                if (DISCOUNT_ACTIVE) {
+                  const discountDot = document.createElement('span');
+                  discountDot.className = 'day-price-discount-dot';
+                  discountDot.textContent = '%';
+                  priceLabel.appendChild(discountDot);
+                }
                 dayElem.appendChild(priceLabel);
               }
             },
