@@ -2303,23 +2303,20 @@ a.vip-link.active {
   opacity: 0.62;
 }
 #drawer-cal-container .day-price-discount-dot {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 13px;
-  height: 13px;
+  display: inline-block;
+  box-sizing: border-box;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
   margin-left: 3px;
   border-radius: 9999px;
-  background: #ffb500;
+  background-color: #ffb500;
   color: #1f2937;
   font-size: 8px;
   font-weight: 800;
-  line-height: 1;
-  vertical-align: middle;
-  opacity: 1;
-  flex-shrink: 0;
-  overflow: hidden;
+  line-height: 14px;
   text-align: center;
+  vertical-align: super;
 }
 
 #drawer-cal-container .flatpickr-day:hover {
