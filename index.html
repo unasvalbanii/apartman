@@ -2300,23 +2300,6 @@ a.vip-link.active {
   line-height: 1.5;
   margin-top: 1px;
 }
-#drawer-cal-container .day-price-discount-dot {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 10px;
-  height: 10px;
-  margin-left: 3px;
-  border-radius: 9999px;
-  background: #ffb500;
-  color: #1f2937;
-  font-size: 0.42rem;
-  font-weight: 800;
-  line-height: 1;
-  vertical-align: middle;
-  opacity: 1;
-  flex-shrink: 0;
-}
 
 #drawer-cal-container .flatpickr-day:hover {
   background: #dbeafe !important;
@@ -5962,9 +5945,6 @@ a.vip-link.active {
 
         /* --- Otevření / zavření --- */
         window.openReservationDrawer = function(dateFrom, dateTo, adults, children, infants) {
-          const discountNoticeEl = document.getElementById('drawer-discount-notice');
-          if (discountNoticeEl) discountNoticeEl.style.display = DISCOUNT_ACTIVE ? 'flex' : 'none';
-
           dAdults   = adults   || 2;
           dChildren = children || 0;
           dInfants  = infants  || 0;
