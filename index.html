@@ -2278,9 +2278,32 @@ a.vip-link.active {
 
 #drawer-cal-container .flatpickr-day {
   color: #1f2937 !important;
-  height: 34px !important;
-  line-height: 34px !important;
+  height: 46px !important;
+  line-height: 46px !important;
   font-size: 0.82rem !important;
+}
+#drawer-cal-container .flatpickr-day.has-day-price {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.1 !important;
+  border-radius: 12px !important;
+  gap: 1px;
+}
+#drawer-cal-container .flatpickr-day.has-day-price::after {
+  content: attr(data-price);
+  font-size: 0.52rem;
+  font-weight: 700;
+  color: #2563eb;
+}
+#drawer-cal-container .flatpickr-day.selected.has-day-price::after,
+#drawer-cal-container .flatpickr-day.startRange.has-day-price::after,
+#drawer-cal-container .flatpickr-day.endRange.has-day-price::after {
+  color: #ffffff;
+}
+#drawer-cal-container .flatpickr-day.inRange.has-day-price::after {
+  color: #1e40af;
 }
 
 #drawer-cal-container .flatpickr-day:hover {
@@ -3159,35 +3182,6 @@ a.vip-link.active {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
-    }
-
-    .price-chips {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 4px;
-      margin-bottom: 10px;
-    }
-    .price-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      font-size: 0.62rem;
-      line-height: 1;
-      color: #6b7280;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      border-radius: 999px;
-      padding: 3px 7px;
-    }
-    .price-chip strong { color: #1f2937; font-weight: 700; }
-    .price-chip-old { color: #b0b6c0; text-decoration: line-through; }
-    .price-chip-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      display: inline-block;
-      flex-shrink: 0;
     }
 
     #drawer-price-box .price-box-row {
@@ -4722,12 +4716,6 @@ a.vip-link.active {
       <div class="drawer-step active" id="drawer-step-0">
         <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">Vyberte termín pobytu</p>
 
-        <div class="price-chips">
-          <span class="price-chip"><i class="price-chip-dot" style="background:#86efac;"></i>Lis–dub <span class="price-chip-old">2 399 Kč</span> <strong>1 799 Kč</strong></span>
-          <span class="price-chip"><i class="price-chip-dot" style="background:#fbbf24;"></i>Kvě/Čvn/Zář/Říj <span class="price-chip-old">3 099 Kč</span> <strong>2 324 Kč</strong></span>
-          <span class="price-chip"><i class="price-chip-dot" style="background:#f87171;"></i>Čvc–Srp <span class="price-chip-old">3 599 Kč</span> <strong>2 699 Kč</strong></span>
-        </div>
-
         <div id="drawer-cal-container"></div>
         <div id="drawer-price-box">
           <div class="price-box-row">
@@ -6001,6 +5989,12 @@ a.vip-link.active {
                 dayElem.style.setProperty('background', 'transparent', 'important');
                 dayElem.style.setProperty('color', '#9ca3af', 'important');
                 dayElem.style.setProperty('opacity', '0.5', 'important');
+              }
+              const isBooked = dayElem.classList.contains('flatpickr-disabled');
+              const isAdjacentMonth = dayElem.classList.contains('prevMonthDay') || dayElem.classList.contains('nextMonthDay');
+              if (dayElem.dateObj >= today && !isBooked && !isAdjacentMonth) {
+                dayElem.setAttribute('data-price', getPriceForDate(dayElem.dateObj));
+                dayElem.classList.add('has-day-price');
               }
             },
             onChange: function(selectedDates) {
