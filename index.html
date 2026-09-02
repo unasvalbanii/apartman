@@ -4774,6 +4774,10 @@ a.vip-link.active {
             <span>Cena za noc</span>
             <span id="drawer-price-breakdown">—</span>
           </div>
+          <div class="price-box-row">
+            <span>Závěrečný úklid</span>
+            <span id="drawer-price-cleaning">900 Kč</span>
+          </div>
           <div class="price-box-row price-box-row-total">
             <span>Celková cena</span>
             <span><span id="drawer-price-original"></span><strong id="drawer-price-total">0 Kč</strong></span>
@@ -4938,6 +4942,7 @@ a.vip-link.active {
             <div class="summary-cell summary-cell-bordered"><span class="summary-label">Jméno</span><span id="ds-jmeno">—</span></div>
             <div class="summary-cell"><span class="summary-label">Telefon</span><span id="ds-telefon">—</span></div>
             <div class="summary-cell summary-cell-full"><span class="summary-label">E-mail</span><span id="ds-email">—</span></div>
+            <div class="summary-cell summary-cell-full"><span class="summary-label">Závěrečný úklid</span><span id="ds-cleaning">900 Kč</span></div>
             <div class="summary-cell summary-cell-full summary-cell-total"><span class="summary-label">Celková cena</span><span id="ds-cena">—</span></div>
           </div>
         </div>
@@ -5310,6 +5315,9 @@ a.vip-link.active {
     // Pro ukončení slevy stačí přepnout na false, žádné jiné úpravy nejsou potřeba.
     const DISCOUNT_ACTIVE = true;
     const DISCOUNT_RATE = 0.25;
+
+    // Jednorázový poplatek za závěrečný úklid (za celý pobyt)
+    const CLEANING_FEE = 900;
 
     function getBasePriceForDate(date) {
       const month = date.getMonth() + 1;
@@ -5962,7 +5970,7 @@ a.vip-link.active {
             dDateTo   = dateTo;
             dNights   = Math.ceil((dateTo - dateFrom) / (1000 * 3600 * 24));
             const { total, originalTotal, segments } = calcTotalPrice(dateFrom, dateTo);
-            dTotalPrice = total;
+            dTotalPrice = total + CLEANING_FEE;
             updateDrawerPriceBox(dateFrom, dateTo, dNights, total, segments, originalTotal);
             if (drawerFp) drawerFp.setDate([dateFrom, dateTo]);
             enableDrawerStep0Btn();
@@ -6082,7 +6090,7 @@ a.vip-link.active {
                 }
                 dDateFrom = od; dDateTo = do_; dNights = nights;
                 const { total, originalTotal, segments } = calcTotalPrice(od, do_);
-                dTotalPrice = total;
+                dTotalPrice = total + CLEANING_FEE;
                 updateDrawerPriceBox(od, do_, nights, total, segments, originalTotal);
                 enableDrawerStep0Btn();
               } else {
@@ -6136,11 +6144,12 @@ a.vip-link.active {
           document.getElementById('drawer-price-breakdown').textContent = segments.length === 1
             ? `${segments[0].price.toLocaleString('cs-CZ')} Kč/noc × ${nights}`
             : segments.map(s => `${s.nights}× ${s.price.toLocaleString('cs-CZ')} Kč`).join(' + ');
+          document.getElementById('drawer-price-cleaning').textContent = `${CLEANING_FEE.toLocaleString('cs-CZ')} Kč`;
 
           const originalEl = document.getElementById('drawer-price-original');
           const savingsEl = document.getElementById('drawer-price-savings');
           if (DISCOUNT_ACTIVE && originalTotal && originalTotal > total) {
-            originalEl.textContent = `${originalTotal.toLocaleString('cs-CZ')} Kč`;
+            originalEl.textContent = `${(originalTotal + CLEANING_FEE).toLocaleString('cs-CZ')} Kč`;
             originalEl.style.display = 'inline';
             const savedAmount = originalTotal - total;
             savingsEl.innerHTML = `<i class="fas fa-tag"></i> Ušetříte ${savedAmount.toLocaleString('cs-CZ')} Kč`;
@@ -6150,7 +6159,7 @@ a.vip-link.active {
             savingsEl.style.display = 'none';
           }
 
-          document.getElementById('drawer-price-total').textContent = `${total.toLocaleString('cs-CZ')} Kč`;
+          document.getElementById('drawer-price-total').textContent = `${(total + CLEANING_FEE).toLocaleString('cs-CZ')} Kč`;
           box.classList.add('visible');
         }
 
@@ -6318,6 +6327,7 @@ a.vip-link.active {
           document.getElementById('ds-jmeno').textContent   = `${document.getElementById('d-jmeno').value} ${document.getElementById('d-prijmeni').value}`;
           document.getElementById('ds-email').textContent   = email.value;
           document.getElementById('ds-telefon').textContent = document.getElementById('d-predvolba').value + ' ' + telefon.value;
+          document.getElementById('ds-cleaning').textContent = `${CLEANING_FEE.toLocaleString('cs-CZ')} Kč`;
           document.getElementById('ds-cena').textContent    = `${dTotalPrice.toLocaleString('cs-CZ')} Kč`;
 
           goToDrawerStep(4);
