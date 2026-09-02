@@ -2295,17 +2295,10 @@ a.vip-link.active {
   display: block;
   font-size: 0.62rem;
   font-weight: 100;
-  color: #6b7280;
+  color: currentColor;
+  opacity: 0.62;
   line-height: 1.5;
   margin-top: 1px;
-}
-#drawer-cal-container .flatpickr-day.selected .day-price-label,
-#drawer-cal-container .flatpickr-day.startRange .day-price-label,
-#drawer-cal-container .flatpickr-day.endRange .day-price-label {
-  color: #ffffff;
-}
-#drawer-cal-container .flatpickr-day.inRange .day-price-label {
-  color: #1e40af;
 }
 
 #drawer-cal-container .flatpickr-day:hover {
@@ -6029,7 +6022,7 @@ a.vip-link.active {
                 const priceLabel = document.createElement('span');
                 priceLabel.className = 'day-price-label';
                 priceLabel.textContent = price.toLocaleString('cs-CZ') + ' Kč';
-                priceLabel.style.cssText = 'display:block;font-size:0.62rem;font-weight:100;line-height:1.5;color:#6b7280;';
+                priceLabel.style.cssText = 'display:block;font-size:0.62rem;font-weight:100;line-height:1.5;color:currentColor;opacity:0.62;';
                 dayElem.appendChild(priceLabel);
               }
             },
