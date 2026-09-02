@@ -2378,22 +2378,44 @@ a.vip-link.active {
   margin-bottom: 16px;
 }
 
-#drawer-summary-box .summary-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6px 0;
-  font-size: 0.88rem;
-  color: #374151;
-  border-bottom: 1px solid #e0eeff;
+#drawer-summary-box .summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
-
-#drawer-summary-box .summary-row:last-child {
+#drawer-summary-box .summary-cell {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e0eeff;
+  overflow: hidden;
+}
+#drawer-summary-box .summary-cell-bordered { border-right: 1px solid #e0eeff; }
+#drawer-summary-box .summary-cell-full { grid-column: 1 / -1; }
+#drawer-summary-box .summary-label {
+  font-size: 0.64rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #6b7280;
+  margin-bottom: 2px;
+}
+#drawer-summary-box .summary-cell span:last-child {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1f2937;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#drawer-summary-box .summary-cell-total {
+  background: #eaf2ff;
   border-bottom: none;
-  font-weight: 800;
-  font-size: 1rem;
-  color: #1d4ed8;
   padding-top: 10px;
+}
+#drawer-summary-box .summary-cell-total span:last-child {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1d4ed8;
 }
 
 /* Persons counter v draweru */
@@ -3083,15 +3105,12 @@ a.vip-link.active {
 }
 .restaurant-panel { display: none; }
 .restaurant-panel.active { display: block; }
-    .discount-banner {
-      background: linear-gradient(135deg, #fff8e6, #ffffff);
-      border: 1.5px solid #ffb500;
-      border-radius: 14px;
-      padding: 14px 16px;
-      margin-bottom: 14px;
-      text-align: left;
+    .drawer-header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .discount-banner-badge {
+    .header-discount-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -3099,43 +3118,117 @@ a.vip-link.active {
       color: #1f2937;
       font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      padding: 5px 12px;
+      padding: 5px 8px 5px 10px;
       border-radius: 9999px;
-      margin-bottom: 8px;
     }
-    .discount-banner-text {
-      font-size: 0.82rem;
-      color: #6b5410;
-      line-height: 1.55;
-      margin: 0;
+    .header-discount-info {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 9999px;
+      background: rgba(31,41,55,0.18);
+      cursor: pointer;
+      position: relative;
     }
-    .price-legend-old {
-      text-decoration: line-through;
-      color: #9ca3af;
+    .header-discount-info i { font-size: 0.6rem; color: #1f2937; }
+    .header-discount-tooltip {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      width: 220px;
+      background: #1f2937;
+      color: #ffffff;
+      font-size: 0.72rem;
       font-weight: 500;
+      line-height: 1.5;
+      padding: 10px 12px;
+      border-radius: 10px;
+      text-transform: none;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-4px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+      z-index: 50;
+    }
+    .header-discount-info:hover .header-discount-tooltip,
+    .header-discount-info:focus .header-discount-tooltip,
+    .header-discount-info.tt-open .header-discount-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .price-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .price-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      color: #4b5563;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      padding: 4px 10px;
+    }
+    .price-chip strong { color: #1f2937; font-weight: 700; }
+    .price-chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    #drawer-price-box .price-box-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #4b5563;
+      padding: 3px 0;
+    }
+    #drawer-price-box .price-box-row-total {
+      padding-top: 6px;
+      margin-top: 4px;
+      border-top: 1px dashed #93c5fd;
+      font-weight: 700;
+      color: #1f2937;
+    }
+    #drawer-price-box .price-box-row-total strong {
+      font-size: 1.15rem;
+      color: #1d4ed8;
     }
     #drawer-price-original {
-      font-size: 0.95rem;
+      font-size: 0.78rem;
       color: #9ca3af;
       text-decoration: line-through;
-      margin: 0 0 2px;
+      margin-right: 6px;
       display: none;
     }
     #drawer-price-savings {
-      display: none;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 700;
       color: #b8790a;
-      background: #fffaf0;
-      border: 1px solid #ffe3ac;
-      border-radius: 999px;
-      padding: 3px 10px;
-      margin-top: 6px;
+      display: none;
     }
+    .price-box-row-note { padding-top: 4px; }
+    .price-box-guarantee {
+      font-size: 0.7rem;
+      color: #9ca3af;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .price-box-guarantee i { color: #22c55e; }
   </style>
   <link rel="stylesheet" href="assets/tailwind-production.css">
 </head>
@@ -4585,7 +4678,16 @@ a.vip-link.active {
 
     <div id="reservation-drawer-header">
       <h2><i class="fas fa-calendar-check mr-2"></i>Rezervace</h2>
-      <button id="reservation-drawer-close" aria-label="Zavřít rezervaci">✕</button>
+      <div class="drawer-header-right">
+        <span class="header-discount-badge">
+          −25 %
+          <span class="header-discount-info" id="header-discount-info" tabindex="0" role="button" aria-label="Proč je sleva?">
+            <i class="fas fa-question"></i>
+            <span class="header-discount-tooltip">V bezprostřední blízkosti apartmánu právě probíhá výstavba nového bytového domu. Omlouváme se za případné nepohodlí a jako poděkování za pochopení nabízíme dočasně sníženou cenu.</span>
+          </span>
+        </span>
+        <button id="reservation-drawer-close" aria-label="Zavřít rezervaci">✕</button>
+      </div>
     </div>
 
     <!-- Progress bar -->
@@ -4616,35 +4718,32 @@ a.vip-link.active {
 
       <!-- KROK 1: Termín -->
       <div class="drawer-step active" id="drawer-step-0">
-        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Vyberte termín pobytu</p>
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">Vyberte termín pobytu</p>
 
-        <div class="discount-banner" id="discount-banner">
-          <span class="discount-banner-badge"><i class="fas fa-percent"></i> Sleva 25 % · do odvolání</span>
-          <p class="discount-banner-text">V bezprostřední blízkosti apartmánu právě probíhá výstavba nového bytového domu. Za případné nepohodlí se omlouváme a jako poděkování za pochopení nabízíme všem hostům dočasně sníženou cenu.</p>
+        <div class="price-chips">
+          <span class="price-chip"><i class="price-chip-dot" style="background:#86efac;"></i>Lis–dub <strong>1 799 Kč</strong></span>
+          <span class="price-chip"><i class="price-chip-dot" style="background:#fbbf24;"></i>Kvě/Čvn/Zář/Říj <strong>2 324 Kč</strong></span>
+          <span class="price-chip"><i class="price-chip-dot" style="background:#f87171;"></i>Čvc–Srp <strong>2 699 Kč</strong></span>
         </div>
 
-        <div class="text-center mb-2">
-  <button type="button" class="price-legend-toggle" id="drawer-legend-toggle">
-    <i class="fas fa-circle-info"></i> Cenová pásma
-    <i class="fas fa-chevron-down"></i>
-  </button>
-</div>
-<div class="price-legend-collapsible" id="drawer-legend-body">
-  <div class="price-legend">
-    <div class="price-legend-item"><span class="price-legend-dot" style="background:#86efac;"></span>Listopad–duben — <span class="price-legend-old">2 399 Kč</span> → 1 799 Kč/noc</div>
-    <div class="price-legend-item"><span class="price-legend-dot" style="background:#fbbf24;"></span>Květen/Červen/Září/Říjen — <span class="price-legend-old">3 099 Kč</span> → 2 324 Kč/noc</div>
-    <div class="price-legend-item"><span class="price-legend-dot" style="background:#f87171;"></span>Červenec–srpen — <span class="price-legend-old">3 599 Kč</span> → 2 699 Kč/noc</div>
-  </div>
-</div>
         <div id="drawer-cal-container"></div>
         <div id="drawer-price-box">
-          <p class="text-xs text-gray-500 mb-1" id="drawer-price-nights"></p>
-          <p class="text-xs text-gray-500 mb-1" id="drawer-price-breakdown"></p>
-          <p class="text-sm font-semibold text-gray-700 mb-1">Celková cena pobytu:</p>
-          <p id="drawer-price-original"></p>
-          <p id="drawer-price-total">0 Kč</p>
-          <p id="drawer-price-savings"></p>
-          <p class="text-xs text-gray-400 mt-1 flex items-center gap-1"><i class="fas fa-circle-check text-green-500"></i>Bez provize · platíte přímo majiteli</p>
+          <div class="price-box-row">
+            <span>Počet nocí</span>
+            <span id="drawer-price-nights">—</span>
+          </div>
+          <div class="price-box-row">
+            <span>Cena za noc</span>
+            <span id="drawer-price-breakdown">—</span>
+          </div>
+          <div class="price-box-row price-box-row-total">
+            <span>Celková cena</span>
+            <span><span id="drawer-price-original"></span><strong id="drawer-price-total">0 Kč</strong></span>
+          </div>
+          <div class="price-box-row price-box-row-note">
+            <span id="drawer-price-savings"></span>
+            <span class="price-box-guarantee"><i class="fas fa-circle-check"></i>Bez provize · přímo u majitele</span>
+          </div>
         </div>
         <button class="drawer-btn-primary" id="drawer-btn-0" disabled>
           <i class="fas fa-calendar"></i> Vyberte termín v kalendáři
@@ -4791,14 +4890,18 @@ a.vip-link.active {
         </div>
 
         <div id="drawer-summary-box">
-          <div class="summary-row"><span>Příjezd</span><span id="ds-prijezd">—</span></div>
-          <div class="summary-row"><span>Odjezd</span><span id="ds-odjezd">—</span></div>
-          <div class="summary-row"><span>Počet nocí</span><span id="ds-noci">—</span></div>
-          <div class="summary-row"><span>Hosté</span><span id="ds-hoste">—</span></div>
-          <div class="summary-row"><span>Jméno</span><span id="ds-jmeno">—</span></div>
-          <div class="summary-row"><span>E-mail</span><span id="ds-email">—</span></div>
-          <div class="summary-row"><span>Telefon</span><span id="ds-telefon">—</span></div>
-          <div class="summary-row"><span>Celková cena</span><span id="ds-cena">—</span></div>
+          <div class="summary-grid">
+            <div class="summary-cell summary-cell-full">
+              <span class="summary-label">Termín pobytu</span>
+              <span><span id="ds-prijezd">—</span> <i class="fas fa-arrow-right" style="font-size:0.65em;color:#9ca3af;margin:0 4px;"></i> <span id="ds-odjezd">—</span></span>
+            </div>
+            <div class="summary-cell summary-cell-bordered"><span class="summary-label">Počet nocí</span><span id="ds-noci">—</span></div>
+            <div class="summary-cell"><span class="summary-label">Hosté</span><span id="ds-hoste">—</span></div>
+            <div class="summary-cell summary-cell-bordered"><span class="summary-label">Jméno</span><span id="ds-jmeno">—</span></div>
+            <div class="summary-cell"><span class="summary-label">Telefon</span><span id="ds-telefon">—</span></div>
+            <div class="summary-cell summary-cell-full"><span class="summary-label">E-mail</span><span id="ds-email">—</span></div>
+            <div class="summary-cell summary-cell-full summary-cell-total"><span class="summary-label">Celková cena</span><span id="ds-cena">—</span></div>
+          </div>
         </div>
 
         <button class="drawer-btn-primary" id="drawer-btn-submit" data-umami-event="rezervace_odeslano">
@@ -5777,6 +5880,19 @@ a.vip-link.active {
 
 })();
 
+      /* ========================= Tooltip u slevového štítku (tap na mobilu) ========================= */
+      (function() {
+        const infoBtn = document.getElementById('header-discount-info');
+        if (!infoBtn) return;
+        infoBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          infoBtn.classList.toggle('tt-open');
+        });
+        document.addEventListener('click', () => {
+          infoBtn.classList.remove('tt-open');
+        });
+      })();
+
       /* ========================= REZERVAČNÍ DRAWER ========================= */
       (function() {
         const drawer        = document.getElementById('reservation-drawer');
@@ -5975,9 +6091,9 @@ a.vip-link.active {
           const savingsEl = document.getElementById('drawer-price-savings');
           if (DISCOUNT_ACTIVE && originalTotal && originalTotal > total) {
             originalEl.textContent = `${originalTotal.toLocaleString('cs-CZ')} Kč`;
-            originalEl.style.display = 'block';
+            originalEl.style.display = 'inline';
             const savedAmount = originalTotal - total;
-            savingsEl.innerHTML = `<i class="fas fa-tag"></i> Ušetříte ${savedAmount.toLocaleString('cs-CZ')} Kč (−25 %)`;
+            savingsEl.innerHTML = `<i class="fas fa-tag"></i> Ušetříte ${savedAmount.toLocaleString('cs-CZ')} Kč`;
             savingsEl.style.display = 'inline-flex';
           } else {
             originalEl.style.display = 'none';
