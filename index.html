@@ -2295,30 +2295,27 @@ a.vip-link.active {
   display: block;
   font-size: 0.62rem;
   font-weight: 400;
+  color: currentColor;
+  opacity: 0.62;
   line-height: 1.5;
   margin-top: 1px;
 }
-#drawer-cal-container .day-price-text {
-  color: currentColor;
-  opacity: 0.62;
-}
 #drawer-cal-container .day-price-discount-dot {
-  display: inline-block !important;
-  box-sizing: border-box !important;
-  position: relative !important;
-  top: -5px !important;
-  min-width: 13px !important;
-  height: 13px !important;
-  padding: 0 3px !important;
-  margin-left: 2px !important;
-  border-radius: 9999px !important;
-  background-color: #ffb500 !important;
-  color: #1f2937 !important;
-  font-size: 7px !important;
-  font-weight: 800 !important;
-  line-height: 13px !important;
-  text-align: center !important;
-  vertical-align: baseline !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
+  margin-left: 3px;
+  border-radius: 9999px;
+  background: #ffb500;
+  color: #1f2937;
+  font-size: 0.42rem;
+  font-weight: 800;
+  line-height: 1;
+  vertical-align: middle;
+  opacity: 1;
+  flex-shrink: 0;
 }
 
 #drawer-cal-container .flatpickr-day:hover {
@@ -6066,19 +6063,8 @@ a.vip-link.active {
                 dayElem.style.cssText += 'display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;gap:1px;';
                 const priceLabel = document.createElement('span');
                 priceLabel.className = 'day-price-label';
-                priceLabel.style.cssText = 'display:block;font-size:0.62rem;font-weight:400;line-height:1.5;';
-
-                const priceText = document.createElement('span');
-                priceText.className = 'day-price-text';
-                priceText.textContent = price.toLocaleString('cs-CZ') + ' Kč';
-                priceLabel.appendChild(priceText);
-
-                if (DISCOUNT_ACTIVE) {
-                  const discountDot = document.createElement('span');
-                  discountDot.className = 'day-price-discount-dot';
-                  discountDot.textContent = '%';
-                  priceLabel.appendChild(discountDot);
-                }
+                priceLabel.textContent = price.toLocaleString('cs-CZ') + ' Kč';
+                priceLabel.style.cssText = 'display:block;font-size:0.62rem;font-weight:400;line-height:1.5;color:currentColor;opacity:0.62;';
                 dayElem.appendChild(priceLabel);
               }
             },
@@ -7856,3 +7842,4 @@ document.querySelectorAll('.price-legend-toggle').forEach(btn => {
 </script>
 </body>
 </html>
+
