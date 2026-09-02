@@ -1513,33 +1513,6 @@ a.vip-link.active {
   text-align: center;
 }
 
-#inline-calendar .flatpickr-day.has-day-price {
-  display: flex !important;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 46px !important;
-  line-height: 1.05 !important;
-  gap: 1px;
-  padding-top: 2px;
-}
-#inline-calendar .flatpickr-day.has-day-price::after {
-  content: attr(data-price) " Kč";
-  display: block;
-  font-size: 0.55rem;
-  font-weight: 700;
-  color: #2563eb;
-  line-height: 1;
-}
-#inline-calendar .flatpickr-day.selected.has-day-price::after,
-#inline-calendar .flatpickr-day.startRange.has-day-price::after,
-#inline-calendar .flatpickr-day.endRange.has-day-price::after {
-  color: #ffffff;
-}
-#inline-calendar .flatpickr-day.inRange.has-day-price::after {
-  color: #1e40af;
-}
-
     .flatpickr-day:hover {
       background: #dbeafe;
       color: #1e40af;
@@ -2305,36 +2278,9 @@ a.vip-link.active {
 
 #drawer-cal-container .flatpickr-day {
   color: #1f2937 !important;
-  height: 46px !important;
-  line-height: 46px !important;
+  height: 34px !important;
+  line-height: 34px !important;
   font-size: 0.82rem !important;
-}
-#drawer-cal-container .flatpickr-day.has-day-price {
-  display: flex !important;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 46px !important;
-  line-height: 1.05 !important;
-  border-radius: 12px !important;
-  gap: 1px;
-  padding-top: 2px;
-}
-#drawer-cal-container .flatpickr-day.has-day-price::after {
-  content: attr(data-price) " Kč";
-  display: block;
-  font-size: 0.5rem;
-  font-weight: 700;
-  color: #2563eb;
-  line-height: 1;
-}
-#drawer-cal-container .flatpickr-day.selected.has-day-price::after,
-#drawer-cal-container .flatpickr-day.startRange.has-day-price::after,
-#drawer-cal-container .flatpickr-day.endRange.has-day-price::after {
-  color: #ffffff;
-}
-#drawer-cal-container .flatpickr-day.inRange.has-day-price::after {
-  color: #1e40af;
 }
 
 #drawer-cal-container .flatpickr-day:hover {
@@ -3215,6 +3161,34 @@ a.vip-link.active {
       transform: translateY(0);
     }
 
+    .price-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .price-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      color: #4b5563;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      padding: 4px 10px;
+    }
+    .price-chip strong { color: #1f2937; font-weight: 700; }
+    .price-chip-old { color: #9ca3af; text-decoration: line-through; }
+    .price-chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
     #drawer-price-box .price-box-row {
       display: flex;
       align-items: center;
@@ -3226,7 +3200,7 @@ a.vip-link.active {
     #drawer-price-box .price-box-row-total {
       padding-top: 6px;
       margin-top: 4px;
-      border-top: 1px dashed #86efac;
+      border-top: 1px dashed #93c5fd;
       font-weight: 700;
       color: #1f2937;
     }
@@ -4747,6 +4721,12 @@ a.vip-link.active {
       <div class="drawer-step active" id="drawer-step-0">
         <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">Vyberte termín pobytu</p>
 
+        <div class="price-chips">
+          <span class="price-chip"><i class="price-chip-dot" style="background:#86efac;"></i>Lis–dub <span class="price-chip-old">2 399 Kč</span> <strong>1 799 Kč</strong></span>
+          <span class="price-chip"><i class="price-chip-dot" style="background:#fbbf24;"></i>Kvě/Čvn/Zář/Říj <span class="price-chip-old">3 099 Kč</span> <strong>2 324 Kč</strong></span>
+          <span class="price-chip"><i class="price-chip-dot" style="background:#f87171;"></i>Čvc–Srp <span class="price-chip-old">3 599 Kč</span> <strong>2 699 Kč</strong></span>
+        </div>
+
         <div id="drawer-cal-container"></div>
         <div id="drawer-price-box">
           <div class="price-box-row">
@@ -6021,12 +6001,6 @@ a.vip-link.active {
                 dayElem.style.setProperty('color', '#9ca3af', 'important');
                 dayElem.style.setProperty('opacity', '0.5', 'important');
               }
-              const isBooked = dayElem.classList.contains('flatpickr-disabled');
-              const isAdjacentMonth = dayElem.classList.contains('prevMonthDay') || dayElem.classList.contains('nextMonthDay');
-              if (dayElem.dateObj >= today && !isBooked && !isAdjacentMonth) {
-                dayElem.setAttribute('data-price', getPriceForDate(dayElem.dateObj));
-                dayElem.classList.add('has-day-price');
-              }
             },
             onChange: function(selectedDates) {
               if (selectedDates.length === 2) {
@@ -6747,17 +6721,6 @@ function showMinNightsTooltip() {
             altInput: false,
             showMonths: showMonths,
             disable: bookedDates,
-
-            onDayCreate: function(dObj, dStr, fp, dayElem) {
-              const today = new Date();
-              today.setHours(0, 0, 0, 0);
-              const isBooked = dayElem.classList.contains('flatpickr-disabled');
-              const isAdjacentMonth = dayElem.classList.contains('prevMonthDay') || dayElem.classList.contains('nextMonthDay');
-              if (dayElem.dateObj >= today && !isBooked && !isAdjacentMonth) {
-                dayElem.setAttribute('data-price', getPriceForDate(dayElem.dateObj));
-                dayElem.classList.add('has-day-price');
-              }
-            },
 
             onReady: function(selectedDates, dateStr, instance) {
               const cal = instance.calendarContainer;
@@ -7813,3 +7776,4 @@ document.querySelectorAll('.price-legend-toggle').forEach(btn => {
 </script>
 </body>
 </html>
+
