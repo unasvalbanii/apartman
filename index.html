@@ -3268,6 +3268,12 @@ a.vip-link.active {
       gap: 4px;
     }
     .price-box-guarantee i { color: #22c55e; }
+    .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)),
+.flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)),
+.flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {
+  -webkit-box-shadow: -10px 0 0 #dbeafe !important;
+  box-shadow: -10px 0 0 #dbeafe !important;
+}
   </style>
   <link rel="stylesheet" href="assets/tailwind-production.css">
 </head>
