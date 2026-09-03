@@ -28,7 +28,7 @@
   <link rel="preload" href="assets/fonts/poetsen-one.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
 
     :root { --header-height: 72px; }
 
@@ -5691,35 +5691,56 @@ a.vip-link.active {
 
       if (scrollToTopBtn) scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-      document.querySelectorAll('a[href^="#"]').forEach((a) => {
-  a.addEventListener('click', function (e) {
-    if (this.id === 'nav-rezervace-desktop' && window.innerWidth >= 1024) return;
-    if (this.id === 'nav-rezervace-mobile' && window.innerWidth < 1024) return;
-    const target = document.getElementById(this.getAttribute('href').substring(1));
-    if (!target) return;
-    e.preventDefault();
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', function (event) {
+          if (
+            this.id === 'nav-rezervace-desktop' &&
+            window.innerWidth >= 1024
+          ) {
+            return;
+          }
 
-    const scrollToTarget = () => {
-  const headerHeight = header ? header.offsetHeight : 0;
-  const y =
-    target.getBoundingClientRect().top +
-    window.scrollY -
-    headerHeight;
+          if (
+            this.id === 'nav-rezervace-mobile' &&
+            window.innerWidth < 1024
+          ) {
+            return;
+          }
 
-  window.scrollTo({
-    top: y,
-    behavior: 'smooth'
-  });
-};
+          const hash = this.getAttribute('href');
 
-    if (this.closest('#mobile-menu')) {
-      closeMenu();
-      requestAnimationFrame(() => requestAnimationFrame(scrollToTarget));
-    } else {
-      scrollToTarget();
-    }
-  });
-});
+          if (!hash || hash === '#') {
+            return;
+          }
+
+          const target = document.querySelector(hash);
+
+          if (!target) {
+            return;
+          }
+
+          event.preventDefault();
+
+          const scrollToTarget = () => {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+
+            history.replaceState(null, '', hash);
+          };
+
+          if (this.closest('#mobile-menu')) {
+            closeMenu();
+
+            requestAnimationFrame(() => {
+              requestAnimationFrame(scrollToTarget);
+            });
+          } else {
+            scrollToTarget();
+          }
+        });
+      });
 
       /* Hamburger */
       const menuToggle = document.getElementById('menu-toggle');
