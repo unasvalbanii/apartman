@@ -2318,9 +2318,11 @@ a.vip-link.active {
   box-shadow: -5px 0 0 #dbeafe, 5px 0 0 #dbeafe !important;
 }
 
-#drawer-cal-container .flatpickr-day.startRange,
-#drawer-cal-container .flatpickr-day.endRange {
-  box-shadow: -5px 0 0 #dbeafe, 5px 0 0 #dbeafe !important;
+#drawer-cal-container .flatpickr-day.startRange:not(.endRange) {
+  box-shadow: 5px 0 0 #dbeafe !important;
+}
+#drawer-cal-container .flatpickr-day.endRange:not(.startRange) {
+  box-shadow: -5px 0 0 #dbeafe !important;
 }
 
 #drawer-cal-container .flatpickr-day.today {
