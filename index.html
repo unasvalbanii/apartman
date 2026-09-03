@@ -5700,16 +5700,33 @@ a.vip-link.active {
     e.preventDefault();
 
     const scrollToTarget = () => {
-  const headerHeight = header ? header.offsetHeight : 0;
-  const y =
-    target.getBoundingClientRect().top +
-    window.scrollY -
-    headerHeight;
+  const getTargetY = () => {
+    const headerHeight = header ? header.offsetHeight : 0;
 
+    return (
+      target.getBoundingClientRect().top +
+      window.scrollY -
+      headerHeight
+    );
+  };
+
+  // První přesun zůstane plynulý.
   window.scrollTo({
-    top: y,
+    top: getTargetY(),
     behavior: 'smooth'
   });
+
+  // Jedna tichá korekce po načtení obrázků.
+  setTimeout(() => {
+    const correctedY = getTargetY();
+
+    if (Math.abs(window.scrollY - correctedY) > 4) {
+      window.scrollTo({
+        top: correctedY,
+        behavior: 'auto'
+      });
+    }
+  }, 900);
 };
 
     if (this.closest('#mobile-menu')) {
