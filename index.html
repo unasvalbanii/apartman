@@ -2290,6 +2290,7 @@ a.vip-link.active {
   line-height: 1.1 !important;
   border-radius: 12px !important;
   gap: 1px;
+  font-weight: 700;
 }
 #drawer-cal-container .day-price-label {
   display: block;
@@ -2320,14 +2321,19 @@ a.vip-link.active {
 }
 
 #drawer-cal-container .flatpickr-day.today {
-  border-color: #2563eb !important;
+  border: none !important;
+  background: #eff6ff !important;
+  color: #1f2937 !important;
+}
+
+#drawer-cal-container .flatpickr-day.today .day-price-label {
   color: #2563eb !important;
-  font-weight: 700 !important;
+  opacity: 0.85 !important;
 }
 
 #drawer-cal-container .flatpickr-day.today:hover {
-  background: #2563eb !important;
-  color: #fff !important;
+  background: #dbeafe !important;
+  color: #1f2937 !important;
 }
 
 #drawer-cal-container .flatpickr-day.flatpickr-disabled {
@@ -7833,3 +7839,4 @@ document.querySelectorAll('.price-legend-toggle').forEach(btn => {
 </script>
 </body>
 </html>
+
