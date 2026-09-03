@@ -5686,7 +5686,7 @@ a.vip-link.active {
           if (scrollToTopBtn) scrollToTopBtn.classList.toggle('hidden', !shouldShowFabs);
           if (floatingResBtn) floatingResBtn.classList.toggle('hidden', !shouldShowFabs);
         }, 100);
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
       }
 
       if (scrollToTopBtn) scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
@@ -5700,28 +5700,17 @@ a.vip-link.active {
     e.preventDefault();
 
     const scrollToTarget = () => {
-      const headerHeight = header ? header.offsetHeight : 0;
-      let cancelled = false;
-      const cancelAuto = () => { cancelled = true; };
-      const cancelEvents = ['wheel', 'touchstart', 'pointerdown'];
-      cancelEvents.forEach(evt => window.addEventListener(evt, cancelAuto, { once: true, passive: true }));
+  const headerHeight = header ? header.offsetHeight : 0;
+  const y =
+    target.getBoundingClientRect().top +
+    window.scrollY -
+    headerHeight;
 
-      const doScroll = () => {
-        if (cancelled) return;
-        const y = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      };
-
-      doScroll();
-      // Korekce pro případ, že se mezitím (např. dokončením lazy-load obrázku) změnila výška stránky.
-      // Pokud uživatel mezitím sám scrolluje, korekce se automaticky zruší.
-      setTimeout(doScroll, 350);
-      setTimeout(doScroll, 700);
-      setTimeout(() => {
-        doScroll();
-        cancelEvents.forEach(evt => window.removeEventListener(evt, cancelAuto));
-      }, 1100);
-    };
+  window.scrollTo({
+    top: y,
+    behavior: 'smooth'
+  });
+};
 
     if (this.closest('#mobile-menu')) {
       closeMenu();
