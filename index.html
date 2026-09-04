@@ -3328,8 +3328,28 @@ a.vip-link.active {
 
 .drawer-mini-prices td:nth-child(3) {
   padding-left: 8px;
-  color: #166534;
-  font-weight: 700;
+}
+
+.drawer-price-period {
+  display: grid;
+  grid-template-columns: 42px auto;
+  column-gap: 10px;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.drawer-price-period strong {
+  color: #374151;
+}
+
+.drawer-price-pill {
+  display: inline-block;
+  padding: 3px 7px;
+  border-radius: 9999px;
+  background: #ffb500;
+  color: #1f2937;
+  font-weight: 800;
+  white-space: nowrap;
 }
   </style>
   <link rel="stylesheet" href="assets/tailwind-production.css">
@@ -4828,14 +4848,29 @@ a.vip-link.active {
   <table>
     <tbody>
       <tr>
-        <td><strong>Zimní</strong> · říjen–květen</td>
-        <td><s>2 599 Kč</s></td>
-        <td>1 949 Kč</td>
-      </tr>
-      <tr>
-        <td><strong>Letní</strong> · červen–září</td>
+        <td>
+          <span class="drawer-price-period">
+            <strong>Letní</strong>
+            <span>červen–září</span>
+          </span>
+        </td>
         <td><s>3 720 Kč</s></td>
-        <td>2 790 Kč</td>
+        <td>
+          <span class="drawer-price-pill">2 790 Kč</span>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <span class="drawer-price-period">
+            <strong>Zimní</strong>
+            <span>říjen–květen</span>
+          </span>
+        </td>
+        <td><s>2 599 Kč</s></td>
+        <td>
+          <span class="drawer-price-pill">1 949 Kč</span>
+        </td>
       </tr>
     </tbody>
   </table>
