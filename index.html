@@ -3351,6 +3351,48 @@ a.vip-link.active {
   font-weight: 800;
   white-space: nowrap;
 }
+.drawer-mini-prices td:first-child {
+  width: 100%;
+}
+
+.drawer-mini-prices td:last-child {
+  padding-left: 12px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.drawer-price-period {
+  display: grid;
+  grid-template-columns: 42px auto;
+  column-gap: 10px;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.drawer-price-period strong {
+  color: #374151;
+}
+
+.drawer-price-comparison {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.drawer-price-original {
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.drawer-price-pill {
+  display: inline-block;
+  padding: 3px 7px;
+  background: #ffb500;
+  color: #1f2937;
+  font-weight: 800;
+  border-radius: 9999px;
+}
   </style>
   <link rel="stylesheet" href="assets/tailwind-production.css">
 </head>
@@ -4854,9 +4896,11 @@ a.vip-link.active {
             <span>červen–září</span>
           </span>
         </td>
-        <td><s>3 720 Kč</s></td>
         <td>
-          <span class="drawer-price-pill">2 790 Kč</span>
+          <span class="drawer-price-comparison">
+            <span class="drawer-price-original">3 720 Kč</span>
+            <span class="drawer-price-pill">2 790 Kč</span>
+          </span>
         </td>
       </tr>
 
@@ -4867,9 +4911,11 @@ a.vip-link.active {
             <span>říjen–květen</span>
           </span>
         </td>
-        <td><s>2 599 Kč</s></td>
         <td>
-          <span class="drawer-price-pill">1 949 Kč</span>
+          <span class="drawer-price-comparison">
+            <span class="drawer-price-original">2 599 Kč</span>
+            <span class="drawer-price-pill">1 949 Kč</span>
+          </span>
         </td>
       </tr>
     </tbody>
