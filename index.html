@@ -5467,9 +5467,16 @@ a.vip-link.active {
 
     /* ========================= Ceník – CZK ========================= */
     const PRICE_CONFIG = [
-  { months: [11,12,1,2,3,4], label: 'Listopad–duben',           pricePerNight: 2199 },
-  { months: [5,6,9,10],      label: 'Květen/Červen/Září/Říjen', pricePerNight: 2999 },
-  { months: [7,8],           label: 'Červenec–srpen',           pricePerNight: 3599 },
+  {
+    months: [10, 11, 12, 1, 2, 3, 4, 5],
+    label: 'Zimní – říjen až květen',
+    pricePerNight: 2599
+  },
+  {
+    months: [6, 7, 8, 9],
+    label: 'Letní – červen až září',
+    pricePerNight: 3720
+  },
 ];
 
     // Dočasná sleva do odvolání – kompenzace za stavební ruch v sousedství.
