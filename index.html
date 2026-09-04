@@ -3286,6 +3286,51 @@ a.vip-link.active {
     box-sizing: border-box;
   }
 }
+.drawer-mini-prices {
+  margin-bottom: 12px;
+  padding: 8px 10px;
+  background: #f9fafb;
+  border-radius: 8px;
+  font-size: 0.68rem;
+  color: #4b5563;
+}
+
+.drawer-mini-prices-title {
+  margin-bottom: 4px;
+  font-weight: 700;
+  color: #374151;
+}
+
+.drawer-mini-prices-title i {
+  margin-right: 4px;
+  color: #e6a300;
+}
+
+.drawer-mini-prices table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.drawer-mini-prices td {
+  padding: 2px 0;
+}
+
+.drawer-mini-prices td:nth-child(2),
+.drawer-mini-prices td:nth-child(3) {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.drawer-mini-prices td:nth-child(2) {
+  padding-left: 6px;
+  color: #9ca3af;
+}
+
+.drawer-mini-prices td:nth-child(3) {
+  padding-left: 8px;
+  color: #166534;
+  font-weight: 700;
+}
   </style>
   <link rel="stylesheet" href="assets/tailwind-production.css">
 </head>
@@ -4775,11 +4820,35 @@ a.vip-link.active {
 
       <!-- KROK 1: Termín -->
       <div class="drawer-step active" id="drawer-step-0">
-        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">Vyberte termín pobytu</p>
+        <div class="drawer-mini-prices">
+  <div class="drawer-mini-prices-title">
+    <i class="fas fa-tag"></i> Ceny po slevě 25 %
+  </div>
 
-        <div id="drawer-discount-notice" class="drawer-discount-notice">
-          <i class="fas fa-tag"></i> Zobrazené ceny jsou již se slevou −25&nbsp;%
-        </div>
+  <table>
+    <tbody>
+      <tr>
+        <td>listopad–duben</td>
+        <td><s>2 199 Kč</s></td>
+        <td>1 649 Kč</td>
+      </tr>
+      <tr>
+        <td>květen, červen, září, říjen</td>
+        <td><s>2 999 Kč</s></td>
+        <td>2 249 Kč</td>
+      </tr>
+      <tr>
+        <td>červenec–srpen</td>
+        <td><s>3 599 Kč</s></td>
+        <td>2 699 Kč</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">
+  Vyberte termín pobytu
+</p>
 
         <div id="drawer-cal-container"></div>
         <div id="drawer-price-box">
